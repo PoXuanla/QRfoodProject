@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import com.android.volley.AuthFailureError;
@@ -34,10 +35,10 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
         private EditText edtAccount, edtPassword;
         private Button Btn_login;
-        private String login_url = "http://192.168.0.106/login.php";
+        private String login_url = "http://192.168.0.36/login.php";
         private String account="",password="";
 
-//    @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkInformation() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
-//            @Override
+            @Override
             public void onResponse(String response) {
 
 
@@ -81,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, new Response.ErrorListener() {
-//            @Override
+            @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 try {
-                    String responseBody = new String(error.networkResponse.data, Charset.forName("utf-8"));
+                    String responseBody = new String(error.networkResponse.data,Charset.forName("utf-8"));
                     JSONObject data = new JSONObject(responseBody);
                     String message = data.getString("message");
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         })
         {
-//            @Override
+            @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("account", account);

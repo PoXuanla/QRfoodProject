@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home_QRfood" />
+        <activity android:name=".Profile_main" />
+        <activity android:name=".Profile_ModifyPassword" />
+        <activity android:name=".Profile_ModifyData" />
     </application>
 
 </manifest>
