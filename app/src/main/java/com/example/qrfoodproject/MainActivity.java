@@ -20,8 +20,8 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,19 +32,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText edtAccount, edtPassword;
-    private Button Btn_login;
-    private String login_url = "http://192.168.0.106/login.php";
-    private String account="",password="";
+        private EditText edtAccount, edtPassword;
+        private Button Btn_login;
+        private String login_url = "http://192.168.0.106/login.php";
+        private String account="",password="";
 
-    @Override
+//    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtAccount = this.findViewById(R.id.edtAccount);
-        edtPassword = this.findViewById(R.id.edtPassword);
-        Btn_login = this.findViewById(R.id.btn_login);
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
+        Btn_login = findViewById(R.id.btn_login);
         Btn_login.setOnClickListener(btn_listener);
 
     }
@@ -69,35 +69,34 @@ public class MainActivity extends AppCompatActivity {
     private void checkInformation() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
-            @Override
+//            @Override
             public void onResponse(String response) {
-                Gson gson = new Gson();
-                Contact contact = gson.fromJson(response.toString(), Contact.class);
+
 
                 Intent intent = new Intent(getApplication(), Home_QRfood.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this,"歡迎登入:"+account + contact.getmessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"歡迎登入:" + account ,Toast.LENGTH_LONG).show();
                 finish();
 
 
             }
         }, new Response.ErrorListener() {
-            @Override
+//            @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 try {
                     String responseBody = new String(error.networkResponse.data, Charset.forName("utf-8"));
                     JSONObject data = new JSONObject(responseBody);
                     String message = data.getString("message");
-                    Log.v("ONE", responseBody.toString());
-                    Toast.makeText(getApplicationContext(), message.toString(), Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.getMessage();
                 }
             }
         })
         {
-            @Override
+//            @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("account", account);
