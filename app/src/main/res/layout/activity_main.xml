@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="30"
-                    android:hint="Account"
+                    android:hint="@string/Account"
                     android:inputType="text"
                     android:textColorHint="#FFFFFF"
                     android:textSize="24sp" />
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:ems="30"
                         android:textColorHint="#FFFFFF"
-                        android:hint="Password"
+                        android:hint="@string/Password"
                         android:inputType="textPassword"
                         android:textSize="24sp" />
                 </android.support.design.widget.TextInputLayout>
@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_button_shape"
-                    android:text="Login"
+                    android:text="@string/Login"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:textAllCaps="false"
@@ -129,7 +129,7 @@
                 android:id="@+id/link_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:text="@string/Register"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"/>
