@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NutritionInform"></activity>
+        <activity android:name=".NutritionInform_06"></activity>
+        <activity android:name=".NutritionInform_05" />
+        <activity android:name=".NutritionInform_04" />
+        <activity android:name=".NutritionInform_03" />
+        <activity android:name=".NutritionInform_02" />
+        <activity android:name=".NutritionInform_01" />
+        <activity android:name=".NutritionInform" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -13,12 +13,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#0000E6" />
+        android:background="@drawable/profile_databg" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4D4DFF"
+        android:background="@drawable/profile_databg"
         android:elevation="20dp"
         android:gravity="center"
         android:padding="20dp"
@@ -45,7 +45,6 @@
         android:gravity="center_vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="#C7E7ED"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -217,30 +216,32 @@
         </LinearLayout>
     </LinearLayout>
 
-<Button
-    android:id="@+id/modifyData"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="修改資料"
-    android:textSize="30dp"
-    android:gravity="center"
-    android:layout_gravity="center"
-    />
+        <Button
+            android:id="@+id/modifyData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_button_shape"
+            android:text="修改資料"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
         <Button
             android:id="@+id/modifyPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/profile_button_shape"
             android:text="修改密碼"
             android:textSize="30dp"
             android:gravity="center"
             android:layout_gravity="center"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登出"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_button_shape"
+            android:text="登出"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </ScrollView>
