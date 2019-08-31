@@ -23,7 +23,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/login_dieticon" />
+                app:srcCompat="@drawable/login_logo" />
 
             <TextView
                 android:id="@+id/textView"
