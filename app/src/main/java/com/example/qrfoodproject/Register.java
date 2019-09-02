@@ -30,7 +30,8 @@ public class Register extends AppCompatActivity {
     private EditText account, password, confirm_password, name, email, height, weight, exercise;
     private RadioGroup genderRadioGroup;
     private Button btn_register;
-    private static String URL_REGISTER = "http://10.0.11.75/register.php";
+    private static String URL_REGISTER = "http://192.168.0.35:8080/qrfood_api/register.php";
+    //private static String URL_REGISTER = "http://10.0.11.75/register.php";
     int gender;
 
     @Override
