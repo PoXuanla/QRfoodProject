@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         private EditText edtAccount, edtPassword;
         private Button Btn_login;
         private String login_url = "http://10.0.11.75/login.php";
+        //private String login_url = "http://10.0.11.75/login.php";
         private String account="",password="";
 
     @Override
@@ -47,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         Btn_login = findViewById(R.id.btn_login);
         Btn_login.setOnClickListener(btn_listener);
-
+        // 進入註冊畫面
+        TextView link_register = this.findViewById(R.id.link_register);
+        link_register.setOnClickListener(link_registerListener);
     }
 
     private Button.OnClickListener btn_listener = new Button.OnClickListener() {
@@ -107,5 +110,13 @@ public class MainActivity extends AppCompatActivity {
         };
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
+    private TextView.OnClickListener link_registerListener = new TextView.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Start the Signup activity
+            Intent intent = new Intent(MainActivity.this, Register.class);
+            startActivity(intent);
+        }
+    };
 }
 
