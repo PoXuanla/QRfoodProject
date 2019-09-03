@@ -50,6 +50,7 @@ public class Register extends AppCompatActivity {
         exercise = this.findViewById(R.id.Exercise);
         btn_register = this.findViewById(R.id.btn_register);
 
+
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
