@@ -56,7 +56,9 @@
             android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"/>
+
         <TextView
+            android:id="@+id/account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
@@ -74,11 +76,13 @@
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="222"
-                android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="222"
+            android:textSize="30sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +93,9 @@
             android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"/>
+
         <TextView
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="222"
@@ -112,6 +118,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -139,6 +146,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -165,6 +173,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/height"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -191,6 +200,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -217,6 +227,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/exercise"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

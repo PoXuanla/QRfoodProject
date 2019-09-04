@@ -39,7 +39,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private EditText edtAccount, edtPassword;
     private Button Btn_login;
-    private String login_url = "http://192.168.0.108/test/login.php";
+    private String login_url = "http://120.110.112.96/using/login.php";
     //private String login_url = "http://10.0.11.75/login.php";
     private String account = "", password = "";
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
         String session = pref.getString("sessionID", "");
-        Toast.makeText(this, session, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, session, Toast.LENGTH_LONG).show();
 
         if (!session.equals("")) {
             checkSession();

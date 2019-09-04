@@ -20,14 +20,14 @@
         <activity android:name=".NutritionInform_01" />
         <activity android:name=".NutritionInform" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Home_QRfood">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home_QRfood" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Profile_main" />
         <activity android:name=".Profile_ModifyPassword" />
         <activity android:name=".Profile_ModifyData" />
