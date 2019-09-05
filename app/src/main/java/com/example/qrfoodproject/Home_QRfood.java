@@ -17,6 +17,9 @@ public class Home_QRfood extends AppCompatActivity {
 
         personalData.setOnClickListener(onclick);
 
+        // Home_QRfood點進『食物檔案』
+        Button foodFile = this.findViewById(R.id.foodFile);
+        foodFile.setOnClickListener(foodFileListener);
         // Home_QRfood點進『營養抓寶站』
         Button nutritionInform = this.findViewById(R.id.nutritioninform);
         nutritionInform.setOnClickListener(nutritionInformListener);
@@ -28,6 +31,14 @@ public class Home_QRfood extends AppCompatActivity {
             startActivity(intent);
 
 
+        }
+    };
+    // Home_QRfood點進『食物檔案』
+    private Button.OnClickListener foodFileListener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Home_QRfood.this, FoodFile.class);
+            startActivity(intent);
         }
     };
     // Home_QRfood點進『營養抓寶站』
