@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.qrfoodproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,19 +21,16 @@
         <activity android:name=".NutritionInform_01" />
         <activity android:name=".NutritionInform" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Home_QRfood">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home_QRfood" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Profile_main" />
         <activity android:name=".Profile_ModifyPassword" />
         <activity android:name=".Profile_ModifyData" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>
