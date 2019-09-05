@@ -36,7 +36,11 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
         private EditText edtAccount, edtPassword;
         private Button Btn_login;
+<<<<<<< HEAD
         private String login_url = "http://192.168.0.36:8080/qrfood_api/login.php";
+=======
+        private String login_url = "http://10.0.11.75/login.php";
+>>>>>>> 71d94d2f30d3466bd181b0cf7c4475bf69416899
         //private String login_url = "http://10.0.11.75/login.php";
         private String account="",password="";
 
