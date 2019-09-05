@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         private EditText edtAccount, edtPassword;
         private Button Btn_login;
-
-        private String login_url = "http://192.168.0.36:8080/qrfood_api/login.php";
+        private static String login_url = "http://120.110.112.96/using/login.php";
         private String account="",password="";
 
     @Override
