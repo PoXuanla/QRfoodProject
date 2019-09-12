@@ -1,4 +1,4 @@
-package com.example.qrfoodproject;
+package com.example.qrfoodproject.Profile;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.MySingleton;
+import com.example.qrfoodproject.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

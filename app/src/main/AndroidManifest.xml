@@ -3,23 +3,25 @@
     package="com.example.qrfoodproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+
         android:roundIcon="@mipmap/ic_launcher_round"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NutritionInform_06"></activity>
-        <activity android:name=".NutritionInform_05" />
-        <activity android:name=".NutritionInform_04" />
-        <activity android:name=".NutritionInform_03" />
-        <activity android:name=".NutritionInform_02" />
-        <activity android:name=".NutritionInform_01" />
-        <activity android:name=".NutritionInform" />
-        <activity android:name=".Register" />
+        <activity android:name=".NutritionInform.NutritionInform_06"></activity>
+        <activity android:name=".NutritionInform.NutritionInform_05" />
+        <activity android:name=".NutritionInform.NutritionInform_04" />
+        <activity android:name=".NutritionInform.NutritionInform_03" />
+        <activity android:name=".NutritionInform.NutritionInform_02" />
+        <activity android:name=".NutritionInform.NutritionInform_01" />
+        <activity android:name=".NutritionInform.NutritionInform" />
+        <activity android:name=".login.Register" />
         <activity android:name=".Home_QRfood">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Profile_main" />
-        <activity android:name=".Profile_ModifyPassword" />
-        <activity android:name=".Profile_ModifyData" />
+        <activity android:name=".login.MainActivity" />
+        <activity android:name=".Profile.Profile_main" />
+        <activity android:name=".Profile.Profile_ModifyPassword" />
+        <activity android:name=".Profile.Profile_ModifyData" />
+        <activity android:name=".Qrcode.Qrcode_main" />
+        <activity android:name=".Qrcode.ScanQrcode" />
     </application>
 </manifest>

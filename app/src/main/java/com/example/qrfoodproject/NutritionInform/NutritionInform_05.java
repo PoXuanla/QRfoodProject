@@ -1,7 +1,9 @@
-package com.example.qrfoodproject;
+package com.example.qrfoodproject.NutritionInform;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.qrfoodproject.R;
 
 public class NutritionInform_05 extends AppCompatActivity {
 

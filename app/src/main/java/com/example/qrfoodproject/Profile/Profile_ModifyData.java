@@ -1,6 +1,5 @@
-package com.example.qrfoodproject;
+package com.example.qrfoodproject.Profile;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,18 +10,14 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.MySingleton;
+import com.example.qrfoodproject.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +48,7 @@ public class Profile_ModifyData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editUserInform();
-                startActivity(new Intent(Profile_ModifyData.this,Profile_main.class));
+                startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
                 finish();
             }
         });

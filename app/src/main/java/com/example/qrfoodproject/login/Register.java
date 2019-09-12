@@ -1,4 +1,4 @@
-package com.example.qrfoodproject;
+package com.example.qrfoodproject.login;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.qrfoodproject.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
