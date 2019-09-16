@@ -208,11 +208,12 @@
                 android:background="@drawable/register_trans_white_rectangle"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:background="@drawable/register_gender"
                     android:layout_marginLeft="25dp"/>
                 <RadioGroup
@@ -221,17 +222,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
                     <RadioButton
                         android:id="@+id/male_radio_btn"
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/register_radio_selector"
                         android:textColor="@drawable/register_radio_textselector"
@@ -240,13 +237,13 @@
                         android:checked="true"
                         android:gravity="center"
                         android:button="@android:color/transparent"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="25dp"
                         android:paddingTop="3dp"
-                        android:paddingRight="16dp"
+                        android:paddingRight="25dp"
                         android:paddingBottom="3dp" />
                     <RadioButton
                         android:id="@+id/female_radio_btn"
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/register_radio_selector"
                         android:textColor="@drawable/register_radio_textselector"
@@ -254,9 +251,9 @@
                         android:text = "@string/Female"
                         android:gravity="center"
                         android:button="@android:color/transparent"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="3dp"
-                        android:paddingRight="16dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="3dp" />
                 </RadioGroup>
             </LinearLayout>

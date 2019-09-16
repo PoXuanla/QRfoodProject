@@ -9,11 +9,11 @@
     android:gravity="center_vertical"
     tools:context=".Home_QRfood">
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <ImageView
@@ -46,11 +46,12 @@
                 android:textSize="24sp"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:gravity="center">
                 <Button
                     android:id="@+id/foodFile"
                     android:layout_width="wrap_content"
@@ -78,11 +79,12 @@
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:gravity="center">
                 <Button
                     android:id="@+id/personalData"
                     android:layout_width="wrap_content"

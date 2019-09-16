@@ -31,7 +31,6 @@ public class Register extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private Button btn_register;
     private static String URL_REGISTER = "http://120.110.112.96/using/register.php";
-    //private static String URL_REGISTER = "http://10.0.11.75/register.php";
     int gender;
 
     @Override
