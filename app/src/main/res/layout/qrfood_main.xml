@@ -29,6 +29,7 @@
 
         <ImageView
             android:id="@+id/my_image_view"
+            android:layout_gravity="center"
             android:layout_width="130dp"
             android:layout_height="130dp">
 

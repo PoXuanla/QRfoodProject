@@ -22,12 +22,15 @@ import com.example.qrfoodproject.R;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout;
     TextView account, password, name, gender, height, weight, exercise, email;
+
     private String logout_url = "http://120.110.112.96/using/destroy.php";
     private String print_profile_url = "http://120.110.112.96/using/getUserinformation.php";
     private String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
@@ -40,7 +43,6 @@ public class Profile_main extends AppCompatActivity {
         modifyData = findViewById(R.id.modifyData);
         modifyPassword = findViewById(R.id.modifyPassword);
         logout = findViewById(R.id.logout);
-
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
         name = findViewById(R.id.name);
@@ -50,6 +52,7 @@ public class Profile_main extends AppCompatActivity {
         email = findViewById(R.id.email);
         exercise = findViewById(R.id.exercise);
 
+        //設定「修改資料」、「修改密碼」、「登出」按鈕
         modifyData.setOnClickListener(onclick);
         modifyPassword.setOnClickListener(onclick);
         logout.setOnClickListener(onclick);
@@ -61,6 +64,7 @@ public class Profile_main extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                //前往「修改資料」
                 case R.id.modifyData:
                     StringRequest stringRequest1 = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
                         @Override
@@ -78,8 +82,10 @@ public class Profile_main extends AppCompatActivity {
                     }) {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
+                            //取得sessionID
                             SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                             String session = pref.getString("sessionID", "");
+
                             Map<String, String> map = new HashMap<String, String>();
                             map.put("sessionID", session);
                             return map;
@@ -89,6 +95,7 @@ public class Profile_main extends AppCompatActivity {
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest1);
                     break;
+                //前往「修改密碼」
                 case R.id.modifyPassword:
                     StringRequest stringRequest2 = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
                         @Override
@@ -115,6 +122,7 @@ public class Profile_main extends AppCompatActivity {
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest2);
                     break;
+                //前往「登出」
                 case R.id.logout:
                     SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                     final String session = pref.getString("sessionID", "");
@@ -140,7 +148,6 @@ public class Profile_main extends AppCompatActivity {
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest);
                     Intent intent1 = new Intent(Profile_main.this, MainActivity.class);
-
                     startActivity(intent1);
                     ActivityCompat.finishAffinity(Profile_main.this);
                     break;
@@ -179,8 +186,11 @@ public class Profile_main extends AppCompatActivity {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                //取得sessionID
                 SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
+
+
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("sessionID", session);
                 return map;

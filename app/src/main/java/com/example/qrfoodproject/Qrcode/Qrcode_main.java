@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 import org.json.JSONObject;
@@ -19,13 +21,14 @@ public class Qrcode_main extends AppCompatActivity {
     private String url = "http://120.110.112.96/using/getFoodInformationById.php?fdId=";
     static String QrcodeResult ;
     private TextView fdName,gram,calorie,protein,fat,saturateFat,transFat,cholesterol,sugar,dietaryFiber,sodium,calcium,potassium,ferrum;
-
+    private String urll;
+    private ImageView my_image_view;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qrfood_main);
 
-
+        my_image_view = findViewById(R.id.my_image_view);
         fdName = findViewById(R.id.fdName);
         gram = findViewById(R.id.gram);
         calorie = findViewById(R.id.calorie);
@@ -41,7 +44,7 @@ public class Qrcode_main extends AppCompatActivity {
         potassium = findViewById(R.id.potassium);
         ferrum = findViewById(R.id.ferrum);
         //startActivity(new Intent(getApplicationContext(),ScanQrcode.class));
-        print();
+        print(); //呈現食物的詳細資料
     }
     private void print(){
 
@@ -68,8 +71,14 @@ public class Qrcode_main extends AppCompatActivity {
                     calcium.setText(jsonObject1.getString("calcium")+"毫克");
                     potassium.setText(jsonObject1.getString("potassium")+"毫克");
                     ferrum.setText(jsonObject1.getString("ferrum")+"毫克");
-                    String img =jsonObject1.getString("photo");
-
+                    urll =jsonObject1.getString("photo");
+                    String urlll = urll.replaceAll(
+                            "\\\\",""
+                    );
+                    Glide.with(Qrcode_main.this).
+                            load(urlll).
+                            centerCrop().
+                            into(my_image_view);
                 }catch (Exception e){
 
                 }

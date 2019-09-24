@@ -21,7 +21,7 @@ import com.example.qrfoodproject.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Profile_ModifyData extends AppCompatActivity {
+public class Profile_ModifyData extends AppCompatActivity{
     EditText email,name,height,weight,exercise;
     RadioButton female,male;
     Button commmit;

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtAccount, edtPassword;
     private Button Btn_login;
     private String login_url = "http://120.110.112.96/using/login.php";
-    //private String login_url = "http://10.0.11.75/login.php";
     private String account = "", password = "";
 
     @Override

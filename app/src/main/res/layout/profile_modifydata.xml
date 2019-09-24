@@ -93,7 +93,7 @@
                     android:paddingBottom="10dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="2"
                         android:gravity="center"
                         android:text="性別"
@@ -118,7 +118,8 @@
                         app:layout_constraintTop_toTopOf="parent">
                         <RadioButton
                             android:id="@+id/male_radio_btn"
-                            android:layout_width="120dp"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:background="@drawable/register_radio_selector"
                             android:textColor="@drawable/register_radio_textselector"

@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.FoodDairy.FoodDairy_main;
 import com.example.qrfoodproject.NutritionInform.NutritionInform;
 import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.Qrcode.Qrcode_main;
@@ -25,16 +26,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Home_QRfood extends AppCompatActivity {
-    Button personalData,btn_qrcode;
+    Button personalData,btn_qrcode,FoodDairy;
     TextView account;
     private  String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.home_qrfood);
+
         account = findViewById(R.id.account);
         btn_qrcode = findViewById(R.id.btn_qrcode);
+        FoodDairy = findViewById(R.id.FoodDairy);
 
         SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
         String session = pref.getString("sessionID", "");
@@ -50,6 +52,8 @@ public class Home_QRfood extends AppCompatActivity {
         // Home_QRfood點進『營養抓寶站』
         Button nutritionInform = this.findViewById(R.id.nutritioninform);
         nutritionInform.setOnClickListener(nutritionInformListener);
+        //進入飲食日誌
+        FoodDairy.setOnClickListener(onclick);
     }
     Button.OnClickListener onclick = new View.OnClickListener() {
         @Override
@@ -85,6 +89,9 @@ public class Home_QRfood extends AppCompatActivity {
                 case R.id.btn_qrcode:
                     startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
                     break;
+                case R.id.FoodDairy:
+                    startActivity(new Intent(Home_QRfood.this, FoodDairy_main.class));
+
             }
 
         }
