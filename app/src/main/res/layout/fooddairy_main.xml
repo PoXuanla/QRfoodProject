@@ -21,9 +21,7 @@
         android:textColor="#ffffff"
         android:background="#9C27B0"
         android:padding="20dp"
-        android:elevation="20dp"
-
-        />
+        android:elevation="20dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
@@ -43,7 +41,6 @@
             android:gravity="center"
             android:layout_weight="1"
             android:background="@drawable/fooddairy_circle_radius"
-
             />
         <LinearLayout
 
@@ -84,7 +81,6 @@
         android:background="#BDBDBD"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

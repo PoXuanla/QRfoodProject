@@ -41,6 +41,7 @@ public class Profile_ModifyData extends AppCompatActivity{
         male = findViewById(R.id.male_radio_btn);
         commmit = findViewById(R.id.commit);
 
+        //判斷使用者性別
         female.setOnCheckedChangeListener(onClick);
         male.setOnCheckedChangeListener(onClick);
 

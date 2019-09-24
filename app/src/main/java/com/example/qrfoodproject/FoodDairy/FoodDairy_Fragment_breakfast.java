@@ -1,8 +1,10 @@
 package com.example.qrfoodproject.FoodDairy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,8 +36,9 @@ import java.util.Map;
 import static android.content.Context.MODE_PRIVATE;
 
 public class FoodDairy_Fragment_breakfast extends Fragment  {
-    //private FoodDairy_Adapter mAdapter;
+
     private RecyclerView mRecyclerView;
+    private FloatingActionButton fab;
     String url = "http://120.110.112.96/using/getFoodDairyRecord.php";
   //  ArrayList<HashMap<String,String>> array = new ArrayList<HashMap<String, String>>();
     @Override
@@ -49,13 +52,21 @@ public class FoodDairy_Fragment_breakfast extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.BreakfastView);
-
+        fab =  view.findViewById(R.id.FAB_breakfast);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         getBreakfastData(); //取得食物的資料
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Fab clicked", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
+                startActivity(intent);
 
+            }
+        });
     }
     public void setRecycleView(ArrayList<HashMap<String,String>> array){
         FoodDairy_Adapter mAdapter = new FoodDairy_Adapter(getActivity(),array);
@@ -111,8 +122,4 @@ public class FoodDairy_Fragment_breakfast extends Fragment  {
         };
         MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
-
-
-
-
 }

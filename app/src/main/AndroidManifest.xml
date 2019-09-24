@@ -36,5 +36,6 @@
         <activity android:name=".Qrcode.Qrcode_main" />
         <activity android:name=".Qrcode.ScanQrcode" />
         <activity android:name=".FoodDairy.FoodDairy_main" />
+        <activity android:name=".FoodDairy.FoodDairy_AddFood" />
     </application>
 </manifest>
