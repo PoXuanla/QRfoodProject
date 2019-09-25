@@ -1,5 +1,6 @@
 package com.example.qrfoodproject.FoodDairy;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -29,13 +31,14 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
 
     Spinner Addfood_time,Addfood_location,Addfood_restaurant,Addfood_food;
-    private String getRestaurant = "http://120.110.112.96/using/getFoodRestaurant.php";
+    private String getRestaurant = "http://120.110.112.96/using/FD_getRes.php";
+    private String getRestaurantFood = "http://120.110.112.96/using/FD_getResFood.php";
     private int userSelectRestaurant;
     private String[] time = {"早","中","晚"};
     private String[] location = {"靜園","宜園","至善"};
-    private String[][] restaurant = {{"白鬍子","極寶"},{"藍卡","買粥"},{"Yami快餐"}};
-    private String[][][] food = {{{"綠茶","紅茶","珍珠奶茶"},{"鐵板麵","焗烤","炒飯"}},{{"水果茶"},{"海鮮粥","巧克力厚片"}},{{"豬排飯","烤牛肉飯"}}};
-    ArrayAdapter<String> time_adapter,location_adapter,restaurant_adapter,food_adapter;
+//    private String[][] restaurant = {{"白鬍子","極寶"},{"藍卡","買粥"},{"Yami快餐"}};
+//    private String[][][] food = {{{"綠茶","紅茶","珍珠奶茶"},{"鐵板麵","焗烤","炒飯"}},{{"水果茶"},{"海鮮粥","巧克力厚片"}},{{"豬排飯","烤牛肉飯"}}};
+      ArrayAdapter<String> time_adapter,location_adapter,restaurant_adapter,food_adapter;
     ArrayList<String> array1 = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +56,12 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
         location_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,location);
         Addfood_location.setAdapter(location_adapter);
+//
+//        restaurant_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,restaurant[0]);
+//        Addfood_restaurant.setAdapter(restaurant_adapter);
 
-        restaurant_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,restaurant[0]);
-        Addfood_restaurant.setAdapter(restaurant_adapter);
-
-        food_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,food[0][0]);
-        Addfood_food.setAdapter(food_adapter);
+     //   food_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,food[0][0]);
+      //  Addfood_food.setAdapter(food_adapter);
 
         //設定選擇地點，餐廳欄位跳出相對應的餐廳
         Addfood_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -67,7 +70,8 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                 int pos = Addfood_location.getSelectedItemPosition();
 //                restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,restaurant[pos]);
 //                Addfood_restaurant.setAdapter(restaurant_adapter);
-                 getFoodRestaurant(pos);
+                  getRestaurant(pos);
+                Toast.makeText(FoodDairy_AddFood.this,Addfood_location.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -80,10 +84,10 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                int pos = Addfood_location.getSelectedItemPosition();
-//                int pos2 = Addfood_restaurant.getSelectedItemPosition();
+                  int pos = Addfood_restaurant.getSelectedItemPosition();
 //                food_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,food[pos][pos2]);
 //                Addfood_food.setAdapter(food_adapter);
-                  getRestaurantFood();
+                  getRestaurantFood(pos);
             }
 
             @Override
@@ -93,22 +97,24 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         });
 
     }
-    private void getFoodRestaurant(int pos){
+    private void getRestaurant(int pos){
         final int position = pos;
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, getRestaurant, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.v("onResponse",response.toString());
                 try {
-                    Log.v("Response",response);
+                    Log.v("success_getRes",response);
                     ArrayList<String> array = new ArrayList<String>();
                     //解析JSON檔傳入array
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonObject1 = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
+
                         array.add(c.getString("rsName"));
-                        array1.add(c.getString("rsName"));
+                        array1.add(c.getString("rsId"));
                     }
                     restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,array);
                     Addfood_restaurant.setAdapter(restaurant_adapter);
@@ -132,5 +138,44 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         };
         MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
     }
+    private void getRestaurantFood(int pos){
+        final int position = pos;
+        Log.v("getRestaurant",Addfood_restaurant.getSelectedItem().toString());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getRestaurantFood, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.v("onResponse",response.toString());
+                try {
+                    Log.v("success_getResFood",response);
+                    ArrayList<String> array = new ArrayList<String>();
 
+                    //解析JSON檔傳入array
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonObject1 = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < jsonObject1.length(); i++) {
+                        JSONObject c = jsonObject1.getJSONObject(i);
+                        array.add(c.getString("fdName"));
+                    }
+                    food_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,array);
+                    Addfood_food.setAdapter(food_adapter);
+                }catch (Exception e){
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.v("Error_getResFood",error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("rsName",Addfood_restaurant.getSelectedItem().toString());
+                return params;
+            }
+        };
+        MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+    }
 }
