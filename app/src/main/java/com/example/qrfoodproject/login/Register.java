@@ -32,7 +32,6 @@ public class Register extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private Button btn_register;
     private static String URL_REGISTER = "http://120.110.112.96/using/register.php";
-    //private static String URL_REGISTER = "http://10.0.11.75/register.php";
     int gender;
 
     @Override
@@ -55,11 +54,10 @@ public class Register extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (valiDate())
-                    register();
+                if (valiDate())     register();
             }
         });
-        // -------------------------------------------------------
+
         TextView link_login = this.findViewById(R.id.link_login);
         link_login.setOnClickListener(link_loginListener);
     }
@@ -80,6 +78,9 @@ public class Register extends AppCompatActivity {
             gender = 1;
 
 
+        //TODO WindowManager: android.view.WindowLeaked:
+        //Activity com.example.qrfoodproject.login.Register has leaked window DecorView@16a7db7[Register] that was originally added here
+        //Line 86, 92  onResponse
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -127,7 +128,7 @@ public class Register extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    //-------------------------------
+
     //----建立邏輯認證是否生效----
     public boolean valiDate(){
         boolean valid = true;

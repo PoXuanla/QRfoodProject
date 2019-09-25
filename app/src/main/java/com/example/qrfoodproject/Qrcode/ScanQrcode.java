@@ -1,23 +1,44 @@
 package com.example.qrfoodproject.Qrcode;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
-    ZXingScannerView ScannerView;
+
+    private ZXingScannerView ScannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ScannerView = new ZXingScannerView(this);
-        setContentView(ScannerView);
+        ScannerView = new ZXingScannerView(getApplicationContext());
+        checkCameraPermitted();
 
+    }
+
+    private void checkCameraPermitted(){
+        //Changed the minimum API into 23 since it required 23 or later to work
+        //reason that the permission wont been asked while installing is that USER could revoke permission after that
+        final int PERMISSION_CAMERA = 100;
+
+        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+            setContentView(ScannerView);
+
+        }else{
+            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
+                Toast.makeText(this, "QR camera requires your permission to work!", Toast.LENGTH_SHORT).show();
+            }
+
+            requestPermissions(new String[]{Manifest.permission.CAMERA} , PERMISSION_CAMERA);
+        }
     }
 
     @Override
@@ -33,11 +54,14 @@ public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.Re
 
         super.onPause();
         ScannerView.stopCamera();
+
     }
     @Override
     protected void onResume(){
+
         super.onResume();
         ScannerView.setResultHandler(this);
         ScannerView.startCamera();
+
     }
 }

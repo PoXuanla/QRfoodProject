@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
         String session = pref.getString("sessionID", "");
-        //Toast.makeText(this, session, Toast.LENGTH_LONG).show();
 
         if (!session.equals("")) {
             checkSession();
@@ -74,11 +73,13 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 edtAccount.setError("Please input Account");
                 edtPassword.setError("Please input Password");
-                Toast.makeText(MainActivity.this, "缺少參數", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "缺少參數", Toast.LENGTH_SHORT).show();
             }
 
         }
     };
+
+
 
     private void checkInformation() {
 
@@ -86,17 +87,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+
                     JSONObject responseData = new JSONObject(response);
                     JSONObject data = responseData.getJSONObject("data");
                     String sessionID = data.getString("sessionID");
                     SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-                    sharedPreferences.edit().putString("sessionID", sessionID).commit();
+                    sharedPreferences.edit().putString("sessionID", sessionID).apply();
+                    //using apply() instead of commit(), later one uses persistent storage but apply() handles at background
+
                     Log.v("sessionID", sessionID);
                     Log.v("checkInform", response);
                     Intent intent = new Intent(getApplication(), Home_QRfood.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "歡迎登入:" + account, Toast.LENGTH_LONG).show();
                     finish();
+
                 } catch (Exception e) {
                     Log.v("Exception", e.getMessage());
                 }
@@ -133,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView.OnClickListener link_registerListener = new TextView.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // Start the Signup activity
+            // Start the Sign up activity
             Intent intent = new Intent(MainActivity.this, Register.class);
             startActivity(intent);
         }
@@ -144,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.v("checkSession", response);
-                Intent intent = new Intent(MainActivity.this, Home_QRfood.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Home_QRfood.class));
                 finish();
             }
         }, new Response.ErrorListener() {
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams()  {
                 SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
                 Map<String, String> map = new HashMap<String, String>();
