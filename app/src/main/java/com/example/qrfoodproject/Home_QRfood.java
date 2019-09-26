@@ -43,6 +43,7 @@ public class Home_QRfood extends AppCompatActivity {
         account.setText(session);
 
         session_isExist();
+
         //進入個人檔案
         personalData = findViewById(R.id.personalData);
         personalData.setOnClickListener(onclick);
