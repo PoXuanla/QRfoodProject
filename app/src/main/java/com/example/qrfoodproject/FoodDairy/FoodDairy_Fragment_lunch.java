@@ -60,10 +60,7 @@ public class FoodDairy_Fragment_lunch extends Fragment {
     }
     public void getLunchData(){
 
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.show();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -87,13 +84,13 @@ public class FoodDairy_Fragment_lunch extends Fragment {
                 }catch (Exception e){
 
                 }
-                progressDialog.dismiss();
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.v("ErrorResponse",error.toString());
-                progressDialog.dismiss();
+
             }
 
         }) {

@@ -50,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
         // 進入註冊畫面
 
 
-        SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-        String session = pref.getString("sessionID", "");
+//        SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
+//        String session = pref.getString("sessionID", "");
         //Toast.makeText(this, session, Toast.LENGTH_LONG).show();
 
-        if (!session.equals("")) {
-            checkSession();
-        }
+//        if (!session.equals("")) {
+//            checkSession();
+//        }
 
 
         TextView link_register = this.findViewById(R.id.link_register);
