@@ -66,23 +66,6 @@
             android:text="222"
             android:textSize="30sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="密碼"
-                android:drawableLeft="@drawable/login_password"
-                android:textColor="#000000"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="222"
-            android:textSize="30sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

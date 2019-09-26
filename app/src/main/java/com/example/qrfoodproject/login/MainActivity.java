@@ -3,6 +3,7 @@ package com.example.qrfoodproject.login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,41 +44,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtAccount = findViewById(R.id.edtAccount);
-        edtPassword = findViewById(R.id.edtPassword);
-        Btn_login = findViewById(R.id.btn_login);
-        Btn_login.setOnClickListener(btn_listener);
-        // 進入註冊畫面
-
+        setView();
 
         SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
         String session = pref.getString("sessionID", "");
-
-        if (!session.equals("")) {
-            checkSession();
-        }
 
 
         TextView link_register = this.findViewById(R.id.link_register);
         link_register.setOnClickListener(link_registerListener);
     }
-
-    private Button.OnClickListener btn_listener = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            account = edtAccount.getText().toString().trim();
-            password = edtPassword.getText().toString().trim();
-
-            if (!account.isEmpty() && !password.isEmpty()) {
-                checkInformation();
-            } else {
-                edtAccount.setError("Please input Account");
-                edtPassword.setError("Please input Password");
-                Toast.makeText(MainActivity.this, "缺少參數", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-    };
 
 
 
@@ -144,30 +119,32 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void checkSession() {
-        StringRequest stringRequest1 = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
+
+    private void setView(){
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
+        Btn_login = findViewById(R.id.btn_login);
+
+        // 進入註冊畫面
+
+        Button.OnClickListener btn_listener = new Button.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                Log.v("checkSession", response);
-                startActivity(new Intent(MainActivity.this, Home_QRfood.class));
-                finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.v("checkSessionError", error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams()  {
-                SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                String session = pref.getString("sessionID", "");
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("sessionID", "sess_"+session);
-                return map;
+            public void onClick(View v) {
+                account = edtAccount.getText().toString().trim();
+                password = edtPassword.getText().toString().trim();
+
+                if (!account.isEmpty() && !password.isEmpty()) {
+                    checkInformation();
+                } else {
+                    if (account.isEmpty())  edtAccount.setError("Please input Account");
+                    else if (password.isEmpty())    edtPassword.setError("Please input Password");
+                    else    Log.e("Weird Error", "Unexpected error occurred at Login State");
+                }
+
             }
         };
-        MySingleton.getInstance(this).addToRequestQueue(stringRequest1);
+
+        Btn_login.setOnClickListener(btn_listener);
     }
 }
 
