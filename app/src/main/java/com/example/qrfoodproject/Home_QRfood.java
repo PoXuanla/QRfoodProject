@@ -44,7 +44,7 @@ public class Home_QRfood extends AppCompatActivity {
         String session = pref.getString("sessionID", "");
         account.setText(session);
 
-        //session_isExist();
+        session_isExist();
 
         //進入個人檔案
         personalData.setOnClickListener(onclick);
