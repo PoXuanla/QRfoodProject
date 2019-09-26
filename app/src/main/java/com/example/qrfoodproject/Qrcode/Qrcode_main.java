@@ -1,6 +1,5 @@
 package com.example.qrfoodproject.Qrcode;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +14,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Qrcode_main extends AppCompatActivity {
@@ -28,6 +29,68 @@ public class Qrcode_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qrfood_main);
 
+        setView();
+
+        print(); //呈現食物的詳細資料
+    }
+    private void print(){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+QrcodeResult, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.v("Log",response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+
+                    doSetText(jsonObject1);
+
+                    urll =jsonObject1.getString("photo");
+                    String newURL = urll.replaceAll(
+                            "\\\\",""
+                    );
+                    Glide.with(Qrcode_main.this).
+                            load(newURL).
+                            centerCrop().
+                            into(my_image_view);
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Qrcode_main.this,"查無該資料",Toast.LENGTH_LONG).show();
+                finishAffinity();
+            }
+        });
+
+
+
+        MySingleton.getInstance(Qrcode_main.this).addToRequestQueue(stringRequest);
+    }
+
+    private void doSetText(JSONObject jsonObject1) throws JSONException {
+
+        fdName.setText(jsonObject1.getString("fdName"));
+        gram.setText(String.format("%s克", jsonObject1.getString("gram")));
+        calorie.setText(String.format("%s大卡", jsonObject1.getString("calorie")));
+        protein.setText(jsonObject1.getString("protein"));
+        fat.setText(jsonObject1.getString("fat"));
+        saturateFat.setText(jsonObject1.getString("saturatedFat"));
+        transFat.setText(jsonObject1.getString("transFat"));
+        cholesterol.setText(jsonObject1.getString("cholesterol"));
+        sugar.setText(jsonObject1.getString("sugar"));
+        dietaryFiber.setText(jsonObject1.getString("dietaryFiber"));
+        sodium.setText(String.format("%s毫克", jsonObject1.getString("sodium")));
+        calcium.setText(String.format("%s毫克", jsonObject1.getString("calcium")));
+        potassium.setText(String.format("%s毫克", jsonObject1.getString("potassium")));
+        ferrum.setText(String.format("%s毫克", jsonObject1.getString("ferrum")));
+
+    }
+
+    private void setView(){
         my_image_view = findViewById(R.id.my_image_view);
         fdName = findViewById(R.id.fdName);
         gram = findViewById(R.id.gram);
@@ -43,56 +106,5 @@ public class Qrcode_main extends AppCompatActivity {
         calcium = findViewById(R.id.calcium);
         potassium = findViewById(R.id.potassium);
         ferrum = findViewById(R.id.ferrum);
-        //startActivity(new Intent(getApplicationContext(),ScanQrcode.class));
-        print(); //呈現食物的詳細資料
-    }
-    private void print(){
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+QrcodeResult, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Log.v("Log",response);
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONObject jsonObject1 = jsonObject.getJSONObject("data");
-
-
-                    fdName.setText(jsonObject1.getString("fdName"));
-                    gram.setText(jsonObject1.getString("gram")+"克");
-                    calorie.setText(jsonObject1.getString("calorie")+"大卡");
-                    protein.setText(jsonObject1.getString("protein"));
-                    fat.setText(jsonObject1.getString("fat"));
-                    saturateFat.setText(jsonObject1.getString("saturatedFat"));
-                    transFat.setText(jsonObject1.getString("transFat"));
-                    cholesterol.setText(jsonObject1.getString("cholesterol"));
-                    sugar.setText(jsonObject1.getString("sugar"));
-                    dietaryFiber.setText(jsonObject1.getString("dietaryFiber"));
-                    sodium.setText(jsonObject1.getString("sodium")+"毫克");
-                    calcium.setText(jsonObject1.getString("calcium")+"毫克");
-                    potassium.setText(jsonObject1.getString("potassium")+"毫克");
-                    ferrum.setText(jsonObject1.getString("ferrum")+"毫克");
-                    urll =jsonObject1.getString("photo");
-                    String urlll = urll.replaceAll(
-                            "\\\\",""
-                    );
-                    Glide.with(Qrcode_main.this).
-                            load(urlll).
-                            centerCrop().
-                            into(my_image_view);
-                }catch (Exception e){
-
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Qrcode_main.this,"查無該資料",Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
-
-
-
-        MySingleton.getInstance(Qrcode_main.this).addToRequestQueue(stringRequest);
     }
 }

@@ -3,6 +3,7 @@ package com.example.qrfoodproject.login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,42 +44,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtAccount = findViewById(R.id.edtAccount);
-        edtPassword = findViewById(R.id.edtPassword);
-        Btn_login = findViewById(R.id.btn_login);
-        Btn_login.setOnClickListener(btn_listener);
-        // 進入註冊畫面
-
-
-//        SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-//        String session = pref.getString("sessionID", "");
-        //Toast.makeText(this, session, Toast.LENGTH_LONG).show();
-
-//        if (!session.equals("")) {
-//            checkSession();
-//        }
+        setView();
 
 
         TextView link_register = this.findViewById(R.id.link_register);
         link_register.setOnClickListener(link_registerListener);
     }
 
-    private Button.OnClickListener btn_listener = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            account = edtAccount.getText().toString().trim();
-            password = edtPassword.getText().toString().trim();
 
-            if (!account.isEmpty() && !password.isEmpty()) {
-                checkInformation();
-            } else {
-                edtAccount.setError("Please input Account");
-                edtPassword.setError("Please input Password");
-                Toast.makeText(MainActivity.this, "缺少參數", Toast.LENGTH_LONG).show();
-            }
-
-        }
-    };
 
     private void checkInformation() {
 
@@ -86,17 +59,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+
                     JSONObject responseData = new JSONObject(response);
                     JSONObject data = responseData.getJSONObject("data");
                     String sessionID = data.getString("sessionID");
                     SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-                    sharedPreferences.edit().putString("sessionID", sessionID).commit();
+                    sharedPreferences.edit().putString("sessionID", sessionID).apply();
+                    //using apply() instead of commit(), later one uses persistent storage but apply() handles at background
+
                     Log.v("sessionID", sessionID);
                     Log.v("checkInform", response);
                     Intent intent = new Intent(getApplication(), Home_QRfood.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "歡迎登入:" + account, Toast.LENGTH_LONG).show();
                     finish();
+
                 } catch (Exception e) {
                     Log.v("Exception", e.getMessage());
                 }
@@ -111,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     String responseBody = new String(error.networkResponse.data, Charset.forName("utf-8"));
                     JSONObject data = new JSONObject(responseBody);
                     String message = data.getString("message");
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
 
                     Log.v("Error_Exception", e.getMessage());
@@ -133,37 +110,38 @@ public class MainActivity extends AppCompatActivity {
     private TextView.OnClickListener link_registerListener = new TextView.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // Start the Signup activity
+            // Start the Sign up activity
             Intent intent = new Intent(MainActivity.this, Register.class);
             startActivity(intent);
         }
     };
 
-    private void checkSession() {
-        StringRequest stringRequest1 = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
+
+    private void setView(){
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
+        Btn_login = findViewById(R.id.btn_login);
+
+        // 進入註冊畫面
+
+        Button.OnClickListener btn_listener = new Button.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                Log.v("checkSession", response);
-                Intent intent = new Intent(MainActivity.this, Home_QRfood.class);
-                startActivity(intent);
-                finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.v("checkSessionError", error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                String session = pref.getString("sessionID", "");
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("sessionID", "sess_"+session);
-                return map;
+            public void onClick(View v) {
+                account = edtAccount.getText().toString().trim();
+                password = edtPassword.getText().toString().trim();
+
+                if (!account.isEmpty() && !password.isEmpty()) {
+                    checkInformation();
+                } else {
+                    if (account.isEmpty())  edtAccount.setError("Please input Account");
+                    else if (password.isEmpty())    edtPassword.setError("Please input Password");
+                    else    Log.e("Weird Error", "Unexpected error occurred at Login State");
+                }
+
             }
         };
-        MySingleton.getInstance(this).addToRequestQueue(stringRequest1);
+
+        Btn_login.setOnClickListener(btn_listener);
     }
 }
 

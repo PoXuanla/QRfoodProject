@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,43 +19,30 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.login.MainActivity;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.example.qrfoodproject.login.whenSessionInvalid;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout;
-    TextView account, password, name, gender, height, weight, exercise, email;
+    TextView account, name, gender, height, weight, exercise, email;
 
     private String logout_url = "http://120.110.112.96/using/destroy.php";
     private String print_profile_url = "http://120.110.112.96/using/getUserinformation.php";
     private String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_main);
 
-        modifyData = findViewById(R.id.modifyData);
-        modifyPassword = findViewById(R.id.modifyPassword);
-        logout = findViewById(R.id.logout);
-        account = findViewById(R.id.account);
-        password = findViewById(R.id.password);
-        name = findViewById(R.id.name);
-        gender = findViewById(R.id.gender);
-        height = findViewById(R.id.height);
-        weight = findViewById(R.id.weight);
-        email = findViewById(R.id.email);
-        exercise = findViewById(R.id.exercise);
-
-        //設定「修改資料」、「修改密碼」、「登出」按鈕
-        modifyData.setOnClickListener(onclick);
-        modifyPassword.setOnClickListener(onclick);
-        logout.setOnClickListener(onclick);
+        setView();
 
         print_profile(); //顯示個人資料
     }
@@ -75,18 +62,16 @@ public class Profile_main extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(Profile_main.this, "請重新登入", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Profile_main.this, MainActivity.class));
-                            finish();
+                            new whenSessionInvalid().informing(Profile_main.this, error);
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             //取得sessionID
                             SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                             String session = pref.getString("sessionID", "");
 
-                            Map<String, String> map = new HashMap<String, String>();
+                            Map<String, String> map = new HashMap<>();
                             map.put("sessionID", session);
                             return map;
                         }
@@ -95,6 +80,7 @@ public class Profile_main extends AppCompatActivity {
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest1);
                     break;
+
                 //前往「修改密碼」
                 case R.id.modifyPassword:
                     StringRequest stringRequest2 = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
@@ -106,23 +92,22 @@ public class Profile_main extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(Profile_main.this, "請重新登入", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Profile_main.this, MainActivity.class));
-                            finish();
+                            new whenSessionInvalid().informing(Profile_main.this, error);
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                             String session = pref.getString("sessionID", "");
-                            Map<String, String> map = new HashMap<String, String>();
+                            Map<String, String> map = new HashMap<>();
                             map.put("sessionID", session);
                             return map;
                         }
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest2);
                     break;
-                //前往「登出」
+
+                //前往「登出」 TODO?
                 case R.id.logout:
                     SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                     final String session = pref.getString("sessionID", "");
@@ -130,17 +115,18 @@ public class Profile_main extends AppCompatActivity {
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, logout_url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-
+                            //Anything to do?
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-
+                            new whenSessionInvalid().informing(Profile_main.this, error);
+                            ActivityCompat.finishAffinity(Profile_main.this);
                         }
                     }) {
                         @Override
                         protected Map<String, String> getParams() {
-                            Map<String, String> params = new HashMap<String, String>();
+                            Map<String, String> params = new HashMap<>();
 
                             params.put("sessionID", session);
                             return params;
@@ -164,28 +150,28 @@ public class Profile_main extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject data = jsonObject.getJSONObject("data");
                     account.setText(data.getString("account"));
-                    password.setText(data.getString("password"));
                     name.setText(data.getString("name"));
                     email.setText(data.getString("email"));
-                    gender.setText(data.getString("gender"));
+
+                    if (data.getString("gender").equals(true)) { gender.setText("Female"); }
+                    else {gender.setText("Male");}
+
                     height.setText(data.getString("height"));
                     weight.setText(data.getString("weight"));
                     exercise.setText(data.getString("exercise"));
 
-                } catch (Exception e) {
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Profile_main.this, "請重新登入", Toast.LENGTH_LONG).show();
-                Log.v("ERROR", error.toString());
-                startActivity(new Intent(Profile_main.this, MainActivity.class));
+                new whenSessionInvalid().informing(Profile_main.this, error);
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 //取得sessionID
                 SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
@@ -197,5 +183,23 @@ public class Profile_main extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(Profile_main.this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private void setView(){
+        modifyData = findViewById(R.id.modifyData);
+        modifyPassword = findViewById(R.id.modifyPassword);
+        logout = findViewById(R.id.logout);
+        account = findViewById(R.id.account);
+        name = findViewById(R.id.name);
+        gender = findViewById(R.id.gender);
+        height = findViewById(R.id.height);
+        weight = findViewById(R.id.weight);
+        email = findViewById(R.id.email);
+        exercise = findViewById(R.id.exercise);
+
+        //設定「修改資料」、「修改密碼」、「登出」按鈕
+        modifyData.setOnClickListener(onclick);
+        modifyPassword.setOnClickListener(onclick);
+        logout.setOnClickListener(onclick);
     }
 }

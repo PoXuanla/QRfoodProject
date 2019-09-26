@@ -32,7 +32,6 @@ public class Register extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private Button btn_register;
     private static String URL_REGISTER = "http://120.110.112.96/using/register.php";
-    //private static String URL_REGISTER = "http://10.0.11.75/register.php";
     int gender;
 
     @Override
@@ -40,6 +39,21 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
 
+        setView();
+
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (valiDate())     register();
+            }
+        });
+
+        TextView link_login = this.findViewById(R.id.link_login);
+        link_login.setOnClickListener(link_loginListener);
+    }
+
+    private void setView() {
         account = this.findViewById(R.id.Account);
         password = this.findViewById(R.id.Password);
         confirm_password = this.findViewById(R.id.Confirm_Password);
@@ -50,19 +64,8 @@ public class Register extends AppCompatActivity {
         weight = this.findViewById(R.id.Weight);
         exercise = this.findViewById(R.id.Exercise);
         btn_register = this.findViewById(R.id.btn_register);
-
-
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (valiDate())
-                    register();
-            }
-        });
-        // -------------------------------------------------------
-        TextView link_login = this.findViewById(R.id.link_login);
-        link_login.setOnClickListener(link_loginListener);
     }
+
     private void register(){
 
         final String account = this.account.getText().toString().trim();
@@ -80,6 +83,9 @@ public class Register extends AppCompatActivity {
             gender = 1;
 
 
+        //TODO WindowManager: android.view.WindowLeaked:
+        //Activity com.example.qrfoodproject.login.Register has leaked window DecorView@16a7db7[Register] that was originally added here
+        //Might be occurred by intending to show a dialog after class killed
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -127,7 +133,7 @@ public class Register extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    //-------------------------------
+
     //----建立邏輯認證是否生效----
     public boolean valiDate(){
         boolean valid = true;
