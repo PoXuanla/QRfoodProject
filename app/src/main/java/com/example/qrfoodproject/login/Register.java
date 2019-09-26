@@ -39,16 +39,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
 
-        account = this.findViewById(R.id.Account);
-        password = this.findViewById(R.id.Password);
-        confirm_password = this.findViewById(R.id.Confirm_Password);
-        name = this.findViewById(R.id.Name);
-        email = this.findViewById(R.id.Email);
-        genderRadioGroup = this.findViewById(R.id.gender_radio_group);
-        height = this.findViewById(R.id.Height);
-        weight = this.findViewById(R.id.Weight);
-        exercise = this.findViewById(R.id.Exercise);
-        btn_register = this.findViewById(R.id.btn_register);
+        setView();
 
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +52,20 @@ public class Register extends AppCompatActivity {
         TextView link_login = this.findViewById(R.id.link_login);
         link_login.setOnClickListener(link_loginListener);
     }
+
+    private void setView() {
+        account = this.findViewById(R.id.Account);
+        password = this.findViewById(R.id.Password);
+        confirm_password = this.findViewById(R.id.Confirm_Password);
+        name = this.findViewById(R.id.Name);
+        email = this.findViewById(R.id.Email);
+        genderRadioGroup = this.findViewById(R.id.gender_radio_group);
+        height = this.findViewById(R.id.Height);
+        weight = this.findViewById(R.id.Weight);
+        exercise = this.findViewById(R.id.Exercise);
+        btn_register = this.findViewById(R.id.btn_register);
+    }
+
     private void register(){
 
         final String account = this.account.getText().toString().trim();

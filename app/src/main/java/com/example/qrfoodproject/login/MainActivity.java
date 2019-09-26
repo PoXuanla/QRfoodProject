@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         setView();
 
-        SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-        String session = pref.getString("sessionID", "");
-
 
         TextView link_register = this.findViewById(R.id.link_register);
         link_register.setOnClickListener(link_registerListener);
@@ -91,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     String responseBody = new String(error.networkResponse.data, Charset.forName("utf-8"));
                     JSONObject data = new JSONObject(responseBody);
                     String message = data.getString("message");
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
 
                     Log.v("Error_Exception", e.getMessage());

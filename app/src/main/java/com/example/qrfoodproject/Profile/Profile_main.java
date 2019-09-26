@@ -121,11 +121,12 @@ public class Profile_main extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             new whenSessionInvalid().informing(Profile_main.this, error);
+                            ActivityCompat.finishAffinity(Profile_main.this);
                         }
                     }) {
                         @Override
                         protected Map<String, String> getParams() {
-                            Map<String, String> params = new HashMap<String, String>();
+                            Map<String, String> params = new HashMap<>();
 
                             params.put("sessionID", session);
                             return params;
