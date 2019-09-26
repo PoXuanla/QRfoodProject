@@ -1,6 +1,7 @@
 package com.example.qrfoodproject.FoodDairy;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.example.qrfoodproject.login.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,10 +35,13 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
 
     Spinner Addfood_time,Addfood_location,Addfood_restaurant,Addfood_food;
+    EditText Addfood_serving;
+    Button Addfood_input;
     private String getRestaurant = "http://120.110.112.96/using/FD_getRes.php";
     private String getRestaurantFood = "http://120.110.112.96/using/FD_getResFood.php";
+    private String addRecord = "http://120.110.112.96/using/addrecord.php";
     private int userSelectRestaurant;
-    private String[] time = {"早","中","晚"};
+    private String[] time = {"早","午","晚"};
     private String[] location = {"靜園","宜園","至善"};
 //    private String[][] restaurant = {{"白鬍子","極寶"},{"藍卡","買粥"},{"Yami快餐"}};
 //    private String[][][] food = {{{"綠茶","紅茶","珍珠奶茶"},{"鐵板麵","焗烤","炒飯"}},{{"水果茶"},{"海鮮粥","巧克力厚片"}},{{"豬排飯","烤牛肉飯"}}};
@@ -49,6 +56,8 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         Addfood_location = (Spinner) findViewById(R.id.Addfood_location);
         Addfood_restaurant = (Spinner) findViewById(R.id.Addfood_restaurant);
         Addfood_food = (Spinner) findViewById(R.id.Addfood_food);
+        Addfood_serving = (EditText) findViewById(R.id.Addfood_serving);
+        Addfood_input = (Button)findViewById(R.id.Addfood_input);
         //設置各個spinner預設顯示的值
 
         time_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,time);
@@ -62,7 +71,50 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
      //   food_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,food[0][0]);
       //  Addfood_food.setAdapter(food_adapter);
+        Addfood_input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, addRecord, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.v("onResponse",response.toString());
+                        if(FoodDairy_main.instance != null) {
+                            try {
+                                FoodDairy_main.instance.finish();
+                            } catch (Exception e) {}
+                        }
+                        Intent intent = new Intent(FoodDairy_AddFood.this, FoodDairy_main.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.v("ErrorResponse",error.toString());
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        //取得session
+                        SharedPreferences pref = FoodDairy_AddFood.this.getSharedPreferences("Data", MODE_PRIVATE);
+                        String session = pref.getString("sessionID", "");
+                        //取得當天時間
+                        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = new Date();
+                        String strDate = sdFormat.format(date);
 
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("sessionID",session);
+                        params.put("time",Addfood_time.getSelectedItem().toString());
+                        params.put("date",strDate);
+                        params.put("fdName", Addfood_food.getSelectedItem().toString());
+                        params.put("serving", Addfood_serving.getText().toString());
+                        return params;
+                    }
+                };
+                MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+            }
+        });
         //設定選擇地點，餐廳欄位跳出相對應的餐廳
         Addfood_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
