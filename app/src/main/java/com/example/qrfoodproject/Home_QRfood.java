@@ -169,6 +169,8 @@ public class Home_QRfood extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 new whenSessionInvalid().informing(Home_QRfood.this, error);
+               // startActivity(new Intent(Home_QRfood.this,MainActivity.class));
+               // finish();
             }
         }) {
             @Override

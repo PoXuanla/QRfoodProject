@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         edtAccount = findViewById(R.id.edtAccount);
         edtPassword = findViewById(R.id.edtPassword);
         Btn_login = findViewById(R.id.btn_login);
-        link_register = this.findViewById(R.id.link_register);
+        link_register = findViewById(R.id.link_register);
     }
 
     // 進入註冊畫面
@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("account", account);
                 params.put("password", password);
-                params.put("sessionID", "");
                 return params;
             }
         };
