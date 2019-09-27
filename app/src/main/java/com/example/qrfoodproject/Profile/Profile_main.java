@@ -43,7 +43,9 @@ public class Profile_main extends AppCompatActivity {
         setContentView(R.layout.profile_main);
 
         setView();//設定元件ID
+
         setButtonListener(); //設定按鈕監聽
+
         print_profile(); //顯示個人資料
     }
 

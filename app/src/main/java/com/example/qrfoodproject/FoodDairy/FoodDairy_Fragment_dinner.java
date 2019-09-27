@@ -44,36 +44,50 @@ public class FoodDairy_Fragment_dinner extends Fragment {
         View view = inflater.inflate(R.layout.fooddairy_fragment_dinner, container, false);
         return view;
     }
+
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.DinnerView);
-        fab =  view.findViewById(R.id.FAB_dinner);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(layoutManager);
+        setView(view); //設定元件ID
+
+        setRecycleViewManager(); //設置RecyclerView Manager屬性
 
         getDinnerData(); //取得食物的資料
 
+        setFabButtonListener();//設置「新增食物」按鈕監聽
+
+    }
+
+    private void setView(View view) {
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.DinnerView);
+        fab = view.findViewById(R.id.FAB_dinner);
+    }
+
+    private void setRecycleViewManager() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager);
+    }
+
+    private void setFabButtonListener() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
-                intent.putExtra("times","晚");
+                intent.putExtra("times", "晚");
                 startActivity(intent);
 
             }
         });
-
-
     }
 
-    public void setRecycleView(ArrayList<HashMap<String,String>> array){
-        FoodDairy_Adapter mAdapter = new FoodDairy_Adapter(getActivity(),array);
+    public void setRecycleView(ArrayList<HashMap<String, String>> array) {
+        FoodDairy_Adapter mAdapter = new FoodDairy_Adapter(getActivity(), array);
         mRecyclerView.setAdapter(mAdapter);
     }
-    public void getDinnerData(){
+
+    public void getDinnerData() {
 
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
@@ -83,24 +97,24 @@ public class FoodDairy_Fragment_dinner extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("onResponse",response.toString());
+                Log.v("onResponse", response.toString());
                 try {
-                    ArrayList<HashMap<String,String>> array = new ArrayList<HashMap<String, String>>();
+                    ArrayList<HashMap<String, String>> array = new ArrayList<HashMap<String, String>>();
                     //解析JSON檔傳入array
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonObject1 = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
-                        HashMap<String,String> total = new HashMap<String, String>();
-                        total.put("location",c.getString("location"));
-                        total.put("fdName",c.getString("fdName"));
-                        total.put("serving",c.getString("serving"));
-                        total.put("sn",c.getString("sn"));
+                        HashMap<String, String> total = new HashMap<String, String>();
+                        total.put("location", c.getString("location"));
+                        total.put("fdName", c.getString("fdName"));
+                        total.put("serving", c.getString("serving"));
+                        total.put("sn", c.getString("sn"));
                         array.add(total);
 
-                        setRecycleView (array); //設定RecycleView
+                        setRecycleView(array); //設定RecycleView
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 progressDialog.dismiss();
@@ -108,7 +122,7 @@ public class FoodDairy_Fragment_dinner extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.v("ErrorResponse",error.toString());
+                Log.v("ErrorResponse", error.toString());
                 progressDialog.dismiss();
             }
 
@@ -120,20 +134,20 @@ public class FoodDairy_Fragment_dinner extends Fragment {
                 String session = pref.getString("sessionID", "");
 
                 String strDate;
-                //取得當天時間
-                if(FoodDairy_Calen_date.instance != null){
+                //取得日曆時間
+                if (FoodDairy_Calen_date.instance != null) {
                     strDate = FoodDairy_Calen.date_format;
-                    //  strDate = "2019/09/26";
-                }else{
+                } else {  //取得當天時間
+
                     SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = new Date();
                     strDate = sdFormat.format(date);
                 }
 
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("sessionID",session);
-                params.put("date",strDate);
-                params.put("time","晚");
+                params.put("sessionID", session);
+                params.put("date", strDate);
+                params.put("time", "晚");
                 return params;
             }
         };
