@@ -1,5 +1,6 @@
 package com.example.qrfoodproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,62 +35,68 @@ public class Home_QRfood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_qrfood);
 
+        setView(); //設定元件ID
+
+        setButtonListener(); //設定按鈕監聽
+
+        setTitleSession(); //設置主頁面session(測試用)，之後會改成使用者名稱
+
+        session_isExist();//判斷session是否還存在?
+
+
+    }
+
+    public void setView(){
         account = findViewById(R.id.account);
         btn_qrcode = findViewById(R.id.btn_qrcode);
         FoodDairy = findViewById(R.id.FoodDairy);
         nutritionInform = findViewById(R.id.nutritioninform);
         personalData = findViewById(R.id.personalData);
-
+    }
+    private void setButtonListener(){
+        //進入個人檔案
+        personalData.setOnClickListener(onclick);
+        //進入Qrcode
+        btn_qrcode.setOnClickListener(onclick);
+        //進『營養抓寶站』
+        nutritionInform.setOnClickListener(onclick);
+        //進入飲食日誌
+        FoodDairy.setOnClickListener(onclick);
+    }
+    private void setTitleSession(){
         SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
         String session = pref.getString("sessionID", "");
         account.setText(session);
-
-        session_isExist();
-        //進入個人檔案
-        personalData.setOnClickListener(onclick);
-
-        //進入Qrcode
-        btn_qrcode.setOnClickListener(onclick);
-
-        //進『營養抓寶站』
-        nutritionInform.setOnClickListener(onclick);
-
-        //進入飲食日誌
-        FoodDairy.setOnClickListener(onclick);
     }
 
     Button.OnClickListener onclick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-
                 case R.id.btn_qrcode:
-                    startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
+                    session_isExist(ScanQrcode.class);
                     break;
                 case R.id.FoodDairy:
-                    session_isExist();
-                    startActivity(new Intent(Home_QRfood.this, FoodDairy_main.class));
+                    session_isExist(FoodDairy_main.class);
                     break;
                 case R.id.nutritioninform:
                     startActivity(new Intent(Home_QRfood.this, NutritionInform.class));
                     break;
                 case R.id.personalData:
-                    session_isExist();
-                    startActivity(new Intent(Home_QRfood.this,Profile_main.class));
+                    session_isExist(Profile_main.class);
                     break;
-
             }
 
         }
 
     };
 
-    private void session_isExist(){
+    private void session_isExist(final Class<?> cls){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(Home_QRfood.this, "Session still valid", Toast.LENGTH_SHORT).show();
-                //nothing need to do
+                startActivity(new Intent(Home_QRfood.this, cls));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -108,8 +115,32 @@ public class Home_QRfood extends AppCompatActivity {
                 map.put("sessionID", session);
                 return map;
             }
+        };
+        MySingleton.getInstance(Home_QRfood.this).addToRequestQueue(stringRequest);
+    }
+    private void session_isExist(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(Home_QRfood.this, "Session still valid", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Home_QRfood.this,"請重新登入",Toast.LENGTH_SHORT).show();
 
-
+                startActivity(new Intent(Home_QRfood.this,MainActivity.class));
+                finish();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
+                String session = pref.getString("sessionID", "");
+                Map<String, String> map = new HashMap<>();
+                map.put("sessionID", session);
+                return map;
+            }
         };
         MySingleton.getInstance(Home_QRfood.this).addToRequestQueue(stringRequest);
     }

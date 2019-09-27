@@ -18,6 +18,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 import com.example.qrfoodproject.login.MainActivity;
@@ -43,14 +45,17 @@ public class FoodDairy_AddFood extends AppCompatActivity {
     private int userSelectRestaurant;
     private String[] time = {"早","午","晚"};
     private String[] location = {"靜園","宜園","至善"};
-//    private String[][] restaurant = {{"白鬍子","極寶"},{"藍卡","買粥"},{"Yami快餐"}};
-//    private String[][][] food = {{{"綠茶","紅茶","珍珠奶茶"},{"鐵板麵","焗烤","炒飯"}},{{"水果茶"},{"海鮮粥","巧克力厚片"}},{{"豬排飯","烤牛肉飯"}}};
-      ArrayAdapter<String> time_adapter,location_adapter,restaurant_adapter,food_adapter;
+    private String times ; //接收使用者在哪個頁面新增餐點
+    ArrayAdapter<String> time_adapter,location_adapter,restaurant_adapter,food_adapter;
     ArrayList<String> array1 = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooddairy_addfood);
+        //取得intent的值
+        Intent intent = getIntent();
+        times = intent.getStringExtra("times");
 
         Addfood_time = (Spinner) findViewById(R.id.Addfood_time);
         Addfood_location = (Spinner) findViewById(R.id.Addfood_location);
@@ -62,15 +67,10 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
         time_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,time);
         Addfood_time.setAdapter(time_adapter);
-
+        Addfood_time.setSelection(FindTimeIndex(times));
         location_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,location);
         Addfood_location.setAdapter(location_adapter);
-//
-//        restaurant_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,restaurant[0]);
-//        Addfood_restaurant.setAdapter(restaurant_adapter);
 
-     //   food_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,food[0][0]);
-      //  Addfood_food.setAdapter(food_adapter);
         Addfood_input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,14 +78,23 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.v("onResponse",response.toString());
-                        if(FoodDairy_main.instance != null) {
+                        //關閉FoodDairy_main/FoodDairy_Calen_date的頁面
+                        if(FoodDairy_Calen_date.instance != null) {
                             try {
-                                FoodDairy_main.instance.finish();
+                                FoodDairy_Calen_date.instance.finish();
+                                Intent intent = new Intent(FoodDairy_AddFood.this, FoodDairy_Calen_date.class);
+                                startActivity(intent);
+                                finish();
                             } catch (Exception e) {}
+                        }else{
+                            try{
+                                FoodDairy_main.instance.finish();
+                                Intent intent = new Intent(FoodDairy_AddFood.this, FoodDairy_main.class);
+                                startActivity(intent);
+                                finish();
+                            }catch (Exception e){}
                         }
-                        Intent intent = new Intent(FoodDairy_AddFood.this, FoodDairy_main.class);
-                        startActivity(intent);
-                        finish();
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -98,10 +107,17 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                         //取得session
                         SharedPreferences pref = FoodDairy_AddFood.this.getSharedPreferences("Data", MODE_PRIVATE);
                         String session = pref.getString("sessionID", "");
+
+                        String strDate;
                         //取得當天時間
-                        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        Date date = new Date();
-                        String strDate = sdFormat.format(date);
+                        if(FoodDairy_Calen_date.instance != null){
+                            strDate = FoodDairy_Calen.date_format;
+                        }else{
+                            SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            Date date = new Date();
+                            strDate = sdFormat.format(date);
+                        }
+
 
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("sessionID",session);
@@ -120,10 +136,9 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = Addfood_location.getSelectedItemPosition();
-//                restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,restaurant[pos]);
-//                Addfood_restaurant.setAdapter(restaurant_adapter);
+//
                   getRestaurant(pos);
-                Toast.makeText(FoodDairy_AddFood.this,Addfood_location.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+
             }
 
             @Override
@@ -229,5 +244,14 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+    }
+    private int FindTimeIndex(String times){
+        int i;
+        for(i=0;i<time.length;i++){
+            if(times.equals(time[i])){
+                break;
+            }
+        }
+        return i;
     }
 }

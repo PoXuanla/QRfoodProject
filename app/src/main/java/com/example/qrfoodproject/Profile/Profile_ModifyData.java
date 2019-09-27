@@ -33,10 +33,49 @@ public class Profile_ModifyData extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_modifydata);
 
-        setView();
+        setView(); //設定元件ID
+
+        setButtonListener(); //設定按鈕監聽
 
     }
-
+    private void setView(){
+        email = findViewById(R.id.edtEmail);
+        name = findViewById(R.id.edtName);
+        height = findViewById(R.id.edtHeight);
+        weight = findViewById(R.id.edtWeight);
+        exercise = findViewById(R.id.edtExercise);
+        female = findViewById(R.id.female_radio_btn);
+        male = findViewById(R.id.male_radio_btn);
+        commit = findViewById(R.id.commit);
+    }
+    private void setButtonListener(){
+        female.setOnCheckedChangeListener(onClick);
+        male.setOnCheckedChangeListener(onClick);
+        commit.setOnClickListener(onclick);
+    }
+    //radio按鈕監聽
+    CompoundButton.OnCheckedChangeListener onClick = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            switch(buttonView.getId()){
+                case R.id.male_radio_btn:
+                    is_Gender = 1;
+                    break;
+                case R.id.female_radio_btn:
+                    is_Gender = 2;
+                    break;
+            }
+        }
+    };
+    //按鈕監聽
+    Button.OnClickListener onclick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            editUserInform();
+            startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
+            finish();
+        }
+    };
     private void editUserInform(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -68,43 +107,5 @@ public class Profile_ModifyData extends AppCompatActivity{
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    private void setView(){
-        email = findViewById(R.id.edtEmail);
-        name = findViewById(R.id.edtName);
-        height = findViewById(R.id.edtHeight);
-        weight = findViewById(R.id.edtWeight);
-        exercise = findViewById(R.id.edtExercise);
-        female = findViewById(R.id.female_radio_btn);
-        male = findViewById(R.id.male_radio_btn);
-        commit = findViewById(R.id.commit);
 
-        CompoundButton.OnCheckedChangeListener onClick = new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                switch(buttonView.getId()){
-                    case R.id.male_radio_btn:
-                        is_Gender = 1;
-                        break;
-                    case R.id.female_radio_btn:
-                        is_Gender = 2;
-                        break;
-                }
-            }
-        };
-
-        //判斷使用者性別
-        female.setOnCheckedChangeListener(onClick);
-        male.setOnCheckedChangeListener(onClick);
-
-        commit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editUserInform();
-                startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
-                finish();
-            }
-        });
-
-
-    }
 }

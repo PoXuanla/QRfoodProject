@@ -38,20 +38,49 @@ public class MainActivity extends AppCompatActivity {
     private Button Btn_login;
     private String login_url = "http://120.110.112.96/using/login.php";
     private String account = "", password = "";
+    private TextView link_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setView();
+        setView();//設定元件ID
+
+        setButtonListener(); //設定按鈕監聽
 
 
-        TextView link_register = this.findViewById(R.id.link_register);
+    }
+
+    private void setButtonListener() {
+        Btn_login.setOnClickListener(btn_listener);
         link_register.setOnClickListener(link_registerListener);
     }
 
+    private void setView() {
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
+        Btn_login = findViewById(R.id.btn_login);
+        link_register = this.findViewById(R.id.link_register);
+    }
 
+    // 進入註冊畫面
+    Button.OnClickListener btn_listener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            account = edtAccount.getText().toString().trim();
+            password = edtPassword.getText().toString().trim();
+
+            if (!account.isEmpty() && !password.isEmpty()) {
+                checkInformation();
+            } else {
+                if (account.isEmpty()) edtAccount.setError("Please input Account");
+                else if (password.isEmpty()) edtPassword.setError("Please input Password");
+                else Log.e("Weird Error", "Unexpected error occurred at Login State");
+            }
+
+        }
+    };
 
     private void checkInformation() {
 
@@ -117,31 +146,5 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void setView(){
-        edtAccount = findViewById(R.id.edtAccount);
-        edtPassword = findViewById(R.id.edtPassword);
-        Btn_login = findViewById(R.id.btn_login);
-
-        // 進入註冊畫面
-
-        Button.OnClickListener btn_listener = new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                account = edtAccount.getText().toString().trim();
-                password = edtPassword.getText().toString().trim();
-
-                if (!account.isEmpty() && !password.isEmpty()) {
-                    checkInformation();
-                } else {
-                    if (account.isEmpty())  edtAccount.setError("Please input Account");
-                    else if (password.isEmpty())    edtPassword.setError("Please input Password");
-                    else    Log.e("Weird Error", "Unexpected error occurred at Login State");
-                }
-
-            }
-        };
-
-        Btn_login.setOnClickListener(btn_listener);
-    }
 }
 

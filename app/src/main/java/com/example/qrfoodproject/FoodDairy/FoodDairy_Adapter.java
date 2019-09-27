@@ -31,14 +31,16 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
     String url = "http://120.110.112.96/using/removeFoodDairyRecord.php";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView item_restaurant,item_food;
+        public TextView item_restaurant,item_food,item_serving;
         public Button item_remove;
         public ViewHolder(View v) {
             super(v);
 
             item_restaurant = (TextView) v.findViewById(R.id.item_restaurant);
             item_food = (TextView) v.findViewById(R.id.item_food);
+            item_serving = (TextView)v.findViewById(R.id.item_serving);
             item_remove = (Button)v.findViewById(R.id.item_remove);
+
 
             item_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +72,9 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
     public void onBindViewHolder(FoodDairy_Adapter.ViewHolder holder, final int position) {
         holder.item_restaurant.setText(mData.get(position).get("location"));
         holder.item_food.setText(mData.get(position).get("fdName"));
+        holder.item_serving.setText(mData.get(position).get("serving"));
+
+
 
     }
 

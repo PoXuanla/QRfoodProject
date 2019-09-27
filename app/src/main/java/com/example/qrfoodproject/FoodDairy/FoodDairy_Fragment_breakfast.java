@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.Qrcode.Qrcode_main;
 import com.example.qrfoodproject.R;
@@ -61,8 +63,8 @@ public class FoodDairy_Fragment_breakfast extends Fragment  {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Fab clicked", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
+                intent.putExtra("times","早");
                 startActivity(intent);
 
             }
@@ -88,6 +90,7 @@ public class FoodDairy_Fragment_breakfast extends Fragment  {
                         HashMap<String,String> total = new HashMap<String, String>();
                         total.put("location",c.getString("location"));
                         total.put("fdName",c.getString("fdName"));
+                        total.put("serving",c.getString("serving"));
                         total.put("sn",c.getString("sn"));
                         array.add(total);
 
@@ -108,11 +111,16 @@ public class FoodDairy_Fragment_breakfast extends Fragment  {
                 //取得sessionID
                 SharedPreferences pref = getActivity().getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
+                String strDate;
                 //取得當天時間
-                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = new Date();
-                String strDate = sdFormat.format(date);
-
+                if(FoodDairy_Calen_date.instance != null){
+                    strDate = FoodDairy_Calen.date_format;
+                  //  strDate = "2019/09/26";
+                }else{
+                    SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = new Date();
+                    strDate = sdFormat.format(date);
+                }
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("sessionID",session);
                 params.put("date",strDate);

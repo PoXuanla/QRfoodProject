@@ -19,8 +19,9 @@ public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.Re
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        checkCameraPermitted();
         ScannerView = new ZXingScannerView(getApplicationContext());
+        checkCameraPermitted();
+
 
         //TODO camera doesnt work when first commit the permission
 
