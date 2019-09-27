@@ -24,21 +24,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.ViewHolder> {
-    private ArrayList<HashMap<String,String>> mData;
+    private ArrayList<HashMap<String, String>> mData;
     public Context mContext;
     LayoutInflater layoutInflater;
     String sn;
     String url = "http://120.110.112.96/using/removeFoodDairyRecord.php";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView item_restaurant,item_food;
+        public TextView item_restaurant, item_food, item_serving;
         public Button item_remove;
+
         public ViewHolder(View v) {
             super(v);
 
             item_restaurant = (TextView) v.findViewById(R.id.item_restaurant);
             item_food = (TextView) v.findViewById(R.id.item_food);
-            item_remove = (Button)v.findViewById(R.id.item_remove);
+            item_serving = (TextView) v.findViewById(R.id.item_serving);
+            item_remove = (Button) v.findViewById(R.id.item_remove);
+
 
             item_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,10 +55,10 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
 
     }
 
-    public  FoodDairy_Adapter(Context mContext,ArrayList<HashMap<String,String>> mData) {
+    public FoodDairy_Adapter(Context mContext, ArrayList<HashMap<String, String>> mData) {
         this.mData = mData;
         this.mContext = mContext;
-        layoutInflater  = LayoutInflater.from(mContext);
+        layoutInflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -70,6 +73,8 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
     public void onBindViewHolder(FoodDairy_Adapter.ViewHolder holder, final int position) {
         holder.item_restaurant.setText(mData.get(position).get("location"));
         holder.item_food.setText(mData.get(position).get("fdName"));
+        holder.item_serving.setText(mData.get(position).get("serving"));
+
 
     }
 
@@ -78,23 +83,23 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
         return mData.size();
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         sn = mData.get(position).get("sn");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("LOG","remove position :"+sn);
+                Log.v("LOG", "remove position :" + sn);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("sn",sn);
+                params.put("sn", sn);
                 return params;
             }
         };

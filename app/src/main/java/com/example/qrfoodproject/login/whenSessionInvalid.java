@@ -17,7 +17,7 @@ public class whenSessionInvalid {
         context.getApplicationContext();
         Toast.makeText(context, "請重新登入", Toast.LENGTH_SHORT).show();
         context.startActivity(new Intent(context, MainActivity.class));
-        ActivityCompat.finishAffinity((Activity) context.getApplicationContext());
+        ActivityCompat.finishAffinity((Activity)context.getApplicationContext());
         Log.d("Volley Session Lost",  error.toString());
     }
 

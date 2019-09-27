@@ -1,9 +1,11 @@
 package com.example.qrfoodproject.FoodDairy;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +19,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
+import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 
@@ -33,7 +37,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FoodDairy_Fragment_lunch extends Fragment {
     private RecyclerView mRecyclerView;
+    private FloatingActionButton fab;
     String url = "http://120.110.112.96/using/getFoodDairyRecord.php";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,47 +47,70 @@ public class FoodDairy_Fragment_lunch extends Fragment {
 
         return view;
     }
+
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.LunchView);
+        setView(view); //設定元件ID
 
+        setRecycleViewManager(); //設置RecyclerView Manager屬性
+
+        getLunchData(); //取得食物的資料
+
+        setFabButtonListener();//設置「新增食物」按鈕監聽
+
+    }
+    private void setRecycleViewManager(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
-        Log.v("Lunch","refresh");
-        getLunchData(); //取得食物的資料
     }
 
-    public void setRecycleView(ArrayList<HashMap<String,String>> array){
-        FoodDairy_Adapter mAdapter = new FoodDairy_Adapter(getActivity(),array);
+    private void setView(View view){
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.LunchView);
+        fab = view.findViewById(R.id.FAB_lunch);
+    }
+
+    private  void setFabButtonListener(){
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
+                intent.putExtra("times", "午");
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    public void setRecycleView(ArrayList<HashMap<String, String>> array) {
+        FoodDairy_Adapter mAdapter = new FoodDairy_Adapter(getActivity(), array);
         mRecyclerView.setAdapter(mAdapter);
     }
-    public void getLunchData(){
 
-
-
+    public void getLunchData() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("onResponse",response.toString());
+                Log.v("onResponse", response.toString());
                 try {
-                    ArrayList<HashMap<String,String>> array = new ArrayList<HashMap<String, String>>();
+                    ArrayList<HashMap<String, String>> array = new ArrayList<HashMap<String, String>>();
                     //解析JSON檔傳入array
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonObject1 = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
-                        HashMap<String,String> total = new HashMap<String, String>();
-                        total.put("location",c.getString("location"));
-                        total.put("fdName",c.getString("fdName"));
-                        total.put("sn",c.getString("sn"));
+                        HashMap<String, String> total = new HashMap<String, String>();
+                        total.put("location", c.getString("location"));
+                        total.put("fdName", c.getString("fdName"));
+                        total.put("serving", c.getString("serving"));
+                        total.put("sn", c.getString("sn"));
                         array.add(total);
 
-                        setRecycleView (array); //設定RecycleView
+                        setRecycleView(array); //設定RecycleView
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
 
@@ -89,7 +118,7 @@ public class FoodDairy_Fragment_lunch extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.v("ErrorResponse",error.toString());
+                Log.v("ErrorResponse", error.toString());
 
             }
 
@@ -99,15 +128,20 @@ public class FoodDairy_Fragment_lunch extends Fragment {
                 //取得sessionID
                 SharedPreferences pref = getActivity().getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
-                //取得當天時間
-                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = new Date();
-                String strDate = sdFormat.format(date);
+                String strDate;
+                //取得日曆時間
+                if (FoodDairy_Calen_date.instance != null) {
+                    strDate = FoodDairy_Calen.date_format;
 
+                } else { //取得當天時間
+                    SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = new Date();
+                    strDate = sdFormat.format(date);
+                }
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("sessionID",session);
-                params.put("date",strDate);
-                params.put("time","午");
+                params.put("sessionID", session);
+                params.put("date", strDate);
+                params.put("time", "午");
                 return params;
             }
         };

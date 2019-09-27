@@ -42,9 +42,31 @@ public class Profile_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_main);
 
-        setView();
+        setView();//設定元件ID
+
+        setButtonListener(); //設定按鈕監聽
 
         print_profile(); //顯示個人資料
+    }
+
+    private void setView() {
+        modifyData = findViewById(R.id.modifyData);
+        modifyPassword = findViewById(R.id.modifyPassword);
+        logout = findViewById(R.id.logout);
+        account = findViewById(R.id.account);
+        name = findViewById(R.id.name);
+        gender = findViewById(R.id.gender);
+        height = findViewById(R.id.height);
+        weight = findViewById(R.id.weight);
+        email = findViewById(R.id.email);
+        exercise = findViewById(R.id.exercise);
+    }
+
+    private void setButtonListener() {
+        //設定「修改資料」、「修改密碼」、「登出」按鈕
+        modifyData.setOnClickListener(onclick);
+        modifyPassword.setOnClickListener(onclick);
+        logout.setOnClickListener(onclick);
     }
 
     Button.OnClickListener onclick = new View.OnClickListener() {
@@ -75,8 +97,6 @@ public class Profile_main extends AppCompatActivity {
                             map.put("sessionID", session);
                             return map;
                         }
-
-
                     };
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest1);
                     break;
@@ -107,7 +127,7 @@ public class Profile_main extends AppCompatActivity {
                     MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest2);
                     break;
 
-                //前往「登出」 TODO?
+                //前往「登出」
                 case R.id.logout:
                     SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                     final String session = pref.getString("sessionID", "");
@@ -153,8 +173,11 @@ public class Profile_main extends AppCompatActivity {
                     name.setText(data.getString("name"));
                     email.setText(data.getString("email"));
 
-                    if (data.getString("gender").equals(true)) { gender.setText("Female"); }
-                    else {gender.setText("Male");}
+                    if (data.getString("gender").equals(true)) {
+                        gender.setText("Female");
+                    } else {
+                        gender.setText("Male");
+                    }
 
                     height.setText(data.getString("height"));
                     weight.setText(data.getString("weight"));
@@ -183,23 +206,5 @@ public class Profile_main extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(Profile_main.this).addToRequestQueue(jsonObjectRequest);
-    }
-
-    private void setView(){
-        modifyData = findViewById(R.id.modifyData);
-        modifyPassword = findViewById(R.id.modifyPassword);
-        logout = findViewById(R.id.logout);
-        account = findViewById(R.id.account);
-        name = findViewById(R.id.name);
-        gender = findViewById(R.id.gender);
-        height = findViewById(R.id.height);
-        weight = findViewById(R.id.weight);
-        email = findViewById(R.id.email);
-        exercise = findViewById(R.id.exercise);
-
-        //設定「修改資料」、「修改密碼」、「登出」按鈕
-        modifyData.setOnClickListener(onclick);
-        modifyPassword.setOnClickListener(onclick);
-        logout.setOnClickListener(onclick);
     }
 }

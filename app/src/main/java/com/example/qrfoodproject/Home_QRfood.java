@@ -111,7 +111,7 @@ public class Home_QRfood extends AppCompatActivity {
         context.getApplicationContext();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
-            
+
             @Override
             public void onResponse(String response) {
 
