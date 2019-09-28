@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.FoodDairy.FoodDairy_main;
+import com.example.qrfoodproject.FoodFile.FoodFile_restaurant;
 import com.example.qrfoodproject.NutritionInform.NutritionInform;
 import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.Qrcode.ScanQrcode;
@@ -59,7 +60,7 @@ public class Home_QRfood extends AppCompatActivity {
     private void setClick() {
 
         //進入食物檔案
-        //foodDocument.setOnClickListener(onclick);
+        foodDocument.setOnClickListener(onclick);
 
         //進入個人資料
         personalData.setOnClickListener(onclick);
@@ -79,7 +80,9 @@ public class Home_QRfood extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-
+                case R.id.foodDocument:
+                    session_isExist(Home_QRfood.this,R.id.foodDocument);
+                    break;
                 case R.id.btn_qrcode:
                     startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
                     break;
@@ -123,6 +126,9 @@ public class Home_QRfood extends AppCompatActivity {
                     case R.id.personalData:
                         Log.d("Session: ", "still valid");
                         startActivity(new Intent(context, Profile_main.class));
+                        break;
+                    case R.id.foodDocument:
+                        startActivity(new Intent(context, FoodFile_restaurant.class));
                         break;
                     default:
                         Log.e("Unexpected Error" , "happened during session_isExist: onResponse()");

@@ -52,7 +52,7 @@ public class FoodDairy_Calen_date extends AppCompatActivity {
         fragmentList.add(myFragment1);
         fragmentList.add(myFragment2);
         fragmentList.add(myFragment3);
-        ViewPagerFragmentAdapter myFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), fragmentList);
+        ViewPagerFragmentAdapter myFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(),fragmentList);
         viewpager_calen.setAdapter(myFragmentAdapter);
     }
     private void setTabIcon(){
