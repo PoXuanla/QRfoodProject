@@ -34,6 +34,9 @@ public class Register extends AppCompatActivity {
     private static String URL_REGISTER = "http://120.110.112.96/using/register.php";
     int gender;
 
+    checkRegister check = new checkRegister();
+    //function using for checking the information from this class
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +48,11 @@ public class Register extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (valiDate())     register();
+                if (doubleCheck())     register();
             }
         });
 
-        TextView link_login = this.findViewById(R.id.link_login);
-        link_login.setOnClickListener(link_loginListener);
+
     }
 
     private void setView() {
@@ -64,6 +66,63 @@ public class Register extends AppCompatActivity {
         weight = this.findViewById(R.id.Weight);
         exercise = this.findViewById(R.id.Exercise);
         btn_register = this.findViewById(R.id.btn_register);
+
+        TextView link_login = this.findViewById(R.id.link_login);
+        link_login.setOnClickListener(link_loginListener);
+    }
+
+    private boolean doubleCheck(){
+
+        String Account = account.getText().toString();
+        String Password = password.getText().toString();
+        String Confirm_password = confirm_password.getText().toString();
+        String Name = name.getText().toString();
+        String Email = email.getText().toString();
+        String Height = height.getText().toString();
+        String Weight = weight.getText().toString();
+        String Exercise = exercise.getText().toString();
+
+        if (!check.checkAccount(Account)){
+            account.setError("帳號大小需介於4到10，且不可含特殊符號");
+            return false;
+        }else   account.setError(null);
+
+        if (!check.checkPassword(Password)){
+            password.setError("密碼大小需介於4到10，且不可含特殊符號");
+            return false;
+        }else   password.setError(null);
+
+        if (!check.ifPasswordSame(Password, Confirm_password)){
+            confirm_password.setError("密碼與原先輸入不符");
+            return false;
+        }else   confirm_password.setError(null);
+
+        if (!check.checkName(Name)){
+            name.setError("名稱長度超出範圍，或含有特殊符號");
+            return false;
+        }else   name.setError(null);
+
+        if (!check.checkMail(Email)){
+            email.setError("信箱不符合標準規範");
+            return false;
+        }else   email.setError(null);
+
+        if (!check.checkHeight(Height)){
+            height.setError("請確認填寫是否正確");
+            return false;
+        }else   height.setError(null);
+
+        if (!check.checkWeight(Weight)){
+            weight.setError("請確認填寫是否正確");
+            return false;
+        }else   weight.setError(null);
+
+        if (!check.checkExercise(Exercise)){
+            exercise.setError("運動量不可輸入1~4以外數值");
+            return false;
+        }else   exercise.setError(null);
+
+        return true;
     }
 
     private void register(){
@@ -134,74 +193,7 @@ public class Register extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    //----建立邏輯認證是否生效----
-    public boolean valiDate(){
-        boolean valid = true;
-        String Account = account.getText().toString();
-        String Password = password.getText().toString();
-        String Confirm_password = confirm_password.getText().toString();
-        String Name = name.getText().toString();
-        String Email = email.getText().toString();
-        String Height = height.getText().toString();
-        String Weight = weight.getText().toString();
-        String Exercise = exercise.getText().toString();
 
-        if(Account.isEmpty() || Account.length() <= 2){
-            account.setError("至少要2個字元");
-            valid = false;
-        }
-        else if(Account.length() > 20){
-            account.setError("最多20個字元");
-            valid = false;
-        }
-        else{
-            account.setError(null);
-        }
-
-        if(Password.isEmpty() || Password.length() < 4){
-            password.setError("至少要含有4個字母或數字");
-            valid = false;
-        }
-        else if(Password.length() > 20){
-            password.setError("最多20個字母或數字");
-            valid = false;
-        }
-        else{
-            password.setError(null);
-        }
-
-        if(Confirm_password.isEmpty() || !(Confirm_password.equals(Password))){
-            confirm_password.setError("與輸入的密碼不相同");
-            valid = false;
-        }
-        else{
-            confirm_password.setError(null);
-        }
-        if(Name.isEmpty()){
-            name.setError("請輸入姓名!");
-            valid = false;
-        }
-        if(Email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
-            email.setError("請輸入有效的電子郵件");
-            valid = false;
-        }
-        else{
-            email.setError(null);
-        }
-        if(Height.isEmpty()){
-            height.setError("請輸入身高");
-            valid = false;
-        }
-        if(Weight.isEmpty()){
-            weight.setError("請輸入體重");
-            valid = false;
-        }
-        if(Exercise.isEmpty()){
-            exercise.setError("請輸入運動量");
-            valid = false;
-        }
-        return valid;
-    }
     private TextView.OnClickListener link_loginListener = new TextView.OnClickListener() {
         @Override
         public void onClick(View v) {
