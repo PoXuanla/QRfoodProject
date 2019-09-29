@@ -37,7 +37,7 @@ import static android.util.Log.v;
 public class FoodFile_res_Fragment extends Fragment {
     private RecyclerView mRecyclerView;
     String location;
-    private String url = "http://120.110.112.96/using/getrsNameByLocation.php";
+    private String url = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

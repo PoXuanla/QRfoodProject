@@ -26,7 +26,7 @@ import java.util.Map;
 public class Profile_ModifyPassword extends AppCompatActivity {
     EditText edtPassword, edtPassword1, edtoldPassword;
     Button commit;
-    private String url = "http://120.110.112.96/using/edtPassword.php";
+    private String url = "http://120.110.112.96/using/Profile/edtPassword.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

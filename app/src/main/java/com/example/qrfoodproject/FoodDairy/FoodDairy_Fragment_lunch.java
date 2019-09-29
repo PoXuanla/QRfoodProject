@@ -38,7 +38,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class FoodDairy_Fragment_lunch extends Fragment {
     private RecyclerView mRecyclerView;
     private FloatingActionButton fab;
-    String url = "http://120.110.112.96/using/getFoodDairyRecord.php";
+    String url = "http://120.110.112.96/using/FoodDairy/getFoodDairyRecord.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

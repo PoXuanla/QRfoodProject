@@ -41,7 +41,7 @@ public class FoodDairy_Fragment_breakfast extends Fragment {
 
     private RecyclerView mRecyclerView;
     private FloatingActionButton fab;
-    String url = "http://120.110.112.96/using/getFoodDairyRecord.php";
+    String url = "http://120.110.112.96/using/FoodDairy/getFoodDairyRecord.php";
 
     //  ArrayList<HashMap<String,String>> array = new ArrayList<HashMap<String, String>>();
     @Override

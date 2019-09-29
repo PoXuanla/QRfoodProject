@@ -38,10 +38,9 @@ public class FoodDairy_AddFood extends AppCompatActivity {
     Spinner Addfood_time, Addfood_location, Addfood_restaurant, Addfood_food;
     EditText Addfood_serving;
     Button Addfood_input;
-    //private String getRestaurant = "http://120.110.112.96/using/FD_getRes.php";
-    private String getRestaurant = "http://120.110.112.96/using/getrsNameByLocation.php";
-    private String getRestaurantFood = "http://120.110.112.96/using/FD_getResFood.php";
-    private String addRecord = "http://120.110.112.96/using/addrecord.php";
+    private String getRestaurant = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
+    private String getRestaurantFood = "http://120.110.112.96/using/Common_FF_FD/getResFood.php";
+    private String addRecord = "http://120.110.112.96/using/FoodDairy/addrecord.php";
     private String[] time = {"早", "午", "晚"};
     private String[] location = {"靜園", "宜園", "至善"};
     private String times; //接收使用者在哪個頁面新增餐點
