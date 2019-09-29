@@ -78,4 +78,6 @@ public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.Re
         ScannerView.startCamera();
 
     }
+
+    //E/ZXingScannerView: java.lang.RuntimeException: Camera is being used after Camera.release() was called
 }
