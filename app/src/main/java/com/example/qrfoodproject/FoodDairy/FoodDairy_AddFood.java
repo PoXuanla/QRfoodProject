@@ -38,7 +38,8 @@ public class FoodDairy_AddFood extends AppCompatActivity {
     Spinner Addfood_time, Addfood_location, Addfood_restaurant, Addfood_food;
     EditText Addfood_serving;
     Button Addfood_input;
-    private String getRestaurant = "http://120.110.112.96/using/FD_getRes.php";
+    //private String getRestaurant = "http://120.110.112.96/using/FD_getRes.php";
+    private String getRestaurant = "http://120.110.112.96/using/getrsNameByLocation.php";
     private String getRestaurantFood = "http://120.110.112.96/using/FD_getResFood.php";
     private String addRecord = "http://120.110.112.96/using/addrecord.php";
     private String[] time = {"早", "午", "晚"};
@@ -90,7 +91,7 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = Addfood_location.getSelectedItemPosition();
-                getRestaurant(pos);
+                getRestaurant(pos); //在餐廳spinner中顯示該location的所有餐廳
 
             }
 
@@ -198,9 +199,8 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                     JSONArray jsonObject1 = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
-
                         array.add(c.getString("rsName"));
-                        array1.add(c.getString("rsId"));
+                    //    array1.add(c.getString("rsId"));
                     }
                     restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this, R.layout.support_simple_spinner_dropdown_item, array);
                     Addfood_restaurant.setAdapter(restaurant_adapter);
