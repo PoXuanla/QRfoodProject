@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-
+                    Log.v("loginSuccess",response);
                     JSONObject responseData = new JSONObject(response);
                     JSONObject data = responseData.getJSONObject("data");
                     String sessionID = data.getString("sessionID");
