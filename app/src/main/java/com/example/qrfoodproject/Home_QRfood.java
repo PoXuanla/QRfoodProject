@@ -1,10 +1,16 @@
 package com.example.qrfoodproject;
 
-import android.content.ContentValues;
+
+import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -80,12 +86,11 @@ public class Home_QRfood extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+
                 case R.id.foodDocument:
                     session_isExist(Home_QRfood.this,R.id.foodDocument);
                     break;
-                case R.id.btn_qrcode:
-                    startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
-                    break;
+
                 case R.id.FoodDairy:
                     session_isExist(Home_QRfood.this, R.id.FoodDairy);
                     break;
@@ -94,6 +99,9 @@ public class Home_QRfood extends AppCompatActivity {
                     break;
                 case R.id.personalData:
                     session_isExist(Home_QRfood.this, R.id.personalData);
+                    break;
+                case R.id.btn_qrcode:
+                    startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
                     break;
 
             }
@@ -131,7 +139,6 @@ public class Home_QRfood extends AppCompatActivity {
                         startActivity(new Intent(context, FoodFile_restaurant.class));
                         break;
                     default:
-                        Log.e("Unexpected Error" , "happened during session_isExist: onResponse()");
                         break;
                 }
 
@@ -175,8 +182,6 @@ public class Home_QRfood extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 new whenSessionInvalid().informing(Home_QRfood.this, error);
-               // startActivity(new Intent(Home_QRfood.this,MainActivity.class));
-               // finish();
             }
         }) {
             @Override
