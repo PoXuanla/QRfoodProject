@@ -28,7 +28,7 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
     public Context mContext;
     LayoutInflater layoutInflater;
     String sn;
-    String url = "http://120.110.112.96/using/removeFoodDairyRecord.php";
+    String url = "http://120.110.112.96/using/FoodDairy/removeFoodDairyRecord.php";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView item_restaurant, item_food, item_serving;

@@ -32,8 +32,8 @@ public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout;
     TextView account, name, gender, height, weight, exercise, email;
 
-    private String logout_url = "http://120.110.112.96/using/destroy.php";
-    private String print_profile_url = "http://120.110.112.96/using/getUserinformation.php";
+    private String logout_url = "http://120.110.112.96/using/destroy_Session.php";
+    private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
     private String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
 
 

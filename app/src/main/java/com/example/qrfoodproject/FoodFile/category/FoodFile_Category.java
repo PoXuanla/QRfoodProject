@@ -26,7 +26,7 @@ public class FoodFile_Category extends AppCompatActivity {
     TextView rsName;
     String Intent_rsName;
     RecyclerView mRecyclerView;
-    private String url = "http://120.110.112.96/using/FD_getResFood.php";
+    private String url = "http://120.110.112.96/using/Common_FF_FD/getResFood.php";
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);

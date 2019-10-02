@@ -27,7 +27,7 @@ public class Profile_ModifyData extends AppCompatActivity {
     RadioButton female, male;
     Button commit;
     int is_Gender = 1;
-    private String url = "http://120.110.112.96/using/updateUserInform.php";
+    private String url = "http://120.110.112.96/using/Profile/updateUserInform.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

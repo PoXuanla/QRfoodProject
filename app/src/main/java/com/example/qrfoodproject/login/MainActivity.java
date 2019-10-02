@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtAccount, edtPassword;
     private Button Btn_login;
-    private String login_url = "http://120.110.112.96/using/login.php";
+    private String login_url = "http://120.110.112.96/using/Login/login.php";
     private String account = "", password = "";
     private TextView link_register;
 
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-
+                    Log.v("loginSuccess",response);
                     JSONObject responseData = new JSONObject(response);
                     JSONObject data = responseData.getJSONObject("data");
                     String sessionID = data.getString("sessionID");

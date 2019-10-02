@@ -37,7 +37,7 @@ import static android.util.Log.v;
 public class FoodFile_res_Fragment extends Fragment {
     private RecyclerView mRecyclerView;
     String location;
-    private String url = "http://120.110.112.96/using/getRestaurantById.php";
+    private String url = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class FoodFile_res_Fragment extends Fragment {
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
                         HashMap<String, String> total = new HashMap<String, String>();
-                        total.put("rsId", c.getString("rsId"));
+
                         total.put("rsName", c.getString("rsName"));
 
                         array.add(total);
