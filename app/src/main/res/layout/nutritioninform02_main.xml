@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/nutritioninformbg"
-    tools:context=".NutritionInform_02">
+    tools:context=".NutritionInform.NutritionInform_02">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
