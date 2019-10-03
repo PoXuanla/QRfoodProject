@@ -23,8 +23,8 @@
                 android:background="@drawable/nutritioninformbg"
                 android:text="01.五穀根莖類"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="36sp"/>
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,10 +33,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="營養素："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,8 +45,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="主要提供醣類及一部份蛋白質。若選擇全榖類，則含維生素B群及豐富纖維素。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,10 +55,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="食物來源："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="米飯、麵食、麵條、麵包、饅頭等。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,10 +77,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="建議量："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,8 +89,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="每人每天三至六碗，因每個人體型及活動量不同，所需熱量也不一樣，故可依個人的需要量增減。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -100,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="白飯"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="南瓜"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

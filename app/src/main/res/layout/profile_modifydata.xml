@@ -6,26 +6,7 @@
     android:background="@drawable/profile_databg"
     android:orientation="vertical"
     tools:context=".Profile.Profile_ModifyData">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/profile_databg2"
-            android:elevation="20dp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="修改資料"
-            android:textColor="#ffffff"
-            android:textSize="25sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:alpha="0.5"
-            android:background="#BDBDBD" />
-    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -33,59 +14,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
                     android:text="電子郵件"
                     android:drawableLeft="@drawable/register_email"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:hint="修改電子郵件帳號"
                     android:textColorHint="#F2F2F2"
                     android:inputType="textEmailAddress"
-                    android:textSize="30sp" />
+                    android:textSize="50px" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
                     android:text="姓名"
                     android:drawableLeft="@drawable/login_name"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/edtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:hint="修改姓名"
                     android:textColorHint="#F2F2F2"
                     android:inputType="text"
-                    android:textSize="30sp" />
+                    android:textSize="50px" />
             </LinearLayout>
 
             <LinearLayout
@@ -102,7 +86,7 @@
                     android:text="性別"
                     android:drawableLeft="@drawable/register_gender"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
                 <RadioGroup
                     android:id="@+id/gender_radio_group"
@@ -127,7 +111,7 @@
                         android:background="@drawable/register_radio_selector"
                         android:textColor="@drawable/register_radio_textselector"
                         android:text="@string/Male"
-                        android:textSize="24sp"
+                        android:textSize="50px"
                         android:checked="true"
                         android:gravity="center"
                         android:button="@android:color/transparent" />
@@ -140,7 +124,7 @@
                         android:background="@drawable/register_radio_selector"
                         android:textColor="@drawable/register_radio_textselector"
                         android:text = "@string/Female"
-                        android:textSize="24sp"
+                        android:textSize="50px"
                         android:gravity="center"
                         android:button="@android:color/transparent" />
                 </RadioGroup>
@@ -160,7 +144,7 @@
                     android:text="身高"
                     android:drawableLeft="@drawable/register_height"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
                 <EditText
                     android:id="@+id/edtHeight"
@@ -171,7 +155,7 @@
                     android:hint="修改身高(cm)"
                     android:textColorHint="#F2F2F2"
                     android:inputType="number"
-                    android:textSize="30sp" />
+                    android:textSize="50px" />
             </LinearLayout>
 
             <LinearLayout
@@ -188,7 +172,7 @@
                     android:text="體重"
                     android:drawableLeft="@drawable/register_weight"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -200,7 +184,7 @@
                     android:hint="修改體重(kg)"
                     android:textColorHint="#F2F2F2"
                     android:inputType="number"
-                    android:textSize="30sp" />
+                    android:textSize="50px" />
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -210,7 +194,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="以下這個填空是填你平常在外的運動量\n例如：低=1、稍低=2、適=3、高=4"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="50px"
                 android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -221,12 +205,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:text="運動量"
                     android:drawableLeft="@drawable/register_exercise"
                     android:textColor="#000000"
-                    android:textSize="30sp"
+                    android:textSize="50px"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -236,7 +220,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="30sp" />
+                    android:textSize="50px" />
                 </LinearLayout>
             <Button
                 android:id="@+id/commit"
@@ -245,8 +229,9 @@
                 android:layout_gravity="center"
                 android:background="@drawable/profile_button_shape"
                 android:text="確認提交"
+                android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp" />
+                android:textSize="50px" />
 
         </LinearLayout>
     </ScrollView>

@@ -19,10 +19,7 @@
         android:background="@drawable/fooddairy_bg1"
         android:padding="20dp"
         android:elevation="20dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@drawable/fooddairy_bg2"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
@@ -41,15 +38,13 @@
             android:textStyle="bold"
             android:gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/fooddairy_button_shape2"
-            />
+            android:background="@drawable/fooddairy_button_shape2" />
         <LinearLayout
 
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:background="@drawable/fooddairy_layout_border"
-            android:gravity="center"
-            >
+            android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/calen"
@@ -58,9 +53,7 @@
                 android:src ="@drawable/fooddairy_calendar"
                 android:layout_gravity="center_vertical"
                 android:scaleType="centerInside"
-                android:background="#FFF9C4"
-
-                />
+                android:background="#FFF9C4" />
 
         </LinearLayout>
     </LinearLayout>
