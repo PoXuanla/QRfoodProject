@@ -41,12 +41,13 @@ public class FoodFile_Category extends AppCompatActivity {
         getRes_food(); //取得該餐廳的食物
     }
     private void setView(){
+       // rsName = findViewById(R.id.rsName);
         mRecyclerView = findViewById(R.id.category_View);
     }
     private void getIntentExtra(){
         Intent intent = getIntent();
         Intent_rsName = intent.getStringExtra("rsName");
-        rsName.setText(Intent_rsName);
+        //rsName.setText(Intent_rsName);
     }
     private void setRecycleViewManager() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(FoodFile_Category.this);
