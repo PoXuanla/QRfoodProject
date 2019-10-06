@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#227b38"
-            android:textSize="48sp"
-            android:text="韭菜"/>
+            android:textSize="100px"
+            android:text="韭菜" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,80 +49,81 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:textSize="70px"
                     android:textStyle="bold"
                     android:text="一份重量"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textSize="60px"
                     android:text="熱量"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="膽固醇"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="糖"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="蛋白質"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="脂肪(總)"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="飽和脂肪"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textSize="50px"
                     android:text="反式脂肪"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="膳食纖維"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="鈉"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="鉀"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="鈣"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     android:text="鐵"/>
             </LinearLayout>
             <LinearLayout
@@ -137,48 +138,48 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="60px" />
                 <TextView
                     android:id="@+id/calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/cholesterol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/sugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/protein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/saturatedFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/transFat"
@@ -192,36 +193,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/sodium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/potassium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/calcium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/ferrum"
-                    android:text="111"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
             </LinearLayout>
         </LinearLayout>
