@@ -20,5 +20,4 @@ public class whenSessionInvalid {
         ActivityCompat.finishAffinity((Activity)context);
         Log.d("Volley Session Lost",  error.toString());
     }
-
 }
