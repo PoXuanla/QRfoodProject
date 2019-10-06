@@ -7,10 +7,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodDairy_main extends AppCompatActivity {
+
     private ImageButton calen;
     private TabLayout tablayout;
     private ViewPager viewpager;
@@ -39,6 +42,8 @@ public class FoodDairy_main extends AppCompatActivity {
         setTab_and_ViewPager(); //設定Tablayout 與 ViewPager 連動
 
         setCalenButtonListener(); //監聽日曆按鈕
+
+
 
     }
 

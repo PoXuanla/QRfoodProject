@@ -6,9 +6,9 @@
     <corners
         />
     <!--背景顏色-->
-    <solid android:color="#FFF9C4" />
+    <solid android:color="#FFFFFF" />
     <!--邊框設定-->
     <stroke
-        android:width="1.0dip"
-        android:color="#FFEB3B" />
+        android:width="3.0dip"
+        android:color="#FCFCFC" />
 </shape>
