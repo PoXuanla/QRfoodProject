@@ -1,47 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/item_restaurant"
-        android:text="REStaurant"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="1"
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:text="FOOD"
-        android:textColor="#000000"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:id="@+id/item_food"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:text=""
-        android:textColor="#000000"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight=".5"
-        android:id="@+id/item_serving"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/item_remove"
-        android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="X"
-        android:layout_weight=".5" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:background="#EEEEEE"
+        android:padding="20dp">
+        <TextView
+            android:id="@+id/item_restaurant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:text="REStaurant"
+            android:background="@drawable/fooddairy_button_item"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/item_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="FOOD"
+            android:background="@drawable/fooddairy_textview_shape"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="28sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/item_remove"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="right"
+            android:background="@drawable/fooddairy_xbutton"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:id="@+id/item_serving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:text="number"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

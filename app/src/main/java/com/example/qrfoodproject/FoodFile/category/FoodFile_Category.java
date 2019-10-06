@@ -41,7 +41,6 @@ public class FoodFile_Category extends AppCompatActivity {
         getRes_food(); //取得該餐廳的食物
     }
     private void setView(){
-        rsName = findViewById(R.id.rsName);
         mRecyclerView = findViewById(R.id.category_View);
     }
     private void getIntentExtra(){

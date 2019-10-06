@@ -23,8 +23,8 @@
                 android:background="@drawable/nutritioninformbg"
                 android:text="03.水果類"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="36sp"/>
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,10 +33,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="營養素："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,8 +45,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="主要提供維生素、礦物質及部分醣類。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,10 +55,9 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="食物來源："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,8 +66,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="水果種類繁多，例如蕃石榴、蘋果、柳丁…等。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,10 +76,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="建議量："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,8 +88,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="每人每天二個，最好有一個是枸櫞類的水果。水果與蔬菜都是提供維生素及礦物質，但其所含的維生素及礦物質的種類並不相同，所以不可互相取代或省略其中一項。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -101,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="葡萄"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -113,8 +112,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="柳丁"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -125,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="香蕉"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -137,8 +136,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="奇異果"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

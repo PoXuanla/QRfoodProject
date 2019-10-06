@@ -23,8 +23,8 @@
                 android:background="@drawable/nutritioninformbg"
                 android:text="02.蔬菜類"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="36sp"/>
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,10 +33,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="營養素："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,8 +45,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="主要提供維生素、礦物質及膳食纖維。通常深綠色、深黃色的蔬菜含維生素及礦物質的量比淺色蔬菜多。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,10 +55,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="食物來源："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,9 +66,9 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:text="	蔬菜種類繁多，例如青江菜、小白菜、芥菜…等。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:text="蔬菜種類繁多，例如青江菜、小白菜、芥菜…等。"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,10 +77,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="建議量："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,8 +89,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="每人每天三碟，其中至少一碟為深綠色或深黃色蔬菜。一碟的份量約100公克，三碟即300公克（相當於半斤）。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -100,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="油菜"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="高麗菜"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -122,8 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="萵苣"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -133,8 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="菠菜"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

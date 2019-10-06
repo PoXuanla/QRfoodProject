@@ -23,8 +23,8 @@
                 android:background="@drawable/nutritioninformbg"
                 android:text="04.蛋豆魚肉類"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="36sp"/>
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,10 +33,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="營養素："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,8 +45,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="主要提供蛋白質。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,10 +55,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="食物來源："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="	雞蛋、鴨蛋、黃豆、豆腐、豆漿、豆製品、魚類、蝦類、貝類、海產類、豬肉、牛肉、雞肉、鴨肉等。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,10 +77,10 @@
                 android:paddingTop="5dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninform_textview_shape"
                 android:text="建議量："
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,8 +89,8 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="每人每天四份。每份相當於蛋一個或豆腐一塊或魚類一兩、或肉類一兩。"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -100,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="糖醋排骨"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="糖醋魚柳"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -122,8 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="滷蛋"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
@@ -133,8 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="番茄豆腐"
-                android:textColor="#000000"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="50px"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
