@@ -1,9 +1,11 @@
-package com.example.qrfoodproject.FoodFile;
+package com.example.qrfoodproject.FoodFile.restaurant;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_res_Fragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 

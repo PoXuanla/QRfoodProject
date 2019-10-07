@@ -1,16 +1,10 @@
 package com.example.qrfoodproject;
 
 
-import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.FoodDairy.FoodDairy_main;
-import com.example.qrfoodproject.FoodFile.FoodFile_restaurant;
+import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_restaurant;
 import com.example.qrfoodproject.NutritionInform.NutritionInform;
 import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.Qrcode.ScanQrcode;

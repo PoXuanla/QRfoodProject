@@ -39,8 +39,9 @@
         <activity android:name=".FoodDairy.FoodDairy_AddFood" />
         <activity android:name=".FoodDairy.calen.FoodDairy_Calen" />
         <activity android:name=".FoodDairy.calen.FoodDairy_Calen_date" />
-        <activity android:name=".FoodFile.FoodFile_restaurant" />
+        <activity android:name=".FoodFile.restaurant.FoodFile_restaurant" />
         <activity android:name=".FoodFile.category.FoodFile_Category" />
         <activity android:name=".FoodFile.FoodFile_FoodcInformation" />
+        <activity android:name=".FoodFile.food.FoodFile_Food" />
     </application>
 </manifest>

@@ -1,78 +1,62 @@
-package com.example.qrfoodproject.FoodFile;
+package com.example.qrfoodproject.FoodFile.food;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.qrfoodproject.FoodDairy.FoodDairy_Adapter;
-import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
-import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
+import com.example.qrfoodproject.FoodFile.category.FoodFile_Category;
+import com.example.qrfoodproject.FoodFile.category.FoodFile_Category_Adapter;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.content.Context.MODE_PRIVATE;
-import static android.util.Log.v;
-
-public class FoodFile_res_Fragment extends Fragment {
-    private RecyclerView mRecyclerView;
-    String location;
-    private String url = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
+public class FoodFile_Food extends AppCompatActivity {
+    TextView rsName;
+    String Intent_cId,Intent_rsId;
+    RecyclerView mRecyclerView;
+    private String url = "http://120.110.112.96/using/Common_FF_FD/getResFood.php";
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.foodfile_res_fragment, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.foodfile_food);
+        setView();
 
-        return view;
-    }
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-        setView(view); //設定元件ID
-
-        location = getArguments().getString("location");
+        getIntentExtra();//取得FoodAdapter過來的值
 
         setRecycleViewManager(); //設置RecyclerView Manager屬性
 
-        getRestaurantName(); //把餐廳名稱print在 View 上
-
-
+        getRes_food(); //取得該餐廳的食物
+    }
+    private void setView(){
+        // rsName = findViewById(R.id.rsName);
+        mRecyclerView = findViewById(R.id.food_View);
+    }
+    private void getIntentExtra(){
+        Intent intent = getIntent();
+        Intent_cId = intent.getStringExtra("cId");
+        Intent_rsId = intent.getStringExtra("rsId");
 
     }
-    private void setView(View view){
-
-        mRecyclerView = view.findViewById(R.id.res_View);
-    }
-
     private void setRecycleViewManager() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(FoodFile_Food.this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
     }
-
-    private void getRestaurantName(){
+    private void getRes_food(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -85,8 +69,8 @@ public class FoodFile_res_Fragment extends Fragment {
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
                         HashMap<String, String> total = new HashMap<String, String>();
-
-                        total.put("rsName", c.getString("rsName"));
+                        total.put("fdName", c.getString("fdName"));
+                        total.put("fdId", c.getString("fdId"));
 
                         array.add(total);
 
@@ -106,17 +90,16 @@ public class FoodFile_res_Fragment extends Fragment {
             protected Map<String, String> getParams() {
 
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("location", location);
-
+                params.put("rsId", Intent_rsId);
+                params.put("cId", Intent_cId);
                 return params;
             }
         };
-        MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
+        MySingleton.getInstance(FoodFile_Food.this).addToRequestQueue(stringRequest);
     }
 
     public void setRecycleView(ArrayList<HashMap<String, String>> array) {
-        FoodFile_Adapter mAdapter = new FoodFile_Adapter(getActivity(), array);
+        FoodFile_Food_Adapter mAdapter = new FoodFile_Food_Adapter(FoodFile_Food.this, array);
         mRecyclerView.setAdapter(mAdapter);
     }
 }
-

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qrfoodproject.FoodFile.FoodFile_FoodcInformation;
+import com.example.qrfoodproject.FoodFile.food.FoodFile_Food;
 import com.example.qrfoodproject.R;
 
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ public class FoodFile_Category_Adapter  extends RecyclerView.Adapter<FoodFile_Ca
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView item_fdName;
+        public TextView item_CategoryName;
 
         public ViewHolder(View v) {
             super(v);
-            item_fdName = (TextView) v.findViewById(R.id.item_fdName);
+            item_CategoryName = (TextView) v.findViewById(R.id.item_CategoryName);
         }
     }
 
@@ -47,13 +48,14 @@ public class FoodFile_Category_Adapter  extends RecyclerView.Adapter<FoodFile_Ca
     @Override
     public void onBindViewHolder(final FoodFile_Category_Adapter.ViewHolder holder, final int position) {
 
-        holder.item_fdName.setText(mData.get(position).get("fdName"));
+        holder.item_CategoryName.setText(mData.get(position).get("cName"));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),mData.get(position).get("fdName"),Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext, FoodFile_FoodcInformation.class);
-                intent.putExtra("fdId", mData.get(position).get("fdId"));
+                Toast.makeText(v.getContext(),mData.get(position).get("cName"),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, FoodFile_Food.class);
+                intent.putExtra("rsId", mData.get(position).get("rsId"));
+                intent.putExtra("cId", mData.get(position).get("cId"));
                 mContext.startActivity(intent);
             }
         });
