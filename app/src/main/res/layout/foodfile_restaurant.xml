@@ -8,24 +8,18 @@
     android:background="#ffffff"
     tools:context=".FoodDairy.FoodDairy_main">
 
-
-
     <android.support.design.widget.TabLayout
         android:id="@+id/foodfile_tablayout"
-        android:background="#ffffff"
-        app:tabTextColor="#000000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:tabTextColor="#000000" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#BDBDBD"/>
+        android:background="#BDBDBD" />
     <android.support.v4.view.ViewPager
         android:id="@+id/foodfile_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

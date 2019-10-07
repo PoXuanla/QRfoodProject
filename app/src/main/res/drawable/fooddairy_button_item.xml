@@ -8,7 +8,7 @@
 
         android:type="linear" />
     <size
-        android:width="270dp"
+        android:width="240dp"
         android:height="30dp" />
     <padding
         android:left="0dp"

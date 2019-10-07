@@ -186,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/dietaryFiber"
@@ -216,14 +216,14 @@
                     android:textColor="#000000"
                     android:textSize="50px"
                     />
+
                 <TextView
                     android:id="@+id/ferrum"
-                    android:text=""
-                    android:layout_width="wrap_content"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
+                    android:text=""
                     android:textColor="#000000"
-                    android:textSize="50px"
-                    />
+                    android:textSize="50px" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
