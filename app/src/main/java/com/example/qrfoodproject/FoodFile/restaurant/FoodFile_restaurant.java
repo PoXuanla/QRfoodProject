@@ -1,19 +1,11 @@
-package com.example.qrfoodproject.FoodFile;
+package com.example.qrfoodproject.FoodFile.restaurant;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_breakfast;
-import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_dinner;
-import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_lunch;
-import com.example.qrfoodproject.FoodDairy.ViewPagerFragmentAdapter;
 import com.example.qrfoodproject.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FoodFile_restaurant extends AppCompatActivity {
     private TabLayout tablayout;

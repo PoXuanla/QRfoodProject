@@ -1,17 +1,19 @@
-package com.example.qrfoodproject.FoodFile.category;
+package com.example.qrfoodproject.FoodFile.restaurant;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_Adapter;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 
@@ -22,39 +24,47 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FoodFile_Category extends AppCompatActivity {
-    TextView rsName;
-    String Intent_rsId;
-    RecyclerView mRecyclerView;
-    private String url = "http://120.110.112.96/using/get_cName_ByrsName.php";
+import static android.util.Log.v;
+
+public class FoodFile_res_Fragment extends Fragment {
+    private RecyclerView mRecyclerView;
+    String location;
+    private String url = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
     @Override
-    public void onCreate(Bundle saveInstanceState) {
-        super.onCreate(saveInstanceState);
-        setContentView(R.layout.foodfile_category);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.foodfile_res_fragment, container, false);
 
-        setView();
+        return view;
+    }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        getIntentExtra();//取得FoodAdapter過來的值
+
+        setView(view); //設定元件ID
+
+        location = getArguments().getString("location");
 
         setRecycleViewManager(); //設置RecyclerView Manager屬性
 
-        getRes_food(); //取得該餐廳的食物
+        getRestaurantName(); //把餐廳名稱print在 View 上
+
+
+
     }
-    private void setView(){
-       // rsName = findViewById(R.id.rsName);
-        mRecyclerView = findViewById(R.id.category_View);
+    private void setView(View view){
+
+        mRecyclerView = view.findViewById(R.id.res_View);
     }
-    private void getIntentExtra(){
-        Intent intent = getIntent();
-        Intent_rsId = intent.getStringExtra("rsId");
-        //rsName.setText(Intent_rsName);
-    }
+
     private void setRecycleViewManager() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(FoodFile_Category.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
     }
-    private void getRes_food(){
+
+    private void getRestaurantName(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -67,10 +77,9 @@ public class FoodFile_Category extends AppCompatActivity {
                     for (int i = 0; i < jsonObject1.length(); i++) {
                         JSONObject c = jsonObject1.getJSONObject(i);
                         HashMap<String, String> total = new HashMap<String, String>();
-                        total.put("rsId", c.getString("rsId"));
-                        total.put("cId", c.getString("cId"));
-                        total.put("cName", c.getString("cName"));
 
+                        total.put("rsName", c.getString("rsName"));
+                        total.put("rsId",c.getString("rsId"));
                         array.add(total);
 
                         setRecycleView(array); //設定RecycleView
@@ -89,15 +98,17 @@ public class FoodFile_Category extends AppCompatActivity {
             protected Map<String, String> getParams() {
 
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("rsId", Intent_rsId);
+                params.put("location", location);
+
                 return params;
             }
         };
-        MySingleton.getInstance(FoodFile_Category.this).addToRequestQueue(stringRequest);
+        MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
 
     public void setRecycleView(ArrayList<HashMap<String, String>> array) {
-        FoodFile_Category_Adapter mAdapter = new FoodFile_Category_Adapter(FoodFile_Category.this, array);
+        FoodFile_Adapter mAdapter = new FoodFile_Adapter(getActivity(), array);
         mRecyclerView.setAdapter(mAdapter);
     }
 }
+

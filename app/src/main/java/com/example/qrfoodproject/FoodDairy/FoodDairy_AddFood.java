@@ -1,6 +1,5 @@
 package com.example.qrfoodproject.FoodDairy;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
 import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
-import com.example.qrfoodproject.login.MainActivity;
+import com.example.qrfoodproject.VolleyCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,12 +32,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FoodDairy_AddFood extends AppCompatActivity {
+public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallback {
 
-    Spinner Addfood_time, Addfood_location, Addfood_restaurant, Addfood_food;
+    Spinner Addfood_time, Addfood_location, Addfood_restaurant, Addfood_category, Addfood_food;
     EditText Addfood_serving;
     Button Addfood_input;
+   // String rsId;
+    ArrayList<String> cId,rsId;
     private String getRestaurant = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
+    private String getRestaurantCategory = " http://120.110.112.96/using/get_cName_ByrsName.php";
     private String getRestaurantFood = "http://120.110.112.96/using/Common_FF_FD/getResFood.php";
     private String addRecord = "http://120.110.112.96/using/FoodDairy/addrecord.php";
     private String[] time = {"早", "午", "晚"};
@@ -70,9 +72,12 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         Addfood_time = (Spinner) findViewById(R.id.Addfood_time);
         Addfood_location = (Spinner) findViewById(R.id.Addfood_location);
         Addfood_restaurant = (Spinner) findViewById(R.id.Addfood_restaurant);
+        Addfood_category = (Spinner) findViewById(R.id.Addfood_category);
         Addfood_food = (Spinner) findViewById(R.id.Addfood_food);
         Addfood_serving = (EditText) findViewById(R.id.Addfood_serving);
         Addfood_input = (Button) findViewById(R.id.Addfood_input);
+
+        cId = new ArrayList<String>();
     }
 
     private void setAdapter() {
@@ -90,8 +95,20 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = Addfood_location.getSelectedItemPosition();
-                getRestaurant(pos); //在餐廳spinner中顯示該location的所有餐廳
+                //if(!rsId.isEmpty()) rsId.clear();
+                getRestaurant(pos, new VolleyCallback() {
+                    @Override
+                    public void onSuccess(ArrayList<String> callback_rsId) {
 
+                        rsId = callback_rsId;
+                           Toast.makeText(FoodDairy_AddFood.this,callback_rsId.get(1),Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void getcId(ArrayList<String> cId) {
+
+                    }
+                });
             }
 
             @Override
@@ -99,14 +116,40 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
             }
         });
-        //設定選擇餐廳，食物欄位跳出該餐廳食物
+//        設定選擇餐廳，分類欄位跳出該餐廳分類
         Addfood_restaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                int pos = Addfood_location.getSelectedItemPosition();
+
                 int pos = Addfood_restaurant.getSelectedItemPosition();
-//                food_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this,R.layout.support_simple_spinner_dropdown_item,food[pos][pos2]);
-//                Addfood_food.setAdapter(food_adapter);
+               // if(!cId.isEmpty())cId.clear();
+                getRestaurantCategory(pos, new VolleyCallback() {
+                    @Override
+                    public void onSuccess(ArrayList<String> rsId) {
+
+                    }
+
+                    @Override
+                    public void getcId(ArrayList<String> callback_cId) {
+                      //  cId.clear();
+                        cId = callback_cId;
+                   //     Toast.makeText(FoodDairy_AddFood.this, cId.get(0), Toast.LENGTH_LONG).show();
+
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //設定選擇分類，食物欄位跳出相對應的食物
+        Addfood_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int pos = Addfood_category.getSelectedItemPosition();
                 getRestaurantFood(pos);
             }
 
@@ -115,10 +158,9 @@ public class FoodDairy_AddFood extends AppCompatActivity {
 
             }
         });
-
     }
 
-    private void setCommitButtonListener(){
+    private void setCommitButtonListener() {
         Addfood_input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +225,50 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         });
     }
 
-    private void getRestaurant(int pos) {
+    private void getRestaurantCategory(int pos, VolleyCallback callback) {
+        final int position = pos;
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getRestaurantCategory, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.v("onResponse", response.toString());
+                try {
+                    Log.v("success_getResFood", response);
+                    ArrayList<String> array = new ArrayList<String>();
+                    ArrayList<String> cId = new ArrayList<String>();
+                    //解析JSON檔傳入array
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonObject1 = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < jsonObject1.length(); i++) {
+
+                        JSONObject c = jsonObject1.getJSONObject(i);
+                        cId.add(c.getString("cId"));
+                        array.add(c.getString("cName"));
+                    }
+                    callback.getcId(cId);
+                    food_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this, R.layout.support_simple_spinner_dropdown_item, array);
+                    Addfood_category.setAdapter(food_adapter);
+                } catch (Exception e) {
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.v("Error_getResFood", error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("rsId", rsId.get(position));
+                return params;
+            }
+        };
+        MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+    }
+
+    private void getRestaurant(int pos, VolleyCallback callback) {
         final int position = pos;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, getRestaurant, new Response.Listener<String>() {
@@ -193,14 +278,19 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                 try {
                     Log.v("success_getRes", response);
                     ArrayList<String> array = new ArrayList<String>();
+                    ArrayList<String> rsId = new ArrayList<String>();
                     //解析JSON檔傳入array
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonObject1 = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonObject1.length(); i++) {
+
                         JSONObject c = jsonObject1.getJSONObject(i);
+                        rsId.add(c.getString("rsId"));
+
                         array.add(c.getString("rsName"));
-                    //    array1.add(c.getString("rsId"));
+                        //    array1.add(c.getString("rsId"));
                     }
+                    callback.onSuccess(rsId);
                     restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this, R.layout.support_simple_spinner_dropdown_item, array);
                     Addfood_restaurant.setAdapter(restaurant_adapter);
                 } catch (Exception e) {
@@ -221,7 +311,9 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                 return params;
             }
         };
+
         MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+
     }
 
     private void getRestaurantFood(int pos) {
@@ -258,7 +350,8 @@ public class FoodDairy_AddFood extends AppCompatActivity {
             protected Map<String, String> getParams() {
 
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("rsName", Addfood_restaurant.getSelectedItem().toString());
+                params.put("rsId", rsId.get(Addfood_restaurant.getSelectedItemPosition()));
+                params.put("cId", cId.get(position));
                 return params;
             }
         };
@@ -274,4 +367,16 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         }
         return i;
     }
+
+
+    @Override
+    public void onSuccess(ArrayList<String> str) {
+
+    }
+
+    @Override
+    public void getcId(ArrayList<String> cId) {
+
+    }
 }
+

@@ -105,6 +105,28 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:padding="10dp"
+                android:text="食物種類"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:textSize="50px" />
+
+            <Spinner
+                android:id="@+id/Addfood_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="食物"
                 android:textStyle="bold"
                 android:textColor="#212121"

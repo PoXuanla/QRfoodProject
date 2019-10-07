@@ -1,4 +1,4 @@
-package com.example.qrfoodproject.FoodFile;
+package com.example.qrfoodproject.FoodFile.restaurant;
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +53,7 @@ public class FoodFile_Adapter extends RecyclerView.Adapter<FoodFile_Adapter.View
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),mData.get(position).get("rsName"),Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, FoodFile_Category.class);
-                intent.putExtra("rsName", mData.get(position).get("rsName"));
+                intent.putExtra("rsId", mData.get(position).get("rsId"));
                 mContext.startActivity(intent);
             }
         });
