@@ -2,8 +2,11 @@ package com.example.qrfoodproject.FoodFile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,8 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.example.qrfoodproject.AddFood_Dialog;
 import com.example.qrfoodproject.MySingleton;
-import com.example.qrfoodproject.Qrcode.Qrcode_main;
 import com.example.qrfoodproject.R;
 
 import org.json.JSONException;
@@ -25,7 +28,9 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
     private TextView fdName,gram,calorie,protein,fat,saturateFat,transFat,cholesterol,sugar,dietaryFiber,sodium,calcium,potassium,ferrum;
     private String urll;
     private ImageView my_image_view;
+    private FloatingActionButton fab;
     String Intent_fdId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,16 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
         setView();
 
         print(); //呈現食物的詳細資料
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //AddFood_Dialog a = new AddFood_Dialog();
+
+                DialogFragment dialog =AddFood_Dialog.newInstance(fdName.getText().toString());//將fdName傳送給DialogFragment
+                dialog.show(getSupportFragmentManager(),"");
+            }
+        });
     }
     private void setView(){
         my_image_view = findViewById(R.id.my_image_view1);
@@ -54,6 +69,7 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
         calcium = findViewById(R.id.calcium);
         potassium = findViewById(R.id.potassium);
         ferrum = findViewById(R.id.ferrum);
+        fab = findViewById(R.id.Foodfile_FAB);
     }
     private void print(){
 
