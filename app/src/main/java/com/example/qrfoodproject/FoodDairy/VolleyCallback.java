@@ -1,4 +1,4 @@
-package com.example.qrfoodproject;
+package com.example.qrfoodproject.FoodDairy;
 
 import java.util.ArrayList;
 
