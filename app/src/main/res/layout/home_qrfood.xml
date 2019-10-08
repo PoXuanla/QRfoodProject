@@ -3,36 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#FCFCFC"
     tools:context=".Home_QRfood">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical" >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="25dp"
                 android:background="@drawable/main_bg" >
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="5dp"
                     android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/activity_logo" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="Welcome QRfood Home!!!"
                     android:textColor="#EEEEEE"
@@ -43,6 +36,7 @@
                     android:id="@+id/account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_gravity="center"
                     android:text="account,name"
@@ -53,9 +47,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
                 android:gravity="center">
                 <Button
@@ -88,8 +83,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
                 android:gravity="center">
                 <Button
@@ -124,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/main_button2_shape"
                 android:drawableTop="@drawable/ic_qrcode"
@@ -132,6 +129,5 @@
                 android:textColor="#000000"
                 android:textSize="50px"
                 android:textStyle="bold" />
-        </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>
