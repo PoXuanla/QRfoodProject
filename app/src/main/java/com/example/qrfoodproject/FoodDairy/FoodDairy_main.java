@@ -19,11 +19,13 @@ import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
 import com.example.qrfoodproject.R;
 import com.example.qrfoodproject.login.MainActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FoodDairy_main extends AppCompatActivity {
-
+    private TextView today;
     private ImageButton calen;
     private TabLayout tablayout;
     private ViewPager viewpager;
@@ -39,6 +41,8 @@ public class FoodDairy_main extends AppCompatActivity {
 
         setView(); //設定元件ID
 
+        setTitle(); //設定Title為當日日期
+
         setTab_and_ViewPager(); //設定Tablayout 與 ViewPager 連動
 
         setCalenButtonListener(); //監聽日曆按鈕
@@ -53,8 +57,14 @@ public class FoodDairy_main extends AppCompatActivity {
         super.finish();
         instance = null;
     }
-
+    private void setTitle(){
+        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String strDate = sdFormat.format(date);
+        today.setText(strDate);
+    }
     private void setView() {
+        today = (TextView)findViewById(R.id.today);
         calen = (ImageButton) findViewById(R.id.calen);
         tablayout = (TabLayout) findViewById(R.id.tablayout);
         viewpager = (ViewPager) findViewById(R.id.viewpager);
