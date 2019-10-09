@@ -46,6 +46,7 @@ public class Profile_main extends AppCompatActivity {
         setButtonListener(); //設定按鈕監聽
 
         print_profile(); //顯示個人資料
+
     }
 
     private void setView() {

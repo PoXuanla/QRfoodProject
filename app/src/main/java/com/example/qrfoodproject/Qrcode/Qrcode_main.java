@@ -2,7 +2,10 @@ package com.example.qrfoodproject.Qrcode;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,8 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.example.qrfoodproject.AddFood_Dialog;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +28,7 @@ public class Qrcode_main extends AppCompatActivity {
     static String QrcodeResult ;
     private TextView fdName,gram,calorie,protein,fat,saturateFat,transFat,cholesterol,sugar,dietaryFiber,sodium,calcium,potassium,ferrum;
     private String urll;
+    private FloatingActionButton FAB;
     private ImageView my_image_view;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,6 +38,17 @@ public class Qrcode_main extends AppCompatActivity {
         setView();
 
         print(); //呈現食物的詳細資料
+
+        setButton(); //onclicklistener
+    }
+    private void setButton(){
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialog = AddFood_Dialog.newInstance(fdName.getText().toString());//將fdName傳送給DialogFragment
+                dialog.show(getSupportFragmentManager(),"");
+            }
+        });
     }
     private void print(){
 
@@ -91,7 +108,7 @@ public class Qrcode_main extends AppCompatActivity {
     }
 
     private void setView(){
-        my_image_view = findViewById(R.id.my_image_view);
+        my_image_view = findViewById(R.id.my_image_view1);
         fdName = findViewById(R.id.fdName);
         gram = findViewById(R.id.gram);
         calorie = findViewById(R.id.calorie);
@@ -106,5 +123,6 @@ public class Qrcode_main extends AppCompatActivity {
         calcium = findViewById(R.id.calcium);
         potassium = findViewById(R.id.potassium);
         ferrum = findViewById(R.id.ferrum);
+        FAB = findViewById(R.id.Qrcode_FAB);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.qrfoodproject.FoodDairy;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +45,28 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
             item_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    builder
+                            .setTitle("刪除 : "+(mData.get(getAdapterPosition()).get("fdName").toString()))
+ .setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                            removeItem(getAdapterPosition());
+                        }
+                    })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                }
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                     // 移除項目，getAdapterPosition為點擊的項目位置
-                    removeItem(getAdapterPosition());
+                 //   DialogFragment dd = new removeItem_Dialog();
+                  //  dd.show(((FragmentActivity)mContext).getSupportFragmentManager(),"");
+                   // removeItem(getAdapterPosition());
                 }
             });
         }

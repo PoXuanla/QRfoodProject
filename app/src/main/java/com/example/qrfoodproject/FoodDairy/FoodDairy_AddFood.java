@@ -21,7 +21,6 @@ import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
 import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
-import com.example.qrfoodproject.VolleyCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,12 +31,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallback {
+public class FoodDairy_AddFood extends AppCompatActivity {
 
     Spinner Addfood_time, Addfood_location, Addfood_restaurant, Addfood_category, Addfood_food;
     EditText Addfood_serving;
     Button Addfood_input;
-   // String rsId;
+
     ArrayList<String> cId,rsId;
     private String getRestaurant = "http://120.110.112.96/using/Common_FF_FD/getrsNameByLocation.php";
     private String getRestaurantCategory = " http://120.110.112.96/using/get_cName_ByrsName.php";
@@ -78,6 +77,7 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
         Addfood_input = (Button) findViewById(R.id.Addfood_input);
 
         cId = new ArrayList<String>();
+        rsId = new ArrayList<String>();
     }
 
     private void setAdapter() {
@@ -95,7 +95,7 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = Addfood_location.getSelectedItemPosition();
-                //if(!rsId.isEmpty()) rsId.clear();
+
                 getRestaurant(pos, new VolleyCallback() {
                     @Override
                     public void onSuccess(ArrayList<String> callback_rsId) {
@@ -122,7 +122,6 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 int pos = Addfood_restaurant.getSelectedItemPosition();
-               // if(!cId.isEmpty())cId.clear();
                 getRestaurantCategory(pos, new VolleyCallback() {
                     @Override
                     public void onSuccess(ArrayList<String> rsId) {
@@ -244,9 +243,10 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
                         cId.add(c.getString("cId"));
                         array.add(c.getString("cName"));
                     }
-                    callback.getcId(cId);
+
                     food_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this, R.layout.support_simple_spinner_dropdown_item, array);
                     Addfood_category.setAdapter(food_adapter);
+                    callback.getcId(cId);
                 } catch (Exception e) {
 
                 }
@@ -274,7 +274,7 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
         StringRequest stringRequest = new StringRequest(Request.Method.POST, getRestaurant, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("onResponse", response.toString());
+
                 try {
                     Log.v("success_getRes", response);
                     ArrayList<String> array = new ArrayList<String>();
@@ -288,11 +288,11 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
                         rsId.add(c.getString("rsId"));
 
                         array.add(c.getString("rsName"));
-                        //    array1.add(c.getString("rsId"));
                     }
-                    callback.onSuccess(rsId);
+
                     restaurant_adapter = new ArrayAdapter<String>(FoodDairy_AddFood.this, R.layout.support_simple_spinner_dropdown_item, array);
                     Addfood_restaurant.setAdapter(restaurant_adapter);
+                    callback.onSuccess(rsId);
                 } catch (Exception e) {
 
                 }
@@ -369,14 +369,14 @@ public class FoodDairy_AddFood extends AppCompatActivity implements VolleyCallba
     }
 
 
-    @Override
-    public void onSuccess(ArrayList<String> str) {
-
-    }
-
-    @Override
-    public void getcId(ArrayList<String> cId) {
-
-    }
+//    @Override
+//    public void onSuccess(ArrayList<String> str) {
+//
+//    }
+//
+//    @Override
+//    public void getcId(ArrayList<String> cId) {
+//
+//    }
 }
 
