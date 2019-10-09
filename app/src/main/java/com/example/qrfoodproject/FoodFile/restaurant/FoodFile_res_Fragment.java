@@ -1,9 +1,9 @@
 package com.example.qrfoodproject.FoodFile.restaurant;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_Adapter;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 

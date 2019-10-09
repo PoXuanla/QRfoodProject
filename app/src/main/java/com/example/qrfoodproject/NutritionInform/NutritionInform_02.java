@@ -1,6 +1,6 @@
 package com.example.qrfoodproject.NutritionInform;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.qrfoodproject.R;

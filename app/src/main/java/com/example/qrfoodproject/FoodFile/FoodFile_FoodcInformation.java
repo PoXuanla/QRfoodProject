@@ -2,7 +2,7 @@ package com.example.qrfoodproject.FoodFile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.example.qrfoodproject.MySingleton;
-import com.example.qrfoodproject.Qrcode.Qrcode_main;
 import com.example.qrfoodproject.R;
 
 import org.json.JSONException;

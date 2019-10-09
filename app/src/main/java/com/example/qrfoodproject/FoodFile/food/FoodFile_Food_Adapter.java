@@ -2,7 +2,7 @@ package com.example.qrfoodproject.FoodFile.food;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qrfoodproject.FoodFile.FoodFile_FoodcInformation;
-import com.example.qrfoodproject.FoodFile.category.FoodFile_Category_Adapter;
 import com.example.qrfoodproject.R;
 
 import java.util.ArrayList;

@@ -10,7 +10,7 @@
 
 
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/foodfile_tablayout"
         android:background="#ffffff"
         app:tabTextColor="#000000"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#BDBDBD"/>
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/foodfile_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
