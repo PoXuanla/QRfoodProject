@@ -9,35 +9,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="2dp"
-        android:background="#ffffff"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:padding="5dp"
+        android:background="@drawable/fooddairy_bg2" >
+        <TextView
+            android:id="@+id/item_restaurant"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:background="#ffffff" >
-            <TextView
-                android:id="@+id/item_restaurant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="REStaurant"
-
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="50px" />
-
-        </LinearLayout>
+            android:gravity="center"
+            android:text="REStaurant"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="50px" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-
-            android:orientation="horizontal"
-            android:background="#ffffff" >
+            android:orientation="horizontal" >
             <TextView
                 android:id="@+id/item_food"
                 android:layout_width="wrap_content"
@@ -62,12 +51,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
-            android:orientation="horizontal"
-            android:background="#ffffff" >
+            android:orientation="horizontal" >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,8 +79,9 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -101,14 +89,11 @@
             android:id="@+id/item_remove"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/fooddairy_xbutton" />
         <ImageView
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="10dp"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

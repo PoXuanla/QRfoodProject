@@ -18,9 +18,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="25dp"
+                android:padding="20dp"
                 android:background="@drawable/profile_databg" >
                 <TextView
                     android:id="@+id/name"
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="5dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -72,15 +72,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="顯示帳號"
+                        android:textSize="50px" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,16 +97,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="********"
+                        android:textSize="50px" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,16 +123,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="顯示性別"
+                        android:textSize="50px" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -150,16 +150,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="顯示身高"
+                        android:textSize="50px" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -177,16 +177,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="顯示體重"
+                        android:textSize="50px" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -205,8 +205,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textSize="30sp" />
+                        android:text="顯示運動量"
+                        android:textSize="50px" />
                 </LinearLayout>
             </LinearLayout>
 
