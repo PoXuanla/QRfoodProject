@@ -140,91 +140,90 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="70px" />
                 <TextView
                     android:id="@+id/calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="60px"
                     />
                 <TextView
                     android:id="@+id/cholesterol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/sugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/protein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/saturatedFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/transFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/dietaryFiber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/sodium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/potassium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/calcium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
                 <TextView
                     android:id="@+id/ferrum"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
+                    android:textSize="50px"
                     />
             </LinearLayout>
         </LinearLayout>
