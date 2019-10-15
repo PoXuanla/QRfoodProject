@@ -236,9 +236,11 @@
                 </LinearLayout>
             <Button
                 android:id="@+id/commit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginRight="100dp"
+                android:layout_marginLeft="100dp"
                 android:background="@drawable/profile_button_shape"
                 android:text="確認提交"
                 android:textStyle="bold"
