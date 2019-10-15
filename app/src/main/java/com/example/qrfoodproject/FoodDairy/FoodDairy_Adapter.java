@@ -35,7 +35,7 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
     String url = "http://120.110.112.96/using/FoodDairy/removeFoodDairyRecord.php";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView item_restaurant, item_food, item_serving;
+        public TextView item_restaurant, item_food, item_serving,item_cal;
         public Button item_remove;
 
         public ViewHolder(View v) {
@@ -45,7 +45,7 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
             item_food = (TextView) v.findViewById(R.id.item_food);
             item_serving = (TextView) v.findViewById(R.id.item_serving);
             item_remove = (Button) v.findViewById(R.id.item_remove);
-
+            item_cal = (TextView)v.findViewById(R.id.item_cal);
 
             item_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,9 +95,10 @@ public class FoodDairy_Adapter extends RecyclerView.Adapter<FoodDairy_Adapter.Vi
 
     @Override
     public void onBindViewHolder(FoodDairy_Adapter.ViewHolder holder, final int position) {
-        holder.item_restaurant.setText(mData.get(position).get("location"));
+        holder.item_restaurant.setText(mData.get(position).get("location")+" - "+mData.get(position).get("rsName"));
         holder.item_food.setText(mData.get(position).get("fdName"));
-        holder.item_serving.setText(mData.get(position).get("serving"));
+        holder.item_serving.setText(mData.get(position).get("serving")+"份");
+        holder.item_cal.setText(mData.get(position).get("total_cal")+"大卡");
 
 
     }
