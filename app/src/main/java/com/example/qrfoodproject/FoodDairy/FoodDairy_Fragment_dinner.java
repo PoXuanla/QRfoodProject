@@ -110,6 +110,8 @@ public class FoodDairy_Fragment_dinner extends Fragment {
                         total.put("fdName", c.getString("fdName"));
                         total.put("serving", c.getString("serving"));
                         total.put("sn", c.getString("sn"));
+                        total.put("rsName",c.getString("rsName"));
+                        total.put("total_cal",c.getString("total_cal"));
                         array.add(total);
 
                         setRecycleView(array); //設定RecycleView
