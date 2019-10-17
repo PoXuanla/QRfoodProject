@@ -26,6 +26,7 @@ import java.util.List;
 
 public class FoodDairy_main extends AppCompatActivity {
     private TextView today;
+    private Button intake_nutrition;
     private ImageButton calen;
     private TabLayout tablayout;
     private ViewPager viewpager;
@@ -47,7 +48,7 @@ public class FoodDairy_main extends AppCompatActivity {
 
         setCalenButtonListener(); //監聽日曆按鈕
 
-
+        setIntake_nutritionListener();//監聽攝取營養按鈕
 
     }
 
@@ -68,7 +69,7 @@ public class FoodDairy_main extends AppCompatActivity {
         calen = (ImageButton) findViewById(R.id.calen);
         tablayout = (TabLayout) findViewById(R.id.tablayout);
         viewpager = (ViewPager) findViewById(R.id.viewpager);
-
+        intake_nutrition = (Button) findViewById(R.id.intake_nutrition);
     }
 
     private void setTab_and_ViewPager() {
@@ -95,6 +96,14 @@ public class FoodDairy_main extends AppCompatActivity {
         for (int i = 0; i < 3; i++) {
             tablayout.getTabAt(i).setText(IconName[i]);
         }
+    }
+    private void setIntake_nutritionListener(){
+        intake_nutrition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FoodDairy_main.this,FoodDairy_intake_nutrition.class));
+            }
+        });
     }
 
     private void setCalenButtonListener(){
