@@ -42,4 +42,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     // CardView
     implementation 'com.android.support:cardview-v7:28.0.0'
+//mpandroidchart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }
