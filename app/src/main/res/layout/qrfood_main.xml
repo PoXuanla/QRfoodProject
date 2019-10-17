@@ -20,11 +20,11 @@
             android:layout_gravity="center"
             android:textColor="#227b38"
             android:textSize="100px"
-            android:text="韭菜" />
+            android:text="(顯示食物菜名)" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight="1"
         android:background="#e8f2d0">
@@ -33,18 +33,15 @@
             android:id="@+id/my_image_view1"
             android:layout_gravity="center"
             android:layout_width="130dp"
-            android:layout_height="130dp">
-
-        </ImageView>
+            android:layout_height="130dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
                 <TextView
@@ -130,8 +127,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -140,96 +136,83 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="70px" />
                 <TextView
                     android:id="@+id/calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="60px" />
                 <TextView
                     android:id="@+id/cholesterol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/sugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/protein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/saturatedFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/transFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/dietaryFiber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/sodium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/potassium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/calcium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
                 <TextView
                     android:id="@+id/ferrum"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="24dp"
-                    />
+                    android:textSize="50px" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Qrcode_FAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -242,6 +225,5 @@
         android:elevation="6dp"
         android:src="@drawable/fooddairy_add"
         android:tint="@android:color/white"
-        app:fabSize="normal"
-        />
+        app:fabSize="normal" />
 </LinearLayout>

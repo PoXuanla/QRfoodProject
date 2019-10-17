@@ -2,9 +2,9 @@ package com.example.qrfoodproject.FoodFile.food;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -12,8 +12,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.qrfoodproject.FoodFile.category.FoodFile_Category;
-import com.example.qrfoodproject.FoodFile.category.FoodFile_Category_Adapter;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 

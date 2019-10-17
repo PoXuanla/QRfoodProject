@@ -1,18 +1,17 @@
 package com.example.qrfoodproject.FoodDairy.calen;
 
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.TextView;
 
 import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_breakfast;
 import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_dinner;
 import com.example.qrfoodproject.FoodDairy.FoodDairy_Fragment_lunch;
-import com.example.qrfoodproject.FoodDairy.FoodDairy_main;
 import com.example.qrfoodproject.FoodDairy.ViewPagerFragmentAdapter;
 import com.example.qrfoodproject.R;
 

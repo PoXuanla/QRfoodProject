@@ -3,7 +3,7 @@ package com.example.qrfoodproject.login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 

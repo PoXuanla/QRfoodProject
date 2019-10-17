@@ -1,11 +1,10 @@
 package com.example.qrfoodproject;
 
-import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.qrfoodproject.FoodFile.FoodFile_FoodcInformation;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
