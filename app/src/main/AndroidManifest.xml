@@ -39,6 +39,7 @@
         <activity android:name=".FoodFile.category.FoodFile_Category" />
         <activity android:name=".FoodFile.FoodFile_FoodcInformation" />
         <activity android:name=".FoodFile.food.FoodFile_Food" />
+        <activity android:name=".FoodDairy.FoodDairy_intake_nutrition" />
     </application>
     <uses-permission android:name="android.permission.CAMERA" />
 

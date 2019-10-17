@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
         <Button
+            android:id="@+id/intake_nutrition"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:text="查看攝取營養"
