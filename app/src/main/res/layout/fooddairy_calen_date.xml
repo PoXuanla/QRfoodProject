@@ -30,7 +30,7 @@
         android:gravity="center"
         android:background="@drawable/fooddairy_button_shape2" />
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout_calen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#BDBDBD" />
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_calen"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

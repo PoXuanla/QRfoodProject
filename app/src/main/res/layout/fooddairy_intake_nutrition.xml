@@ -23,14 +23,32 @@
         android:textSize="20dp"
         android:text="熱量"/>
     <TextView
+        android:id="@+id/calorie"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:layout_gravity="center_vertical"
         android:textSize="20dp"
-        android:text="900/4500"/>
+        android:text="900"/>
+    <TextView
 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textSize="20dp"
+        android:text="/"/>
+    <TextView
+        android:id="@+id/total_calorie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textSize="20dp"
+        android:text="4500"/>
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart1"
         android:layout_width="0dp"
@@ -50,15 +68,34 @@
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:textSize="20dp"
-            android:text="熱量"/>
+            android:text="鈉"/>
         <TextView
+            android:id="@+id/sodium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:textSize="20dp"
-            android:text="300/4000"/>
+            android:text="300"/>
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="/"/>
+        <TextView
+            android:id="@+id/total_sodium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="4500"/>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart2"
@@ -79,15 +116,34 @@
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:textSize="20dp"
-            android:text="熱量"/>
+            android:text="蛋白質"/>
         <TextView
+            android:id="@+id/protein"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:textSize="20dp"
-            android:text="200/1500"/>
+            android:text="200"/>
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="/"/>
+        <TextView
+            android:id="@+id/total_protein"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="4500"/>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart3"
@@ -134,6 +190,7 @@
                     android:text="膽固醇"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/cholesterol"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -156,6 +213,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_cholesterol"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -185,6 +243,7 @@
                     android:text="糖"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/sugar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -207,6 +266,60 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_sugar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="2000"
+                    android:textSize="50px"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="碳水化合物"
+                    android:textSize="50px" />
+                <TextView
+                    android:id="@+id/carbohydrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="200"
+                    android:textSize="50px" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="/"
+                    android:textSize="50px" />
+                <TextView
+                    android:id="@+id/total_carbohydrate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -236,6 +349,7 @@
                     android:text="脂肪(總)"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/fat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -258,6 +372,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_fat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -287,6 +402,7 @@
                     android:text="飽和脂肪"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/saturatedFat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -309,6 +425,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_saturatedFat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -338,6 +455,7 @@
                     android:text="反式脂肪"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/transFat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -360,6 +478,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_transFat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -389,6 +508,7 @@
                     android:text="膳食纖維"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/dietaryFiber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -411,6 +531,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_dietaryFiber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -440,6 +561,7 @@
                     android:text="鉀"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/potassium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -462,6 +584,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_potassium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -491,6 +614,7 @@
                     android:text="鈣"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/calcium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -513,6 +637,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_calcium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -542,6 +667,7 @@
                     android:text="鐵"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/ferrum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -564,6 +690,7 @@
                     android:text="/"
                     android:textSize="50px" />
                 <TextView
+                    android:id="@+id/total_ferrum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
