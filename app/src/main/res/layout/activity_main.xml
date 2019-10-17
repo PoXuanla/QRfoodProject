@@ -116,23 +116,55 @@
 
             <TextView
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Has no account yet ?"
-                android:textColor="#FFFFFF"
+                android:text="Have no account yet ?"
+                android:textColor="#F44336"
                 android:textStyle="bold"
-                android:textSize="24sp"/>
+                android:textSize="28sp"
+                android:fontFamily="sans-serif-smallcaps" />
 
-            <TextView
-                android:id="@+id/link_register"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/Register"
-                android:textColor="#4C1FF3"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/link_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="Sign Up"
+                    android:textColor="#FF3D00"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="or"
+                    android:layout_weight="1"
+                    android:textColor="#F44336"
+                    android:textSize="24sp"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif-smallcaps" />
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/google_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

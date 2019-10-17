@@ -200,7 +200,7 @@ public class Profile_main extends AppCompatActivity {
                 String session = pref.getString("sessionID", "");
 
 
-                Map<String, String> map = new HashMap<String, String>();
+                Map<String, String> map = new HashMap<>();
                 map.put("sessionID", session);
                 return map;
             }
