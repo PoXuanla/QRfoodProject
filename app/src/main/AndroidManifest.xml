@@ -7,8 +7,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo2"
-        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="QRFood：我的飲食日誌"
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
