@@ -16,7 +16,7 @@
         android:background="@drawable/fooddairy_bg3"
         android:text="新增食物"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="60px" />
 
     <LinearLayout
