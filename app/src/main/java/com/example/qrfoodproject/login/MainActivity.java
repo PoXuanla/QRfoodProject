@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton google_buttom;
     private String login_url = "http://120.110.112.96/using/Login/login.php";
     private String account = "", password = "";
-    private TextView link_register;
+    private Button link_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

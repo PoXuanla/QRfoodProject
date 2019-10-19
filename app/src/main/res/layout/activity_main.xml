@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:text="QRfood"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="100px"
         android:textStyle="bold"
         app:fontFamily="cursive" />
@@ -29,42 +29,40 @@
         android:background="@drawable/login_logo"
         android:drawablePadding="5dp" />
 
+    <EditText
+        android:id="@+id/edtAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:drawableLeft="@drawable/login_name"
+        android:ems="30"
+        android:hint="@string/Account"
+        android:inputType="text"
+        android:textColorHint="#ffffff"
+        android:textSize="24sp" />
 
-
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF"
+        app:passwordToggleEnabled="true" >
         <EditText
-            android:id="@+id/edtAccount"
-            android:layout_width="match_parent"
+            android:id="@+id/edtPassword"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:drawableLeft="@drawable/login_name"
+            android:drawableStart="@drawable/login_password"
             android:ems="30"
-            android:hint="@string/Account"
-            android:inputType="text"
-            android:textColorHint="#ffffff"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
             android:textSize="24sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColorHint="#FFFFFF"
-            app:passwordToggleEnabled="true" >
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:drawableStart="@drawable/login_password"
-                android:ems="30"
-                android:hint="@string/Password"
-                android:inputType="textPassword"
-                android:textSize="24sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_login"
@@ -81,25 +79,53 @@
         android:textStyle="bold"
         android:textAllCaps="false"
         android:textSize="24sp" />
-
     <TextView
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Has no account yet ?"
-        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Have no account yet ?"
+        android:textColor="#ffffff"
         android:textStyle="bold"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/link_register"
-        android:layout_width="wrap_content"
+        android:textSize="50px"
+        android:fontFamily="sans-serif-smallcaps" />
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/Register"
-        android:textColor="#011993"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
+        android:orientation="horizontal"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" >
+        <Button
+            android:id="@+id/link_register"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:text="Sign Up"
+            android:textColor="#ff2600"
+            android:textSize="40px"
+            android:textAllCaps="false"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="or"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:textSize="50px"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-smallcaps" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>
