@@ -32,7 +32,7 @@ public class checkRegister {
         return parAccount.matcher(account).matches();
     }
 
-    boolean checkPassword(String password){
+    public boolean checkPassword(String password){
         return parPassword.matcher(password).matches();
     }
 
@@ -45,7 +45,7 @@ public class checkRegister {
         }else   return false;
     }
 
-    boolean checkName(String name){
+    public boolean checkName(String name){
         if (!name.isEmpty()){
             if(name.codePoints().anyMatch(
                     codePoint -> Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HAN)) {
@@ -63,19 +63,19 @@ public class checkRegister {
         }else   return false;
     }
 
-    boolean checkMail(String email){
+    public boolean checkMail(String email){
         return parEmail.matcher(email).matches();
     }
 
-    boolean checkHeight(String height){
+    public boolean checkHeight(String height){
         return parHeight.matcher(height).matches();
     }
 
-    boolean checkWeight(String weight){
+    public boolean checkWeight(String weight){
         return parWeight.matcher(weight).matches();
     }
 
-    boolean checkExercise(String exercise){
+    public boolean checkExercise(String exercise){
         return parExercise.matcher(exercise).matches();
     }
 

@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.example.qrfoodproject.login.checkRegister;
 import com.example.qrfoodproject.login.whenSessionInvalid;
 
 import java.util.HashMap;
@@ -28,6 +29,8 @@ public class Profile_ModifyData extends AppCompatActivity {
     Button commit;
     int is_Gender = 1;
     private String url = "http://120.110.112.96/using/Profile/updateUserInform.php";
+
+    checkRegister checkModify = new checkRegister();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,7 @@ public class Profile_ModifyData extends AppCompatActivity {
     private void setButtonListener() {
         female.setOnCheckedChangeListener(onClick);
         male.setOnCheckedChangeListener(onClick);
-        commit.setOnClickListener(onclick);
+        commit.setOnClickListener(commitOnClick);
     }
 
     //radio按鈕監聽
@@ -72,12 +75,15 @@ public class Profile_ModifyData extends AppCompatActivity {
         }
     };
     //按鈕監聽
-    Button.OnClickListener onclick = new View.OnClickListener() {
+    Button.OnClickListener commitOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            editUserInform();
-            startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
-            finish();
+            if (doubleCheck()){
+                editUserInform();
+                startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
+                finish();
+            }
+
         }
     };
 
@@ -112,5 +118,39 @@ public class Profile_ModifyData extends AppCompatActivity {
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    private boolean doubleCheck(){
 
+        String Name = name.getText().toString();
+        String Email = email.getText().toString();
+        String Height = height.getText().toString();
+        String Weight = weight.getText().toString();
+        String Exercise = exercise.getText().toString();
+
+        if (!checkModify.checkMail(Email)){
+            email.setError("信箱不符合標準規範");
+            return false;
+        }else   email.setError(null);
+
+        if (!checkModify.checkName(Name)){
+            name.setError("名稱長度超出範圍，或含有特殊符號");
+            return false;
+        }else   name.setError(null);
+
+        if (!checkModify.checkHeight(Height)){
+            height.setError("請確認填寫是否正確");
+            return false;
+        }else   height.setError(null);
+
+        if (!checkModify.checkWeight(Weight)){
+            weight.setError("請確認填寫是否正確");
+            return false;
+        }else   weight.setError(null);
+
+        if (!checkModify.checkExercise(Exercise)){
+            exercise.setError("運動量不可輸入1~4以外數值");
+            return false;
+        }else   exercise.setError(null);
+
+        return true;
+    }
 }

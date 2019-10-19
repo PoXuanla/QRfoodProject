@@ -1,9 +1,9 @@
 package com.example.qrfoodproject.Qrcode;
 
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.qrfoodproject.AddFood_Dialog;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +45,7 @@ public class Qrcode_main extends AppCompatActivity {
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialog =AddFood_Dialog.newInstance(fdName.getText().toString());//將fdName傳送給DialogFragment
+                DialogFragment dialog = AddFood_Dialog.newInstance(fdName.getText().toString());//將fdName傳送給DialogFragment
                 dialog.show(getSupportFragmentManager(),"");
             }
         });

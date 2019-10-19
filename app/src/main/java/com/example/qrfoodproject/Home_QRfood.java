@@ -170,7 +170,7 @@ public class Home_QRfood extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(Home_QRfood.this, "Session still valid", Toast.LENGTH_SHORT).show();
+                Log.d("Session", "Session is still valid");
             }
         }, new Response.ErrorListener() {
             @Override
