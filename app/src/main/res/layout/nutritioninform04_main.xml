@@ -4,27 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/nutritioninformbg"
+    android:orientation="vertical"
     tools:context=".NutritionInform.NutritionInform_04">
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@drawable/nutritioninformbg"
                 android:paddingTop="15dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninformbg"
                 android:text="04.蛋豆魚肉類"
-                android:textStyle="bold"
                 android:textColor="#EEEEEE"
-                android:textSize="24sp"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,9 +41,10 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="營養素："
-                android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:textSize="50px" />
+                android:textSize="50px"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,9 +64,10 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="食物來源："
-                android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:textSize="50px" />
+                android:textSize="50px"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,9 +87,10 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="建議量："
-                android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:textSize="50px" />
+                android:textSize="50px"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,50 +101,58 @@
                 android:text="每人每天四份。每份相當於蛋一個或豆腐一塊或魚類一兩、或肉類一兩。"
                 android:textColor="#FFFFFF"
                 android:textSize="50px" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:src="@drawable/nutrition_img04_1"/>
+                android:src="@drawable/nutrition_img04_1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="糖醋排骨"
                 android:textColor="#FFFFFF"
-                android:textSize="50px"/>
+                android:textSize="50px" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:src="@drawable/nutrition_img04_2"/>
+                android:src="@drawable/nutrition_img04_2" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="糖醋魚柳"
                 android:textColor="#FFFFFF"
-                android:textSize="50px"/>
+                android:textSize="50px" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:src="@drawable/nutrition_img04_3"/>
+                android:src="@drawable/nutrition_img04_3" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="滷蛋"
                 android:textColor="#FFFFFF"
-                android:textSize="50px"/>
+                android:textSize="50px" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:src="@drawable/nutrition_img04_4"/>
+                android:src="@drawable/nutrition_img04_4" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="番茄豆腐"
                 android:textColor="#FFFFFF"
-                android:textSize="50px"/>
+                android:textSize="50px" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

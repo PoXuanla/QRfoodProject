@@ -142,9 +142,6 @@ public class Register extends AppCompatActivity {
             gender = 1;
 
 
-        //TODO WindowManager: android.view.WindowLeaked:
-        //Activity com.example.qrfoodproject.login.Register has leaked window DecorView@16a7db7[Register] that was originally added here
-        //Might be occurred by intending to show a dialog after class killed
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

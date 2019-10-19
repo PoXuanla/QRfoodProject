@@ -3,7 +3,7 @@ package com.example.qrfoodproject.login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.Home_QRfood;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.google.android.gms.common.SignInButton;
 //import com.google.gson.Gson;
 //import com.google.gson.GsonBuilder;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtAccount, edtPassword;
     private Button Btn_login;
+    private SignInButton google_buttom;
     private String login_url = "http://120.110.112.96/using/Login/login.php";
     private String account = "", password = "";
     private TextView link_register;
@@ -49,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         setButtonListener(); //設定按鈕監聽
 
-
     }
 
     private void setButtonListener() {
         Btn_login.setOnClickListener(btn_listener);
         link_register.setOnClickListener(link_registerListener);
+        google_buttom.setOnClickListener(viaGoogle);
     }
 
     private void setView() {
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         Btn_login = findViewById(R.id.btn_login);
         link_register = findViewById(R.id.link_register);
+        google_buttom = findViewById(R.id.google_button);
     }
 
     // 進入註冊畫面
@@ -79,6 +82,23 @@ public class MainActivity extends AppCompatActivity {
                 else Log.e("Weird Error", "Unexpected error occurred at Login State");
             }
 
+        }
+    };
+
+    private TextView.OnClickListener link_registerListener = new TextView.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Start the Sign up activity
+            Intent intent = new Intent(MainActivity.this, Register.class);
+            startActivity(intent);
+        }
+    };
+
+    private SignInButton.OnClickListener viaGoogle = new SignInButton.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+            new ForFirebase().signIn(MainActivity.this);
         }
     };
 
@@ -135,14 +155,7 @@ public class MainActivity extends AppCompatActivity {
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    private TextView.OnClickListener link_registerListener = new TextView.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // Start the Sign up activity
-            Intent intent = new Intent(MainActivity.this, Register.class);
-            startActivity(intent);
-        }
-    };
+
 
 
 }
