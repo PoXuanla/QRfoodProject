@@ -1,9 +1,7 @@
 package com.example.qrfoodproject.Profile;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +13,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.qrfoodproject.login.MainActivity;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
-import com.example.qrfoodproject.login.whenSessionInvalid;
+import com.example.qrfoodproject.login.sessionCheck;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,10 +28,7 @@ public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout;
     TextView account, name, gender, height, weight, exercise, email;
 
-    private String logout_url = "http://120.110.112.96/using/destroy_Session.php";
     private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
-    private String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,87 +69,17 @@ public class Profile_main extends AppCompatActivity {
             switch (v.getId()) {
                 //前往「修改資料」
                 case R.id.modifyData:
-                    StringRequest stringRequest1 = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            startActivity(new Intent(Profile_main.this, Profile_ModifyData.class));
-                            finish();
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            new whenSessionInvalid().informing(Profile_main.this, error);
-                        }
-                    }) {
-                        @Override
-                        protected Map<String, String> getParams() {
-                            //取得sessionID
-                            SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                            String session = pref.getString("sessionID", "");
-
-                            Map<String, String> map = new HashMap<>();
-                            map.put("sessionID", session);
-                            return map;
-                        }
-                    };
-                    MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest1);
+                    new sessionCheck().jump_afterSessionCheck(Profile_main.this, Profile_ModifyData.class);
                     break;
 
                 //前往「修改密碼」
                 case R.id.modifyPassword:
-                    StringRequest stringRequest2 = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            startActivity(new Intent(Profile_main.this, Profile_ModifyPassword.class));
-                            finish();
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            new whenSessionInvalid().informing(Profile_main.this, error);
-                        }
-                    }) {
-                        @Override
-                        protected Map<String, String> getParams() {
-                            SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                            String session = pref.getString("sessionID", "");
-                            Map<String, String> map = new HashMap<>();
-                            map.put("sessionID", session);
-                            return map;
-                        }
-                    };
-                    MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest2);
+                    new sessionCheck().jump_afterSessionCheck(Profile_main.this, Profile_ModifyPassword.class);
                     break;
 
                 //前往「登出」
                 case R.id.logout:
-                    SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                    final String session = pref.getString("sessionID", "");
-                    pref.edit().clear().apply();
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, logout_url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            //Anything to do?
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            new whenSessionInvalid().informing(Profile_main.this, error);
-                            ActivityCompat.finishAffinity(Profile_main.this);
-                        }
-                    }) {
-                        @Override
-                        protected Map<String, String> getParams() {
-                            Map<String, String> params = new HashMap<>();
-
-                            params.put("sessionID", session);
-                            return params;
-                        }
-                    };
-                    MySingleton.getInstance(Profile_main.this).addToRequestQueue(stringRequest);
-                    Intent intent1 = new Intent(Profile_main.this, MainActivity.class);
-                    startActivity(intent1);
-                    ActivityCompat.finishAffinity(Profile_main.this);
+                    new sessionCheck().logout(Profile_main.this);
                     break;
             }
         }
@@ -190,7 +114,7 @@ public class Profile_main extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                new whenSessionInvalid().informing(Profile_main.this, error);
+                new sessionCheck().informing(Profile_main.this, error);
             }
         }) {
             @Override

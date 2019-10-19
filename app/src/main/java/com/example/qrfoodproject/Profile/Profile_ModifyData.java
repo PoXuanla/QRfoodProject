@@ -18,7 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 import com.example.qrfoodproject.login.checkRegister;
-import com.example.qrfoodproject.login.whenSessionInvalid;
+import com.example.qrfoodproject.login.sessionCheck;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +40,8 @@ public class Profile_ModifyData extends AppCompatActivity {
         setView(); //設定元件ID
 
         setButtonListener(); //設定按鈕監聽
+
+        new sessionCheck().session_ifExist(this);
 
     }
 
@@ -96,7 +98,7 @@ public class Profile_ModifyData extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                new whenSessionInvalid().informing(Profile_ModifyData.this, error);
+                new sessionCheck().informing(Profile_ModifyData.this, error);
                 error.printStackTrace();
             }
         }) {

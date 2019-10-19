@@ -1,37 +1,26 @@
 package com.example.qrfoodproject;
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.FoodDairy.FoodDairy_main;
 import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_restaurant;
 import com.example.qrfoodproject.NutritionInform.NutritionInform;
 import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.Qrcode.ScanQrcode;
-import com.example.qrfoodproject.login.MainActivity;
-import com.example.qrfoodproject.login.whenSessionInvalid;
+import com.example.qrfoodproject.login.sessionCheck;
 
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Home_QRfood extends AppCompatActivity {
     Button personalData, btn_qrcode, FoodDairy, nutritionInform, foodDocument;
     TextView account;
-    private  String session_isExist_url = "http://120.110.112.96/using/session_isExist.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +32,7 @@ public class Home_QRfood extends AppCompatActivity {
 
         setTitleSession(); //設置主頁面session(測試用)，之後會改成使用者名稱
 
-        session_atHome();
+        new sessionCheck().session_ifExist(this);
     }
 
 
@@ -82,17 +71,17 @@ public class Home_QRfood extends AppCompatActivity {
             switch (v.getId()){
 
                 case R.id.foodDocument:
-                    session_isExist(Home_QRfood.this,R.id.foodDocument);
+                    new sessionCheck().jump_afterSessionCheck(Home_QRfood.this, FoodFile_restaurant.class);
                     break;
 
                 case R.id.FoodDairy:
-                    session_isExist(Home_QRfood.this, R.id.FoodDairy);
+                    new sessionCheck().jump_afterSessionCheck(Home_QRfood.this, FoodDairy_main.class);
                     break;
                 case R.id.nutritioninform:
                     startActivity(new Intent(Home_QRfood.this, NutritionInform.class));
                     break;
                 case R.id.personalData:
-                    session_isExist(Home_QRfood.this, R.id.personalData);
+                    new sessionCheck().jump_afterSessionCheck(Home_QRfood.this, Profile_main.class);
                     break;
                 case R.id.btn_qrcode:
                     startActivity(new Intent(Home_QRfood.this, ScanQrcode.class));
@@ -110,83 +99,5 @@ public class Home_QRfood extends AppCompatActivity {
         account.setText(session);
     }
 
-    private void session_isExist(final Context context , final int buttonID){
 
-        //此session判斷是用在使用者按下HOME裡面的任意按鈕時執行的
-        context.getApplicationContext();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-
-                switch (buttonID){
-                    case R.id.FoodDairy:
-                        Log.d("Session: ", "still valid");
-                        startActivity(new Intent(context, FoodDairy_main.class));
-                        break;
-                    case R.id.personalData:
-                        Log.d("Session: ", "still valid");
-                        startActivity(new Intent(context, Profile_main.class));
-                        break;
-                    case R.id.foodDocument:
-                        startActivity(new Intent(context, FoodFile_restaurant.class));
-                        break;
-                    default:
-                        break;
-                }
-
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Home_QRfood.this,"請重新登入",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(context , MainActivity.class));
-                finish();
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                String session = pref.getString("sessionID", "");
-                Map<String, String> map = new HashMap<>();
-                map.put("sessionID", session);
-                return map;
-            }
-
-
-        };
-        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
-
-
-    }
-
-    private void session_atHome(){
-
-        //此session判斷是用在使用者重新打開app時，在HOME的生命週期處於onCreate()階段時處理的判斷
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Session", "Session is still valid");
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                new whenSessionInvalid().informing(Home_QRfood.this, error);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
-                String session = pref.getString("sessionID", "");
-                Map<String, String> map = new HashMap<>();
-                map.put("sessionID", session);
-                return map;
-            }
-        };
-        MySingleton.getInstance(Home_QRfood.this).addToRequestQueue(stringRequest);
-    }
 }
