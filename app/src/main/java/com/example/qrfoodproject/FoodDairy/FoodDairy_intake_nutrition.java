@@ -14,7 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.R;
-import com.example.qrfoodproject.login.whenSessionInvalid;
+
 import com.github.mikephil.charting.charts.PieChart;
 import com.google.gson.JsonObject;
 

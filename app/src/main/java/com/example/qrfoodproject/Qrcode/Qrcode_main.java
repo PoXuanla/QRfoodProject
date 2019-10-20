@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.qrfoodproject.AddFood_Dialog;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.example.qrfoodproject.login.sessionCheck;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -40,6 +41,8 @@ public class Qrcode_main extends AppCompatActivity {
         print(); //呈現食物的詳細資料
 
         setButton(); //onclicklistener
+
+        new sessionCheck().session_ifExist(this);
     }
     private void setButton(){
         FAB.setOnClickListener(new View.OnClickListener() {
