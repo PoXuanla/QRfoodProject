@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.qrfoodproject">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -46,10 +50,7 @@
         <activity android:name=".FoodFile.FoodFile_FoodcInformation" />
         <activity android:name=".FoodFile.food.FoodFile_Food" />
         <activity android:name=".FoodDairy.FoodDairy_intake_nutrition" />
-        <activity android:name=".login.ForFirebase" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

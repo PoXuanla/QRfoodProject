@@ -23,8 +23,9 @@ import com.example.qrfoodproject.Home_QRfood;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 import com.google.android.gms.common.SignInButton;
-//import com.google.gson.Gson;
-//import com.google.gson.GsonBuilder;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         google_buttom = findViewById(R.id.google_button);
     }
 
-    // 進入註冊畫面
     Button.OnClickListener btn_listener = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -94,11 +94,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private SignInButton.OnClickListener viaGoogle = new SignInButton.OnClickListener(){
+    private final SignInButton.OnClickListener viaGoogle = new SignInButton.OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            new ForFirebase().signIn(MainActivity.this);
+            Firebase_viaGoogle buildThemUp = new Firebase_viaGoogle();
+            buildThemUp.buildUpViewByGoogle(MainActivity.this);
+
         }
     };
 
@@ -134,12 +136,13 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 try {
+
                     String responseBody = new String(error.networkResponse.data, Charset.forName("utf-8"));
                     JSONObject data = new JSONObject(responseBody);
                     String message = data.getString("message");
                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
 
+                } catch (JSONException e) {
                     Log.v("Error_Exception", e.getMessage());
                 }
             }
