@@ -78,7 +78,7 @@ public class Profile_ModifyPassword extends AppCompatActivity {
 
     private void changePassword(String previousPassword, String nowPassword){
 
-        //get the password from what user insert
+        //get the password from what user inserted
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

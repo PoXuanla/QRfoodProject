@@ -3,10 +3,12 @@ package com.example.qrfoodproject.Qrcode;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.zxing.Result;
 
@@ -20,7 +22,7 @@ public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.Re
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ScannerView = new ZXingScannerView(getApplicationContext());
+        ScannerView = new ZXingScannerView(ScanQrcode.this);
         setContentView(ScannerView);
 
         checkCameraPermitted();
@@ -32,15 +34,14 @@ public class ScanQrcode extends AppCompatActivity implements ZXingScannerView.Re
         //reason that the permission wont been asked while installing is that USER could revoke permission after that
         final int PERMISSION_CAMERA = 1011;
 
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(ScanQrcode.this, Manifest.permission.CAMERA)){
+        if (ContextCompat.checkSelfPermission(ScanQrcode.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             new AlertDialog.Builder(ScanQrcode.this)
                     .setMessage("此功能需要您提供相機權限方能使用")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(ScanQrcode.this,
-                                    new String[]{Manifest.permission.CAMERA},
+                                    new String[]{android.Manifest.permission.CAMERA},
                                     PERMISSION_CAMERA);
                         }
                     }).setNegativeButton("Nope", new DialogInterface.OnClickListener() {
