@@ -23,7 +23,6 @@ import com.example.qrfoodproject.Home_QRfood;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtAccount, edtPassword;
     private Button Btn_login;
-    private SignInButton google_buttom;
     private String login_url = "http://120.110.112.96/using/Login/login.php";
     private String account = "", password = "";
     private Button link_register;
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     private void setButtonListener() {
         Btn_login.setOnClickListener(btn_listener);
         link_register.setOnClickListener(link_registerListener);
-        google_buttom.setOnClickListener(viaGoogle);
     }
 
     private void setView() {
@@ -65,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         Btn_login = findViewById(R.id.btn_login);
         link_register = findViewById(R.id.link_register);
-        google_buttom = findViewById(R.id.google_button);
     }
 
     Button.OnClickListener btn_listener = new Button.OnClickListener() {
@@ -94,15 +90,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private final SignInButton.OnClickListener viaGoogle = new SignInButton.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            Firebase_viaGoogle buildThemUp = new Firebase_viaGoogle();
-            buildThemUp.buildUpViewByGoogle(MainActivity.this);
-
-        }
-    };
 
     private void checkInformation() {
 
@@ -156,6 +143,14 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    @Override
+    protected void onStart() {
+        //在app生命週期來到start時從Firebase檢查使用者
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        new Firebase_viaGoogle().letMeKnowUserState(user);
     }
 
 

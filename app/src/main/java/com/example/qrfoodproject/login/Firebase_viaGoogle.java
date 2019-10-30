@@ -43,15 +43,6 @@ public class Firebase_viaGoogle extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart(){
-        //檢查使用者狀態是否不為null
-        //應該移到MainActivity?
-        super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        letMeKnowUserState(currentUser);
-
-    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -62,6 +53,7 @@ public class Firebase_viaGoogle extends AppCompatActivity {
             try {
 
                 GoogleSignInAccount accountHere = task.getResult(ApiException.class);
+                assert accountHere != null;
                 checkIfAuthSuccess(accountHere);
 
             } catch (ApiException e) {
@@ -72,9 +64,11 @@ public class Firebase_viaGoogle extends AppCompatActivity {
 
     private void checkIfAuthSuccess(GoogleSignInAccount account){
 
+        Log.d("Authentication", account.getId());
+
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener((Activity) getApplicationContext(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -85,7 +79,7 @@ public class Firebase_viaGoogle extends AppCompatActivity {
                             letMeKnowUserState(currentUser);
 
                         }else{
-                            Log.d("Authentication", "Failed", task.getException());
+                            Log.e("Authentication", task.getException().getMessage());
                             //update null?
                         }
                     }
