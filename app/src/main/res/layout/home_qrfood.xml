@@ -32,16 +32,6 @@
             android:textSize="70px"
             android:textStyle="bold"
             app:fontFamily="sans-serif-black" />
-        <TextView
-            android:id="@+id/account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_gravity="center"
-            android:text="account,name"
-            android:textColor="#000000"
-            android:textSize="60px"/>
     </LinearLayout>
 
     <LinearLayout

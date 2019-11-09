@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
+import com.example.qrfoodproject.PushNotification.ManageAlarm;
 import com.example.qrfoodproject.R;
 import com.example.qrfoodproject.login.sessionCheck;
 
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
-    Button modifyData, modifyPassword, logout;
+    Button modifyData, modifyPassword, logout, pushNotification;
     TextView account, name, gender, height, weight, exercise, email;
 
     private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
@@ -54,6 +55,7 @@ public class Profile_main extends AppCompatActivity {
         weight = findViewById(R.id.weight);
         email = findViewById(R.id.email);
         exercise = findViewById(R.id.exercise);
+        pushNotification = findViewById(R.id.PushNotification);
     }
 
     private void setButtonListener() {
@@ -61,6 +63,7 @@ public class Profile_main extends AppCompatActivity {
         modifyData.setOnClickListener(onclick);
         modifyPassword.setOnClickListener(onclick);
         logout.setOnClickListener(onclick);
+        pushNotification.setOnClickListener(onclick);
     }
 
     Button.OnClickListener onclick = new View.OnClickListener() {
@@ -80,6 +83,10 @@ public class Profile_main extends AppCompatActivity {
                 //前往「登出」
                 case R.id.logout:
                     new sessionCheck().logout(Profile_main.this);
+                    break;
+                case R.id.PushNotification:
+                    new ManageAlarm();
+                    ManageAlarm.addSpecificTime(Profile_main.this);
                     break;
             }
         }

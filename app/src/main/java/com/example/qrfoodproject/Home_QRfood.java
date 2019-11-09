@@ -30,7 +30,7 @@ public class Home_QRfood extends AppCompatActivity {
 
         setClick();
 
-        setTitleSession(); //設置主頁面session(測試用)，之後會改成使用者名稱
+        //setTitleSession(); 設置主頁面session(測試用)，之後會改成使用者名稱
 
         new sessionCheck().session_ifExist(this);
     }
