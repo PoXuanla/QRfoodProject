@@ -2,11 +2,20 @@ package com.example.qrfoodproject.FoodFile;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.qrfoodproject.Home_QRfood;
+import com.example.qrfoodproject.Profile.Profile_ModifyData;
+import com.example.qrfoodproject.Profile.Profile_main;
+import com.example.qrfoodproject.login.MainActivity;
+import com.example.qrfoodproject.login.sessionCheck;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +38,7 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
     private String urll;
     private ImageView my_image_view;
     private FloatingActionButton fab;
+    private Button btn_home;
     String Intent_fdId;
 
     @Override
@@ -42,12 +52,18 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
         setView();
 
         print(); //呈現食物的詳細資料
-
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FoodFile_FoodcInformation.this, Home_QRfood.class));
+                ActivityCompat.finishAffinity(FoodFile_FoodcInformation.this);
+            }
+        });
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //AddFood_Dialog a = new AddFood_Dialog();
-
+                new sessionCheck().jump_afterSessionCheck(FoodFile_FoodcInformation.this);
                 DialogFragment dialog =AddFood_Dialog.newInstance(fdName.getText().toString());//將fdName傳送給DialogFragment
                 dialog.show(getSupportFragmentManager(),"");
             }
@@ -56,6 +72,7 @@ public class FoodFile_FoodcInformation extends AppCompatActivity {
     private void setView(){
         my_image_view = findViewById(R.id.my_image_view1);
         fdName = findViewById(R.id.fdName);
+        btn_home = findViewById(R.id.btn_home);
         gram = findViewById(R.id.gram);
         calorie = findViewById(R.id.calorie);
         protein = findViewById(R.id.protein);

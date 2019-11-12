@@ -99,7 +99,65 @@ public class sessionCheck extends AppCompatActivity {
         };
         MySingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
+    public void jump_afterSessionCheck_addrecord(Activity context,Class goal,String time){
 
+        //此function不同於session_ifExist()
+        //在這裡，當session判斷得到onResponse()後，程式就會進行頁面轉換(intent)
+        //用於FoodDairy中addrecord的session判斷
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Intent intent = new Intent(context, goal);
+                intent.putExtra("times", time);
+                context.startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                informing(context, error);
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                SharedPreferences pref = context.getSharedPreferences("Data", MODE_PRIVATE);
+                String session = pref.getString("sessionID", "");
+                Map<String, String> map = new HashMap<>();
+                map.put("sessionID", session);
+                return map;
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+    public int jump_afterSessionCheck(Activity context){
+
+        //此function不同於session_ifExist()
+        //在這裡，當session判斷得到onResponse()後，程式就會進行頁面轉換(intent)
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, session_isExist_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+               // context.startActivity(new Intent(context, goal));
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                informing(context, error);
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                SharedPreferences pref = context.getSharedPreferences("Data", MODE_PRIVATE);
+                String session = pref.getString("sessionID", "");
+                Map<String, String> map = new HashMap<>();
+                map.put("sessionID", session);
+                return map;
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+        return 1;
+    }
     public void logout(Activity context){
 
         //登出，對，就是登出

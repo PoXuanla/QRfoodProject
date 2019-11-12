@@ -1,5 +1,6 @@
 package com.example.qrfoodproject.Profile;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.R;
+import com.example.qrfoodproject.login.MainActivity;
 import com.example.qrfoodproject.login.checkRegister;
 import com.example.qrfoodproject.login.sessionCheck;
 
@@ -89,7 +91,6 @@ public class Profile_ModifyPassword extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.v("error1", error.toString());
                 error.printStackTrace();
-
             }
         }) {
             @Override

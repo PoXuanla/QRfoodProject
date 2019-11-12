@@ -98,7 +98,7 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/main_button1_shape"
             android:drawableTop="@drawable/ic_foodnutritious"
-            android:text="營養抓寶站"
+            android:text="營養資訊"
             android:textSize="50px"
             android:textStyle="bold"
             android:textAllCaps="false"

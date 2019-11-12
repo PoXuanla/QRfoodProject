@@ -3,6 +3,11 @@ package com.example.qrfoodproject.FoodDairy;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import com.example.qrfoodproject.FoodFile.FoodFile_FoodcInformation;
+import com.example.qrfoodproject.FoodFile.food.FoodFile_Food;
+import com.example.qrfoodproject.FoodFile.restaurant.FoodFile_res_Fragment;
+import com.example.qrfoodproject.login.sessionCheck;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -85,9 +90,12 @@ public class FoodDairy_Fragment_breakfast extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
-                intent.putExtra("times", "早");
-                startActivity(intent);
+
+                new sessionCheck().jump_afterSessionCheck_addrecord(getActivity(),FoodDairy_AddFood.class,"早");
+
+//                Intent intent = new Intent(getActivity(), FoodDairy_AddFood.class);
+//                intent.putExtra("times", "早");
+//                startActivity(intent);
 
             }
         });

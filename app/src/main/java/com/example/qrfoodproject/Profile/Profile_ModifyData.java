@@ -82,7 +82,7 @@ public class Profile_ModifyData extends AppCompatActivity {
         public void onClick(View v) {
             if (doubleCheck()){
                 editUserInform();
-                startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
+                //startActivity(new Intent(Profile_ModifyData.this, Profile_main.class));
                 finish();
             }
 
