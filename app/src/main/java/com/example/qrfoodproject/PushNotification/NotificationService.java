@@ -18,6 +18,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.example.qrfoodproject.Profile.checkNutrition_push;
 import com.example.qrfoodproject.R;
 
 public class NotificationService extends IntentService{
@@ -43,6 +44,8 @@ public class NotificationService extends IntentService{
         Resources res = context.getResources();
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        String toShow = new checkNutrition_push().checkAndReturnResult(context);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
             //當使用者的版本高於Oreo時，Android要求開發者需要另外為元素添加「channel(頻道)」，類似為通知作分類
@@ -62,7 +65,7 @@ public class NotificationService extends IntentService{
             Notification.Builder builder = new Notification.Builder(context)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setContentTitle("QRFood")
-                    .setContentText("Hey, it's sending via Build version later than Oreo")
+                    .setContentText(toShow)
                     .setChannelId(CHANNEL_ID);
 
             manager.notify(1, builder.build());

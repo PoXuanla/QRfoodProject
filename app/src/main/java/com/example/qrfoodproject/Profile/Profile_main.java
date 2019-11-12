@@ -3,6 +3,9 @@ package com.example.qrfoodproject.Profile;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +30,7 @@ import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout, pushNotification;
-    TextView account, name, gender, height, weight, exercise, email;
+    TextView account, name, gender, height, weight, exercise, email, feelConfused;
 
     private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
 
@@ -56,6 +59,13 @@ public class Profile_main extends AppCompatActivity {
         email = findViewById(R.id.email);
         exercise = findViewById(R.id.exercise);
         pushNotification = findViewById(R.id.PushNotification);
+        feelConfused = findViewById(R.id.feelConfused);
+
+        //add an underline on TextView feelConfused
+        SpannableString context = new SpannableString("推播功能是什麼東西？");
+        context.setSpan(new UnderlineSpan(), 0 ,context.length(), 0);
+        feelConfused.setText(context);
+
     }
 
     private void setButtonListener() {

@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
 import com.example.qrfoodproject.Profile.Profile_main;
+import com.example.qrfoodproject.Profile.checkNutrition_push;
 import com.example.qrfoodproject.R;
 
 import com.github.mikephil.charting.charts.PieChart;
