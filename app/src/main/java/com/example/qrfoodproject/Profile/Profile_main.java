@@ -21,14 +21,14 @@ import com.example.qrfoodproject.login.sessionCheck;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout, pushNotification;
-    TextView account, name, gender, height, weight, exercise, email;
-
+    TextView account, name, gender, height, weight, exercise, email,BMI;
+    DecimalFormat df = new DecimalFormat("##.00");
     private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
 
     @Override
@@ -41,6 +41,7 @@ public class Profile_main extends AppCompatActivity {
         setButtonListener(); //設定按鈕監聽
 
         print_profile(); //顯示個人資料
+
 
     }
 
@@ -56,6 +57,7 @@ public class Profile_main extends AppCompatActivity {
         email = findViewById(R.id.email);
         exercise = findViewById(R.id.exercise);
         pushNotification = findViewById(R.id.PushNotification);
+        BMI = findViewById(R.id.BMI);
     }
 
     private void setButtonListener() {
@@ -113,6 +115,29 @@ public class Profile_main extends AppCompatActivity {
                     height.setText(data.getString("height"));
                     weight.setText(data.getString("weight"));
                     exercise.setText(data.getString("exercise"));
+                    double bmi = data.getDouble("weight")/
+                            (data.getDouble("height")/100)/(data.getDouble("height")/100);
+                    bmi = Double.parseDouble(df.format(bmi));
+                    if(bmi < 18.5){
+                        String str = String.valueOf(bmi)+ " (體重過輕)";
+                        BMI.setText(str);
+                    }
+                    else if(bmi <24){
+                        String str = String.valueOf(bmi)+ " (體重適中)";
+                        BMI.setText(str);
+                    }else if(bmi<27){
+                        String str = String.valueOf(bmi)+ " (體重過重)";
+                        BMI.setText(str);
+                    }else if(bmi <30){
+                        String str = String.valueOf(bmi)+ " (輕度肥胖)";
+                        BMI.setText(str);
+                    }else if(bmi <35){
+                        String str = String.valueOf(bmi)+ " (中度肥胖)";
+                        BMI.setText(str);
+                    }else{
+                        String str = String.valueOf(bmi)+ " (重度肥胖)";
+                        BMI.setText(str);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
