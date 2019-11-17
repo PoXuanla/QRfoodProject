@@ -9,19 +9,6 @@
     tools:context=".Qrcode.Qrcode_main">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#aed0b5">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_home"
-            android:layout_gravity="start"
-            android:text="Home">
-
-        </Button>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:gravity="center"
@@ -345,14 +332,23 @@
             android:textSize="50px" />
     </LinearLayout>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Foodfile_FAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|right"
-        android:layout_marginRight="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         android:src="@drawable/fooddairy_add"
         android:tint="@android:color/white"
         app:fabSize="auto"/>
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_vertical|right"
+        android:background="@drawable/fooddairy_homeicon"/>
+
 </LinearLayout>
