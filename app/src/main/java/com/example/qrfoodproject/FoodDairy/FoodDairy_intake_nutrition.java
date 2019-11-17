@@ -1,5 +1,6 @@
 package com.example.qrfoodproject.FoodDairy;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,13 +42,18 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
         setContentView(R.layout.fooddairy_intake_nutrition);
 
         setView();
+        getIntentExtra();
         print(); //顯示數值及圖表
 
 
 
 
     }
+    private void getIntentExtra(){
+        Intent intent = getIntent();
+        strDate = intent.getStringExtra("strDate");
 
+    }
     private void setView() {
         pieChart = (PieChart) findViewById(R.id.chart1);
         pieChart2 = (PieChart) findViewById(R.id.chart2);
@@ -107,9 +113,9 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
                 //取得sessionID
                 SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
-                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = new Date();
-                strDate = sdFormat.format(date);
+//                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                Date date = new Date();
+//                strDate = sdFormat.format(date);
 
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("sessionID", session);
