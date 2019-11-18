@@ -91,28 +91,47 @@
                 android:text="每人每天三至六碗，因每個人體型及活動量不同，所需熱量也不一樣，故可依個人的需要量增減。"
                 android:textColor="#FFFFFF"
                 android:textSize="50px" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:src="@drawable/nutrition_img01_1"/>
-            <TextView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="白飯"
-                android:textColor="#FFFFFF"
-                android:textSize="50px"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:src="@drawable/nutrition_img01_2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="南瓜"
-                android:textColor="#FFFFFF"
-                android:textSize="50px"/>
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:src="@drawable/nutrition_img01_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="白飯"
+                        android:textColor="#FFFFFF"
+                        android:textSize="50px"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:src="@drawable/nutrition_img01_2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="南瓜"
+                        android:textColor="#FFFFFF"
+                        android:textSize="50px"/>
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
