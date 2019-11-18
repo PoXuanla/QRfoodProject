@@ -1,9 +1,12 @@
 package com.example.qrfoodproject.FoodDairy;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +35,12 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
     TextView calorie,protein,fat,saturatedFat,transFat,cholesterol,carbohydrate,sugar,dietaryFiber,sodium,calcium,potassium
             ,ferrum,total_calorie,total_protein,total_fat,total_saturatedFat,total_transFat,total_cholesterol,total_carbohydrate
             ,total_sugar,total_dietaryFiber,total_sodium,total_calcium,total_potassium,total_ferrum;
+    private String[] id = {"calorie","protein","fat","saturatedFat","transFat","cholesterol","carbohydrate","sugar"
+            ,"dietaryFiber","sodium","calcium","potassium"
+            ,"ferrum","total_calorie","total_protein","total_fat","total_saturatedFat","total_transFat"
+            ,"total_cholesterol","total_carbohydrate"
+            ,"total_sugar","total_dietaryFiber","total_sodium","total_calcium","total_potassium","total_ferrum"};
+    private TextView[] textViews = new TextView[26];
     String url = "http://120.110.112.96/using/get_user_nutrition_data.php";
     String strDate;
     PieChart pieChart,pieChart2,pieChart3;
@@ -40,14 +49,26 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.fooddairy_intake_nutrition);
 
+        TextView_convert_array();//把TextView 做成 array
         setView();
+        getIntentExtra();
         print(); //顯示數值及圖表
 
-
-
+        textViews[1].setTextColor(android.graphics.Color.RED);
 
     }
+    private void TextView_convert_array(){
+        int temp;
+        for(int i=0; i<id.length; i++){
+            temp = getResources().getIdentifier(id[i], "id", getPackageName());
+            textViews[i] = (TextView)findViewById(temp);
+        }
+    }
+    private void getIntentExtra(){
+        Intent intent = getIntent();
+        strDate = intent.getStringExtra("strDate");
 
+    }
     private void setView() {
         pieChart = (PieChart) findViewById(R.id.chart1);
         pieChart2 = (PieChart) findViewById(R.id.chart2);
@@ -107,9 +128,9 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
                 //取得sessionID
                 SharedPreferences pref = getSharedPreferences("Data", MODE_PRIVATE);
                 String session = pref.getString("sessionID", "");
-                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = new Date();
-                strDate = sdFormat.format(date);
+//                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                Date date = new Date();
+//                strDate = sdFormat.format(date);
 
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("sessionID", session);
@@ -121,6 +142,7 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
     }
     private void setData(JSONObject data){
         try {
+
             total_calorie.setText(data.getString("total_calorie"));
             total_protein.setText(data.getString("total_protein"));
             total_fat.setText(data.getString("total_fat"));
@@ -147,6 +169,10 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
             calcium.setText(data.getString("calcium"));
             potassium.setText(data.getString("potassium"));
             ferrum.setText(data.getString("ferrum"));
+         //如果營養攝取量超過建議攝取值，則顯示紅字
+            for(int i = 0 ;i<13;i++){
+                setRedText(id[i],id[i+13],data,i);
+            }
 
         }catch (Exception e){
 
@@ -162,6 +188,17 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
             mode3.makeChart();
 
         }catch (Exception e){
+
+        }
+
+    }
+    public void setRedText(String nutrition ,String total_nutrition,JSONObject data,int index){
+        try{
+            Log.v("Red",data.getString(nutrition.toString()));
+            if(data.getDouble(nutrition) > data.getDouble(total_nutrition))
+                textViews[index].setTextColor(android.graphics.Color.RED);
+        }
+        catch (Exception e){
 
         }
 

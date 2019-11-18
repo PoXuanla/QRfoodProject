@@ -2,6 +2,8 @@ package com.example.qrfoodproject.FoodDairy;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.qrfoodproject.FoodFile.food.FoodFile_Food;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -97,7 +99,13 @@ public class FoodDairy_main extends AppCompatActivity {
         intake_nutrition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FoodDairy_main.this,FoodDairy_intake_nutrition.class));
+                //startActivity(new Intent(FoodDairy_main.this,FoodDairy_intake_nutrition.class));
+                SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = new Date();
+                String strDate = sdFormat.format(date);
+                Intent intent = new Intent(FoodDairy_main.this,FoodDairy_intake_nutrition.class);
+                intent.putExtra("strDate",strDate);
+                startActivity(intent);
             }
         });
     }

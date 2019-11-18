@@ -11,7 +11,7 @@ import com.example.qrfoodproject.R;
 
 public class FoodDairy_Calen extends AppCompatActivity {
     CalendarView calendarview;
-    public static String date;
+    //public static String date;
     public static String date_format;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class FoodDairy_Calen extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 String strmonth;
                 String strdate;
-                date = (Integer.toString(year)) +" 年 "+  (Integer.toString(month+1))  +" 月 "+  (Integer.toString(dayOfMonth)) +" 日";
+                //date = (Integer.toString(year)) +" 年 "+  (Integer.toString(month+1))  +" 月 "+  (Integer.toString(dayOfMonth)) +" 日";
                 if(month<10){
                     strmonth = "0"+(month+1);
                 }
@@ -37,7 +37,7 @@ public class FoodDairy_Calen extends AppCompatActivity {
                 }else{
                     strdate = ""+dayOfMonth;
                 }
-                date_format =year+"/"+strmonth+"/"+strdate;
+                date_format =year+"-"+strmonth+"-"+strdate;
                 Toast.makeText(FoodDairy_Calen.this,date_format,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(FoodDairy_Calen.this,FoodDairy_Calen_date.class);
                 startActivity(intent);

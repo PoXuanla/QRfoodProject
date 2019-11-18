@@ -208,6 +208,34 @@
                         android:text="顯示運動量"
                         android:textSize="50px" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="BMI"
+                        android:drawableLeft="@drawable/profile_bmi"
+                        android:textColor="#000000"
+                        android:textSize="50px"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/BMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="顯示BMI"
+                        android:textSize="50px" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
