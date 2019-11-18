@@ -10,7 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <Button
+            android:id="@+id/intake_nutrition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/fooddairy_nutrition"
+            android:text="查看攝取營養"
+            android:textSize="30px"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:background="#ff8c1a"/>
         <TextView
             android:id="@+id/today"
             android:layout_width="0dp"
@@ -28,24 +39,13 @@
             android:id="@+id/calen"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src ="@drawable/fooddairy_calendar"
             android:scaleType="centerInside"
             android:background="#ff8c1a" />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/intake_nutrition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/fooddairy_nutrition"
-        android:text="查看攝取營養"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/fooddairy_button_shape2" />
 
     <TextView
         android:layout_width="match_parent"
