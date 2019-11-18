@@ -42,7 +42,7 @@ public class AddFood_Dialog extends DialogFragment {
     Spinner time;
     EditText serving;
     String strDate;
-    String time_array[] = {"早", "中", "晚"};
+    String time_array[] = {"早", "午", "晚"};
     ArrayAdapter<String> time_adapter;
 
     @Override

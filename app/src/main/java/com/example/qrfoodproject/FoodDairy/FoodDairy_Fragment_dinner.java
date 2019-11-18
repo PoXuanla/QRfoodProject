@@ -27,6 +27,7 @@ import com.example.qrfoodproject.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -114,6 +115,8 @@ public class FoodDairy_Fragment_dinner extends Fragment {
                         total.put("serving", c.getString("serving"));
                         total.put("sn", c.getString("sn"));
                         total.put("rsName",c.getString("rsName"));
+                        DecimalFormat df = new DecimalFormat("##.00");
+                        String total_cal = String.valueOf(df.format(c.getDouble("total_cal")));
                         total.put("total_cal",c.getString("total_cal"));
                         array.add(total);
 
