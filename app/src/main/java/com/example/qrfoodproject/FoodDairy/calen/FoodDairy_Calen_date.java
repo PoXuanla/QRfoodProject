@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.qrfoodproject.FoodDairy.FoodDairy_intake_nutrition;
+import com.example.qrfoodproject.PushNotification.getUserNutrition;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -33,6 +34,7 @@ public class FoodDairy_Calen_date extends AppCompatActivity {
     public static String FoodDairy_Calen_date_date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooddairy_calen_date);
 

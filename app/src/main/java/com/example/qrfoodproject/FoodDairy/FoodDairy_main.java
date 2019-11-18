@@ -2,8 +2,6 @@ package com.example.qrfoodproject.FoodDairy;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.qrfoodproject.FoodFile.food.FoodFile_Food;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;

@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen;
 import com.example.qrfoodproject.FoodDairy.calen.FoodDairy_Calen_date;
 import com.example.qrfoodproject.MySingleton;
+import com.example.qrfoodproject.PushNotification.getUserNutrition;
 import com.example.qrfoodproject.R;
 
 import org.json.JSONArray;
@@ -220,6 +221,7 @@ public class FoodDairy_AddFood extends AppCompatActivity {
                     }
                 };
                 MySingleton.getInstance(FoodDairy_AddFood.this).addToRequestQueue(stringRequest);
+
             }
         });
     }
@@ -368,15 +370,5 @@ public class FoodDairy_AddFood extends AppCompatActivity {
         return i;
     }
 
-
-//    @Override
-//    public void onSuccess(ArrayList<String> str) {
-//
-//    }
-//
-//    @Override
-//    public void getcId(ArrayList<String> cId) {
-//
-//    }
 }
 
