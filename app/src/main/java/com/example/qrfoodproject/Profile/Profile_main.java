@@ -3,10 +3,14 @@ package com.example.qrfoodproject.Profile;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.android.volley.Request;
@@ -58,6 +62,11 @@ public class Profile_main extends AppCompatActivity {
         exercise = findViewById(R.id.exercise);
         pushNotification = findViewById(R.id.PushNotification);
         BMI = findViewById(R.id.BMI);
+
+        //add an underline on TextView feelConfused
+        SpannableString context = new SpannableString("推播功能是什麼東西？");
+        context.setSpan(new UnderlineSpan(), 0 ,context.length(), 0);
+
     }
 
     private void setButtonListener() {
@@ -86,9 +95,12 @@ public class Profile_main extends AppCompatActivity {
                 case R.id.logout:
                     new sessionCheck().logout(Profile_main.this);
                     break;
+
+                //啟用推播功能，將來會有關閉
                 case R.id.PushNotification:
                     new ManageAlarm();
                     ManageAlarm.addSpecificTime(Profile_main.this);
+                    Toast.makeText( Profile_main.this, "Push Notification activated!!",Toast.LENGTH_SHORT).show();
                     break;
             }
         }

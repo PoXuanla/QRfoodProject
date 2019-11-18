@@ -18,13 +18,12 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.example.qrfoodproject.Profile.checkNutrition_push;
 import com.example.qrfoodproject.R;
 
 public class NotificationService extends IntentService{
 
     private NotificationManager manager;
-    private static int NOTIFICATION_ID = 1;
-    Notification notification;
     Context context;
 
 
@@ -43,6 +42,8 @@ public class NotificationService extends IntentService{
         Resources res = context.getResources();
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        String toShow = checkNutrition_push.checkAndReturnResult(context);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
             //當使用者的版本高於Oreo時，Android要求開發者需要另外為元素添加「channel(頻道)」，類似為通知作分類
@@ -51,23 +52,27 @@ public class NotificationService extends IntentService{
 
             Log.d("PushNotification", "Receive intent and works via First function");
 
-            String CHANNEL_ID = "channel_01";
+            String CHANNEL_ID = "Nutrition_channel";
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                     "Food nutrition ", NotificationManager.IMPORTANCE_DEFAULT);
             channel.enableLights(true);
             channel.enableVibration(true);
 
-            ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            Notification.Builder builder = new Notification.Builder(context)
+            Notification notification = new NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setContentTitle("QRFood")
-                    .setContentText("Hey, it's sending via Build version later than Oreo")
-                    .setChannelId(CHANNEL_ID);
+                    .setContentText(toShow)
+                    .setChannelId(CHANNEL_ID).build();
 
-            manager.notify(1, builder.build());
+            ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            startForeground(NOTIFICATION_ID, notification);
+
+            manager.notify(1337, notification);
+
+            //weird test
+            startForeground(1337, notification);
+
 
         }else{
 
@@ -77,7 +82,7 @@ public class NotificationService extends IntentService{
 
             Log.d("PushNotification", "Receive intent and works via Second function");
 
-            notification = new NotificationCompat.Builder(context)
+            Notification notification = new NotificationCompat.Builder(context)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher_round))
                     .setTicker("Tick")
@@ -93,7 +98,7 @@ public class NotificationService extends IntentService{
             notification.ledOnMS = 800;
             notification.ledOffMS = 1000;
             manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-            manager.notify(NOTIFICATION_ID, notification);
+            manager.notify(1, notification);
         }
 
     }

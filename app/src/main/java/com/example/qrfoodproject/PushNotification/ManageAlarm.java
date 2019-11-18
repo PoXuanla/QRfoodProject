@@ -30,7 +30,7 @@ public class ManageAlarm {
 
         Calendar startTime = Calendar.getInstance();
         startTime.set(Calendar.HOUR_OF_DAY, 17);
-        startTime.set(Calendar.MINUTE, 00);
+        startTime.set(Calendar.MINUTE, 0);
         startTime.set(Calendar.SECOND, 0);
 
         if (timeOfNow.after(startTime)){
