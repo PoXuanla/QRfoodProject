@@ -12,19 +12,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.qrfoodproject.MySingleton;
-import com.example.qrfoodproject.Profile.Profile_main;
 import com.example.qrfoodproject.Profile.checkNutrition_push;
 import com.example.qrfoodproject.R;
 
 import com.github.mikephil.charting.charts.PieChart;
-import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +39,6 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
 
         setView();
         print(); //顯示數值及圖表
-
-
 
 
     }
@@ -93,8 +87,12 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
                     setChart(data);
 
 
-                } catch (Exception e) {
+                    //TODO  cant work if using getUserNutrition instead of checkNutrition_push without this page?
+                    checkNutrition_push.readAndWriteInPref(data, getApplicationContext());
 
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -150,7 +148,7 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
             ferrum.setText(data.getString("ferrum"));
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
     private void setChart(JSONObject data){
@@ -163,7 +161,7 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
             mode3.makeChart();
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }

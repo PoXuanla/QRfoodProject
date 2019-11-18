@@ -29,9 +29,9 @@ public class ManageAlarm {
         Calendar timeOfNow = Calendar.getInstance();
 
         Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 4);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.SECOND, 30);
+        startTime.set(Calendar.HOUR_OF_DAY, 17);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.SECOND, 0);
 
         if (timeOfNow.after(startTime)){
             //check if user activate the function when current time is over 17:00

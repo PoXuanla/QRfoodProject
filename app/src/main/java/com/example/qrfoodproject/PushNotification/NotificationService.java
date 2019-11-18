@@ -24,8 +24,6 @@ import com.example.qrfoodproject.R;
 public class NotificationService extends IntentService{
 
     private NotificationManager manager;
-    private static int NOTIFICATION_ID = 1;
-    Notification notification;
     Context context;
 
 
@@ -44,7 +42,7 @@ public class NotificationService extends IntentService{
         Resources res = context.getResources();
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        String toShow = new checkNutrition_push().checkAndReturnResult(context);
+        String toShow = checkNutrition_push.checkAndReturnResult(context);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 
@@ -54,23 +52,27 @@ public class NotificationService extends IntentService{
 
             Log.d("PushNotification", "Receive intent and works via First function");
 
-            String CHANNEL_ID = "channel_01";
+            String CHANNEL_ID = "Nutrition_channel";
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                     "Food nutrition ", NotificationManager.IMPORTANCE_DEFAULT);
             channel.enableLights(true);
             channel.enableVibration(true);
 
-            ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            Notification.Builder builder = new Notification.Builder(context)
+            Notification notification = new NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setContentTitle("QRFood")
                     .setContentText(toShow)
-                    .setChannelId(CHANNEL_ID);
+                    .setChannelId(CHANNEL_ID).build();
 
-            manager.notify(1, builder.build());
+            ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            startForeground(NOTIFICATION_ID, notification);
+
+            manager.notify(1337, notification);
+
+            //weird test
+            startForeground(1337, notification);
+
 
         }else{
 
@@ -80,7 +82,7 @@ public class NotificationService extends IntentService{
 
             Log.d("PushNotification", "Receive intent and works via Second function");
 
-            notification = new NotificationCompat.Builder(context)
+            Notification notification = new NotificationCompat.Builder(context)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher_round))
                     .setTicker("Tick")
@@ -96,7 +98,7 @@ public class NotificationService extends IntentService{
             notification.ledOnMS = 800;
             notification.ledOffMS = 1000;
             manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-            manager.notify(NOTIFICATION_ID, notification);
+            manager.notify(1, notification);
         }
 
     }

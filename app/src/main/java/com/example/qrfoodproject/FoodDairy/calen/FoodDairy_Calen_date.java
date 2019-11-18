@@ -2,6 +2,7 @@ package com.example.qrfoodproject.FoodDairy.calen;
 
 import android.os.Bundle;
 
+import com.example.qrfoodproject.PushNotification.getUserNutrition;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -27,13 +28,14 @@ public class FoodDairy_Calen_date extends AppCompatActivity {
     public static String FoodDairy_Calen_date_date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooddairy_calen_date);
 
         instance = this;//用來取得當前頁面
-        tablayout_calen = (TabLayout) findViewById(R.id.tablayout_calen);
-        viewpager_calen = (ViewPager) findViewById(R.id.viewpager_calen);
-        date_calen_title = (TextView)findViewById(R.id.date_calen_title);
+        tablayout_calen = findViewById(R.id.tablayout_calen);
+        viewpager_calen = findViewById(R.id.viewpager_calen);
+        date_calen_title = findViewById(R.id.date_calen_title);
         date_calen_title.setText(FoodDairy_Calen.date);
 
         //設定Tablayout 與 ViewPager 連動
@@ -42,6 +44,7 @@ public class FoodDairy_Calen_date extends AppCompatActivity {
         setViewPager();
         tablayout_calen.setupWithViewPager(viewpager_calen);
         setTabIcon();
+
     }
     private void setViewPager(){
         FoodDairy_Fragment_breakfast myFragment1 = new FoodDairy_Fragment_breakfast();
