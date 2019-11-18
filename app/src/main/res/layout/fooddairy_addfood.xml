@@ -13,7 +13,7 @@
         android:elevation="20dp"
         android:gravity="center"
         android:padding="30dp"
-        android:background="@drawable/fooddairy_bg3"
+        android:background="@drawable/fooddairy_titlebg"
         android:text="新增食物"
         android:textStyle="bold"
         android:textColor="#ffffff"

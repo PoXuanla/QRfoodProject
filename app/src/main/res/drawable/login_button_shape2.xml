@@ -4,10 +4,10 @@
         android:radius="100dp" />
     <gradient
         android:angle="45"
-        android:centerX="50%"
-        android:centerColor="#326A9B"
-        android:startColor="#30CFD0"
-        android:endColor="#330867"
+        android:centerX="35%"
+        android:centerColor="#ffffff"
+        android:startColor="#ffffff"
+        android:endColor="#ffffff"
         android:type="linear" />
     <padding
         android:left="0dp"
@@ -16,8 +16,8 @@
         android:bottom="0dp" />
     <size
         android:width="270dp"
-        android:height="60dp" />
+        android:height="50dp" />
     <stroke
-        android:width="0dp"
+        android:width="3dp"
         android:color="#FFFFFF" />
 </shape>

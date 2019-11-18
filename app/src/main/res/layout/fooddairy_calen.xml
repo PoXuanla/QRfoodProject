@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@drawable/fooddairy_bg3"
+    android:background="@drawable/fooddairy_titlebg"
     tools:context=".FoodDairy.calen.FoodDairy_Calen">
 
     <LinearLayout

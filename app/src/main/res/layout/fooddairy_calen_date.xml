@@ -7,30 +7,36 @@
     android:orientation="vertical"
     tools:context=".FoodDairy.calen.FoodDairy_Calen_date">
 
-    <TextView
-        android:id="@+id/date_calen_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:background="@drawable/fooddairy_bg3"
-        android:text="顯示日期"
-        android:textStyle="bold"
-        android:padding="20dp"
-        android:elevation="20dp" />
-
-    <Button
-        android:id="@+id/nutritionin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="查看攝取營養"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:background="@drawable/fooddairy_button_shape2" />
-
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/nutritionin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/fooddairy_nutrition"
+            android:text="查看攝取營養"
+            android:textSize="35px"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:background="#a1c4fd" />
+        <TextView
+            android:id="@+id/date_calen_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:background="@drawable/fooddairy_titlebg"
+            android:text="顯示日期"
+            android:textStyle="bold"
+            android:padding="20dp"
+            android:elevation="20dp" />
+    </LinearLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout_calen"
         android:layout_width="match_parent"

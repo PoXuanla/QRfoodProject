@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#e8f2d0"
     tools:context=".Qrcode.Qrcode_main">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#aed0b5">
+        android:background="@drawable/main_bg">
         <TextView
             android:id="@+id/fdName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="#227b38"
+            android:textColor="#000000"
             android:textSize="100px"
+            android:textStyle="bold"
             android:text="(顯示食物菜名)" />
 
     </LinearLayout>
