@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class Profile_main extends AppCompatActivity {
     Button modifyData, modifyPassword, logout, pushNotification;
-    TextView account, name, gender, height, weight, exercise, email, feelConfused;
+    TextView account, name, gender, height, weight, exercise, email;
 
     private String print_profile_url = "http://120.110.112.96/using/Profile/getUserinformation.php";
 
@@ -64,7 +64,6 @@ public class Profile_main extends AppCompatActivity {
         //add an underline on TextView feelConfused
         SpannableString context = new SpannableString("推播功能是什麼東西？");
         context.setSpan(new UnderlineSpan(), 0 ,context.length(), 0);
-        feelConfused.setText(context);
 
     }
 
