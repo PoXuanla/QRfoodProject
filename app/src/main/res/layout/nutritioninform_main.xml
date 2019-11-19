@@ -9,6 +9,13 @@
     android:orientation="vertical"
     android:background="#fafafa"
     tools:context=".NutritionInform.NutritionInform">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,7 +33,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_cereal_svg"
+                    android:drawableTop="@drawable/nutrition_01cereal_svg"
                     android:text="01五穀根莖類"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -39,7 +46,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_vegetables_svg"
+                    android:drawableTop="@drawable/nutrition_02vegetables_svg"
                     android:text="02蔬菜類"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -62,7 +69,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_apple_svg"
+                    android:drawableTop="@drawable/nutrition_03apple_svg"
                     android:text="03水果類"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -75,7 +82,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_beef_svg"
+                    android:drawableTop="@drawable/nutrition_04beef_svg"
                     android:text="04蛋豆魚肉類"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -98,7 +105,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_milk_svg"
+                    android:drawableTop="@drawable/nutrition_05milk_svg"
                     android:text="05低脂乳品類"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -111,11 +118,50 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_oliveoil_svg"
+                    android:drawableTop="@drawable/nutrition_06oliveoil_svg"
                     android:text="06油脂與堅果種子類"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="50px" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/nutritioninform07"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/nutritioninform_button_shape"
+                    android:drawableTop="@drawable/nutrition_07sixicon_svg"
+                    android:text="07六大類食物"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="50px" />
+                <Button
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/nutritioninform_button_shape"
+                    android:drawableTop="@drawable/nutrition_06oliveoil_svg"
+                    android:text="06油脂與堅果種子類"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="50px" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
