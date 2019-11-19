@@ -51,7 +51,7 @@ public class FoodDairy_intake_nutrition extends AppCompatActivity {
         getIntentExtra();
         print(); //顯示數值及圖表
 
-        textViews[1].setTextColor(android.graphics.Color.RED);
+
 
     }
     private void TextView_convert_array(){
