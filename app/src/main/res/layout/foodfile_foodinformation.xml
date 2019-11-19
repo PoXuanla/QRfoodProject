@@ -332,23 +332,25 @@
             android:textSize="50px" />
     </LinearLayout>
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/Foodfile_FAB"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|right"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/fooddairy_add"
-        android:tint="@android:color/white"
-        app:fabSize="auto"/>
-    <Button
-        android:id="@+id/btn_home"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="10dp"
-        android:layout_gravity="center_vertical|right"
-        android:background="@drawable/fooddairy_homeicon"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical|right">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Foodfile_FAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/fooddairy_add"
+            android:tint="@android:color/white"
+            app:fabSize="auto"/>
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fooddairy_homeicon"/>
+    </LinearLayout>
 
 </LinearLayout>
