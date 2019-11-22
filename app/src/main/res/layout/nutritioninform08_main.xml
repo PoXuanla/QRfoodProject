@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/nutritioninformbg"
+    tools:context=".NutritionInform.Nutritioninform_08">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/nutritioninformbg"
+                android:text="08.國民飲食指標"
+                android:textStyle="bold"
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="「國民飲食指標」，主要是依據我國2005至2008年國民營養健康狀況變遷調查結果，並且參考各個國家之飲食建議進行修訂。\n舊版「國民飲食指標」為1995年公布，至今已二十年有餘，新版的「國民飲食指標」持續宣導均衡飲食、少油、少鹽、少糖、多喝白開水，另外強調了需增加活動量、避免含糖飲料，並且建議國人飲食需減少加工、多食用原態食物，並且提醒國人須注意食物產地來源，並且推廣國人進行母乳哺育至少六個月，使嬰孩能夠得到完整的營養來源。\n衛生福利部於2018年修訂了新版的「每日飲食指南」以及「國民飲食指標」，每日飲食指南的目的是提供國人基本的營養建議，針對六大類食物應攝取多少份量才能夠滿足大多數國人維持健康的需求，希望能夠透過每日飲食指南的推廣，幫助國人有更正確、更健康的食物選擇。\n而國民飲食指標的目的為建議國人飲食搭配生活型態的方向，除了管控飲食，健康生活型態亦是生活中不可或缺的部分，建議國人在飲食部分以每日飲食指南為目標，生活型態能遵循國民飲食指標的內容，以維持健康、預防慢性疾病及改善生活品質。"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="國民飲食指標12項原則如下："
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="1.飲食指南作依據，均衡飲食六類足"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="2.健康體重要確保，熱量攝取應控管"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="3.維持健康多活動，每日至少三十分"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="4.母乳營養價值高，哺餵至少六個月"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="5.全榖根莖當主食，營養升級質更優"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="6.太鹹不吃少醃漬，低脂少炸少沾醬"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="7.含糖飲料應避免，多喝開水更健康"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="8.少葷多素少精緻，新鮮粗食少加工"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="9.購食點餐不過量，分量適中不浪費"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="10.當地在地好食材，多樣選食保健康"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="11.來源標示要注意，衛生安全才能吃"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="12.若要飲酒不過量，懷孕絕對不喝酒"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/nutrition_img08"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

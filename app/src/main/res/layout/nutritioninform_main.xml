@@ -147,15 +147,15 @@
                     android:textColor="#000000"
                     android:textSize="50px" />
                 <Button
-
+                    android:id="@+id/nutritioninform08"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/nutritioninform_button_shape"
-                    android:drawableTop="@drawable/nutrition_06oliveoil_svg"
-                    android:text="06油脂與堅果種子類"
+                    android:drawableTop="@drawable/nutrition_08point_svg"
+                    android:text="08國民飲食指標"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="50px" />

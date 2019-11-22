@@ -6,19 +6,18 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-
         android:label="QRFood：我的飲食日誌"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".NutritionInform.NutritionInform_08"></activity>
+        <activity android:name=".NutritionInform.NutritionInform_07" />
         <activity android:name=".NutritionInform.NutritionInform_06" />
         <activity android:name=".NutritionInform.NutritionInform_05" />
         <activity android:name=".NutritionInform.NutritionInform_04" />
@@ -50,16 +49,14 @@
         <activity android:name=".FoodFile.food.FoodFile_Food" />
         <activity android:name=".FoodDairy.FoodDairy_intake_nutrition" />
 
-        <service android:name=".PushNotification.NotificationService"></service>
+        <service android:name=".PushNotification.NotificationService" />
 
         <receiver android:name=".PushNotification.AlarmReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-                <action android:name="android.intent.action.USER_PRESENT"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
     </application>
-
 
 </manifest>

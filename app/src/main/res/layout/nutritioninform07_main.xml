@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/nutritioninformbg"
+    tools:context=".NutritionInform.NutritionInform_07">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/nutritioninformbg"
+                android:text="07.六大類食物與三大營養素"
+                android:textStyle="bold"
+                android:textColor="#EEEEEE"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="在「每日飲食指南」中，將食物共分為六大類，而每大類提供的營養素以及各個的功能，都不盡相同，你知道他們的差別嗎？那我們就一起來看看吧！"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="全榖雜糧類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="全穀類：米、雜糧、燕麥等\n根莖類：玉米、地瓜、南瓜等\n乾豆類：紅豆、綠豆、大豆等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="醣類、蛋白質、膳食纖維"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="蔬菜類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="菠菜、高麗菜、白菜、黃豆芽、木耳、油菜花、花椰菜、竹筍、油菜、甜椒等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="醣類、蛋白質、膳食纖維、維生素、礦物質（鎂、鉀、鈣等）"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="水果類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="蘋果、柳丁、芒果、水梨、桃子、葡萄、蓮霧、香蕉、荔枝、百香果、奇異果、芭樂等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="醣類、維生素、礦物質"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="豆魚蛋肉類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="豬肉、牛肉、雞肉、魚類、草蝦、花枝、章魚、雞翅、雞蛋、黃豆、豆干、豆腐等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="蛋白質、維生素、礦物質"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="乳品類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="牛奶、奶粉、優酪乳、乳酪、發酵乳、冰淇淋等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="蛋白質、維生素、礦物質"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="油脂與堅果種子類"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="植物油：大豆油、玉米油、花生油、葵花子油、椰子油等\n動物油：牛油、豬油、培根等\n堅果類：瓜子、花生粉、芝麻、腰果、開心果等"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="主要營養素"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="脂質、維生素"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="\n\n三大營養素之功能："
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="醣類是大部分細胞主要能量的來源，紅血球及部分大腦皆以葡萄糖作為唯一能量來源。而攝取足夠醣類，可避免蛋白質被過度消耗，維持蛋白質應用於維持正常生理機能與促進生長發育之用途。\n蛋白質能夠生長及修復組織、調節生理機能，在醣類不足的情況下，會供給熱量或者作為葡萄糖來源。\n脂質為體內儲存能量的型式並適時地提供能量，是體內細胞膜和脂蛋白的重要組成，能夠保護內臟並可作為保暖之用。"
+                android:textColor="#FFFFFF"
+                android:textSize="50px" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -33,6 +33,12 @@ public class NutritionInform extends AppCompatActivity {
         // 營養抓寶站點進『06油脂與堅果種子類』
         Button nutritionInform06 = this.findViewById(R.id.nutritioninform06);
         nutritionInform06.setOnClickListener(nutritionInform06Listener);
+        // 營養抓寶站點進『07六大類食物』
+        Button nutritionInform07 = this.findViewById(R.id.nutritioninform07);
+        nutritionInform07.setOnClickListener(nutritionInform07Listener);
+        // 營養抓寶站點進『08國民飲食指標』
+        Button nutritionInform08 = this.findViewById(R.id.nutritioninform08);
+        nutritionInform08.setOnClickListener(nutritionInform08Listener);
     }
     // 營養抓寶站點進『01五穀根莖類』
     private Button.OnClickListener nutritionInform01Listener = new Button.OnClickListener() {
@@ -79,6 +85,22 @@ public class NutritionInform extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(NutritionInform.this, NutritionInform_06.class);
+            startActivity(intent);
+        }
+    };
+    // 營養抓寶站點進『07六大類食物』
+    private Button.OnClickListener nutritionInform07Listener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(NutritionInform.this, NutritionInform_07.class);
+            startActivity(intent);
+        }
+    };
+    // 營養抓寶站點進『08國民飲食指標』
+    private Button.OnClickListener nutritionInform08Listener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(NutritionInform.this, NutritionInform_08.class);
             startActivity(intent);
         }
     };
