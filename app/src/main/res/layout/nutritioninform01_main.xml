@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/nutritioninformbg"
+    android:background="@drawable/main_bg"
     tools:context=".NutritionInform.NutritionInform_01">
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
                 android:layout_gravity="center"
                 android:paddingTop="15dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/nutritioninformbg"
                 android:text="01.五穀根莖類"
                 android:textStyle="bold"
                 android:textColor="#EEEEEE"
